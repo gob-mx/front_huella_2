@@ -9,7 +9,7 @@
     @csrf
         <!--begin::Heading-->       
         <div class="text-center px-4 mb-11">
-            <img class="mw-100 mh-300px" alt="" src="{{ asset(theme()->getMediaUrlPath() . 'logos/SAF_logo_header.png') }}">
+            <img class="mw-100 mh-300px" alt="" src="{{ asset(theme()->getMediaUrlPath() . 'logos/logo_fiscalia.jpeg') }}">
         </div>
         
         <input type="hidden" id="tipo_login" value="{{$_auth}}">

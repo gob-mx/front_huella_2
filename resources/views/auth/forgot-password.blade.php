@@ -3,7 +3,7 @@
     <form class="form w-100 " novalidate="novalidate" id="kt_password_reset_form" action="{{ theme()->getPageUrl('password.email') }}">
         @csrf
         <div class="text-center px-4 mb-11"">
-            <img class="mw-100 mh-300px" alt="" src="{{ asset(theme()->getMediaUrlPath() . 'logos/SAF_logo_header.png') }}">
+            <img class="mw-100 mh-300px" alt="" src="{{ asset(theme()->getMediaUrlPath() . 'logos/logo_fiscalia.jpeg') }}">
         </div>
         <!--begin::Heading-->
         <div class="text-center mb-10">

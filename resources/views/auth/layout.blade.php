@@ -29,7 +29,7 @@
             </div>
             <!--end::Body-->
             <!--begin::Aside-->
-            <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2" style="background-image: url({{ asset(theme()->getMediaUrlPath() . 'saf/FN-N-AOC-300322-01.gif') }})">
+            <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2" style="background-image: url({{ asset(theme()->getMediaUrlPath() . 'auth/Dispositivo_biometrico_2.jpg') }})">
                 <!--begin::Content-->
                 <div class="d-flex flex-column flex-center py-15 px-5 px-md-15 w-100">
                    
@@ -50,7 +50,7 @@
 					<!--begin::Content-->
 					<div class="d-flex flex-column flex-center pb-0 pb-lg-10 p-10 w-100">
 						<!--begin::Image-->
-						<img class="theme-light-show mx-auto mw-100 w-150px w-lg-800px mb-10 mb-lg-20" src="{{ asset(theme()->getMediaUrlPath() . 'saf/FN-N-AOC-300322-01.gif')}}" alt="" />
+						<img class="theme-light-show mx-auto mw-100 w-150px w-lg-800px mb-10 mb-lg-20" src="{{ asset(theme()->getMediaUrlPath() . 'auth/Dispositivo_biometrico.jpg')}}" alt="" />
 						<img class="theme-dark-show mx-auto mw-100 w-150px w-lg-300px mb-10 mb-lg-20" src="{{ asset(theme()->getMediaUrlPath() . 'auth/agency-dark.png')}}" alt="" />
 						<!--end::Image-->
 						<!--begin::Title-->
