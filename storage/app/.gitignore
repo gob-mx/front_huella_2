@@ -1,0 +1,6 @@
+*
+!public/
+!user_avatars/
+user_avatars/*
+!user_avatars/blank.png
+!.gitignore
