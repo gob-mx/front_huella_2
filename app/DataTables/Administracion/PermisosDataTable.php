@@ -154,8 +154,8 @@ class PermisosDataTable extends DataTable
 	 *
 	 * @return string
 	 */
-	protected function filename()
+	/*protected function filename()
 	{
 		return 'SystemLogs_'.date('YmdHis');
-	}
+	}*/
 }
