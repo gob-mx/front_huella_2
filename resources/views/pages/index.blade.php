@@ -3,8 +3,8 @@
     @php
     $usuarios = App\Models\User::get();
     $uTotal = App\Models\User::get()->count();
-    $uActivos = App\Models\User::where('activo','t')->get()->count();
-    $uInactivos = App\Models\User::where('activo','f')->get()->count();
+    $uActivos = App\Models\User::where('activo',1)->get()->count();
+    $uInactivos = App\Models\User::where('activo',0)->get()->count();
     @endphp
 
     <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
