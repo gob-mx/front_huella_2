@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('message', 2000)->nullable()->comments('Mensaje log.');
             $table->string('description', 200)->nullable()->comments('Descripción del log.');
             $table->string('type_log',15)->nullable()->comments('Tipo de log: critical|error|warning|info|debug')->index();
-            $table->bigInteger('bitacora_auditoria_id')->nullable()->comments('Permite generar asociación con bitacora auditoria.');
+            $table->unsignedBigInteger('bitacora_auditoria_id')->nullable()->comments('Permite generar asociación con bitacora auditoria.');
             $table->dateTime('created_at')->comments('Información de creación del registro.');
         });
     }

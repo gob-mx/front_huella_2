@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('bitacora_logs', function (Blueprint $table) {
-            //$table->foreign('bitacora_auditoria_id', 'fk_bitacora_logs_bitacora_auditoria_id')->references('id')->on('bitacora_auditoria')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+            $table->foreign('bitacora_auditoria_id', 'fk_bitacora_logs_bitacora_auditoria_id')->references('id')->on('bitacora_auditoria')->onUpdate('RESTRICT')->onDelete('RESTRICT');
         });
     }
 
