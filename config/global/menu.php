@@ -296,6 +296,35 @@ return array(
                 ),
             ),
         ),
+
+        //// Módulos
+        array(
+            'classes' => array('content' => 'pt-8 pb-2'),
+            'content' => '<span class="menu-section text-muted text-uppercase fs-8 ls-1">Módulos</span>',
+        ),
+
+        // Registro del Implicado
+        array(
+            'title'     => 'Registro',
+            'icon'      => array(
+                'svg'   => theme()->getSvgIcon("demo1/media/icons/duotune/communication/com006.svg", "svg-icon-2"),
+                'font'  => '<i class="bi bi-person fs-2"></i>',
+            ),
+            'classes'    => array('item' => 'menu-accordion'),
+            'attributes' => array(
+                "data-kt-menu-trigger" => "click",
+            ),
+            'sub'        => array(
+                'class' => 'menu-sub-accordion menu-active-bg',
+                'items' => array(
+                    array(
+                        'title'  => 'Implicados',
+                        'path'   => 'registro/implicados',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                ),
+            ),
+        ),
         
     ),
 
