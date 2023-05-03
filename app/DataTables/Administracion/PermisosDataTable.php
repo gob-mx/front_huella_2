@@ -63,9 +63,13 @@ class PermisosDataTable extends DataTable
 	 */
 	public function query(Moduls $model)
 	{
-
-		// dd('$model',$model->with('Permissions')->get());
-		// $model->setLogPath(storage_path('logs'));
+		/*============================================================================
+		=            Valida que solo roles SADMIN puedan mismo rol SADMIN            =
+		============================================================================*/
+		$userRoles = auth()->user()->getRoleNames()->toArray();
+		if ( !in_array('SADMIN', $userRoles) ) {
+			$model = $model->whereNotIn('name',['LOGS']);
+		}
 
 		/************************************* O P C I O N   1 *********************************/
 		$data = collect();

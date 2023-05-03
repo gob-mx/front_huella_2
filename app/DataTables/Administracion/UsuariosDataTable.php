@@ -52,7 +52,14 @@ class UsuariosDataTable extends DataTable
 	 */
 	public function query(User $model)
 	{
-		// $model->setLogPath(storage_path('logs'));
+		/*============================================================================
+		=            Valida que solo roles SADMIN puedan mismo rol SADMIN            =
+		============================================================================*/
+		$userRoles = auth()->user()->getRoleNames()->toArray();
+		if ( !in_array('SADMIN', $userRoles) ) {
+			$arraySADMIN = $model->role('SADMIN')->pluck('id')->toArray();
+			$model = $model->whereNotIn('id',$arraySADMIN);
+		}
 
 		/************************************* O P C I O N   1 *********************************/
 		$data = collect();

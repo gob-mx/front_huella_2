@@ -18,6 +18,15 @@ class RolesController extends Controller
         $roles = Role::with('permissions')->get();
         $modulos = Moduls::with('Permissions')->get();
 
+        /*============================================================================
+		=            Valida que solo roles SADMIN puedan mismo rol SADMIN            =
+		============================================================================*/
+		$userRoles = auth()->user()->getRoleNames()->toArray();
+		if ( !in_array('SADMIN', $userRoles) ) {
+			$roles = $roles->whereNotIn('name',['SADMIN']);
+			$modulos = $modulos->whereNotIn('name',['LOGS']);
+		}
+
         if(!$request->ajax()){
             return view('administracion.roles.roles_lista',compact('roles','modulos'));
         }

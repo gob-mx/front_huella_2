@@ -204,8 +204,16 @@ class UsuariosController extends Controller
     public function edit(Request $request, $id)
     {
 		$user = User::with(['info'])->find($id);
-
 		$model = Role::with('permissions')->get();
+
+		/*============================================================================
+		=            Valida que solo roles SADMIN puedan mismo rol SADMIN            =
+		============================================================================*/
+		$userRoles = auth()->user()->getRoleNames()->toArray();
+		if ( !in_array('SADMIN', $userRoles) ) {
+			$model = $model->whereNotIn('name',['SADMIN']);
+		}
+
 		$roles_permisos = collect();
 		$roles_permisos = $model->merge($roles_permisos);
 		$roles_permisos = $roles_permisos->map(function ($a) {
@@ -237,7 +245,13 @@ class UsuariosController extends Controller
 		$user_modulos = $user_modulos->unique('id')->pluck('modul_id','name')->toArray();
 
 		$moduls_permissions = Moduls::all();
-		// dd($moduls_permissions);
+
+		/*============================================================================
+		=            Valida que solo roles SADMIN puedan mismo rol SADMIN            =
+		============================================================================*/
+		if ( !in_array('SADMIN', $userRoles) ) {
+			$moduls_permissions = $moduls_permissions->whereNotIn('name',['LOGS']);
+		}
 
 		$directPermissions = $user->getDirectPermissions();
 		// dd($directPermissions);
