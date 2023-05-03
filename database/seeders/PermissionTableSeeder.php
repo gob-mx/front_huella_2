@@ -19,20 +19,20 @@ class PermissionTableSeeder extends Seeder
 		$permissions = [
 			'listar_usuarios',
 			'crear_usuarios',
+			'ver_usuarios',
 			'editar_usuarios',
-			'eliminar_usuarios',
 			'listar_roles',
 			'crear_roles',
+			'ver_roles',
 			'editar_roles',
-			'eliminar_roles',
 			'listar_permisos',
 			'crear_permisos',
+			'ver_permisos',
 			'editar_permisos',
-			'eliminar_permisos',
-			'listar_reg_aud',
-			'crear_reg_aud',
-			'editar_reg_aud',
-			'reporte_reg_aud',
+			'crear_modulo_permisos',
+			'editar_modulo_permisos',
+			'listar_auditoria_logs',
+			'listar_sistema_logs',
 		];
 	 
 		foreach ($permissions as $permission) {
@@ -43,15 +43,8 @@ class PermissionTableSeeder extends Seeder
 			['name' => 'USUARIOS', 'acronym' => 'usuarios'],
 			['name' => 'ROLES', 'acronym' => 'roles'],
 			['name' => 'PERMISOS', 'acronym' => 'permisos'],
-			['name' => 'REGISTROS DE AUDITORÍA', 'acronym' => 'reg_aud'],
+			['name' => 'LOGS', 'acronym' => 'logs'],
 		];
-
-		// $acronym = [
-		// 	'permisos',
-		// 	'roles',
-		// 	'usuarios',
-		// 	'log_aud'
-		// ];
 
 		foreach ($moduls as $modul) {
 			$storeModul = Moduls::create(['name' => $modul['name'],'acronym' => $modul['acronym']]);
@@ -70,8 +63,8 @@ class PermissionTableSeeder extends Seeder
 			[ 'permission_id' => 10, 'modul_id' => 3 ],
 			[ 'permission_id' => 11, 'modul_id' => 3 ],
 			[ 'permission_id' => 12, 'modul_id' => 3 ],
-			[ 'permission_id' => 13, 'modul_id' => 4 ],
-			[ 'permission_id' => 14, 'modul_id' => 4 ],
+			[ 'permission_id' => 13, 'modul_id' => 3 ],
+			[ 'permission_id' => 14, 'modul_id' => 3 ],
 			[ 'permission_id' => 15, 'modul_id' => 4 ],
 			[ 'permission_id' => 16, 'modul_id' => 4 ]
 		];
