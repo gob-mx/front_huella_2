@@ -13,6 +13,7 @@ use App\Http\Controllers\Administracion\UsuariosController;
 use App\Http\Controllers\Administracion\RolesController;
 use App\Http\Controllers\Administracion\PermisosController;
 use App\Http\Controllers\Administracion\ModulosController;
+use App\Http\Controllers\Registro\ImplicadosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,11 +125,15 @@ Route::middleware('auth')->group(function () {
     // Administracion pages
      Route::prefix('administracion')->name('administracion.')->group(function () {
         Route::resource('usuarios', UsuariosController::class);
-        //Route::post('usuarios', UsuariosController::class,'update');
         Route::post('usuarios/gen/{id}', [UsuariosController::class, 'update']);
         Route::resource('roles', RolesController::class);
         Route::resource('permisos', PermisosController::class);
         Route::resource('modulos', ModulosController::class);
+    });
+
+     // Administracion pages
+     Route::prefix('registro')->name('registro.')->group(function () {
+        Route::resource('implicados', ImplicadosController::class);
     });
 });
 
