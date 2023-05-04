@@ -24,7 +24,7 @@ class ImplicadosController extends Controller
      */
     public function create()
     {
-        //
+        dd('create');
     }
 
     /**
@@ -35,7 +35,7 @@ class ImplicadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -46,7 +46,7 @@ class ImplicadosController extends Controller
      */
     public function show($id)
     {
-        //
+        dd('show');
     }
 
     /**
@@ -57,7 +57,7 @@ class ImplicadosController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd('edit');
     }
 
     /**
@@ -69,7 +69,7 @@ class ImplicadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd('update');
     }
 
     /**

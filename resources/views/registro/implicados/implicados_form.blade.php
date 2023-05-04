@@ -4,162 +4,198 @@
 		<a href="" class="btn btn-sm fw-bold btn-primary boton_edit" data-bs-toggle="modal" data-bs-target="#kt_modal_add_role">Lista Implicados</a>
 	</x-slot>
 
-	<div id="kt_app_content" class="app-content flex-column-fluid">
-		<div id="kt_app_content_container" class="app-container container-fluid">
-			<div class="row">
-				<div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-					<div class="card">
-						<div class="card-body p-lg-17">
+<div class="card card-flush">
+	<div class="card-body">
 
-							<form id="modal_guarda_usuarios_form" class="form" action="#" enctype="multipart/form-data">
+		<form id="kt_ecommerce_settings_general_form" class="form" method="post" action="{{ route('registro.implicados.store') }}">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+			<div class="row mb-7">
+				<div class="col-md-12 text-center">
+					<h1>Registro Implicado</h1>
+					<div class="text-muted fw-bold fs-5">Los campos con (<label class="required"></label> ) son obligatorios</div>
+				</div>
+			</div>
 
-								<div class="mb-13 text-center">
-									<h1 id="modal_titulo" class="mb-3">Agregar Implicado</h1>
-									<div class="text-muted fw-bold fs-5">Los campos con (<label class="required"></label> ) son obligatorios</div>
-								</div>
+			<hr>
+			<div class="row mb-7">
+				<div class="col-md-12 text-center">
+					<h2>Datos Personales</h2>
+				</div>
+			</div>
 
-								{{-- <div class="mb-7">
-									<label class="fs-6 fw-semibold mb-2">
-										<span>Update Avatar</span>
-										<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Allowed file types: png, jpg, jpeg."></i>
-									</label>
-									<div class="mt-1">
-										<div class="image-input image-input-outline image-input-placeholder" data-kt-image-input="true">
-											<div class="image-input-wrapper w-125px h-125px" style="background-image: url( {{ asset('avatars/blank.png') }} )" name="avatarImage" id="avatarImage"></div>
-											<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
-												<i class="bi bi-pencil-fill fs-7"></i>
-												<input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg" />
-												<input type="hidden" name="avatar_remove" id="avatar_remove" />
-											</label>
-											<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
-												<i class="bi bi-x fs-2"></i>
-											</span>
-											<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
-												<i class="bi bi-x fs-2"></i>
-											</span>
-										</div>
-									</div>
-								</div> --}}
-
-								<div class="row g-9 mb-8">
-									<div class="col-md-6 fv-row">
-										<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-											<span class="required">Nombre(s)</span>
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Especifique Nombre(s) de la Persona a Registrar"></i>
-										</label>
-										<input type="text" class="form-control form-control-solid" placeholder="Ingrese Nombre(s)" name="nombre" />
-									</div>
-									<div class="col-md-6 fv-row">
-										<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-											<span class="required">Apellido Paterno</span>
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Especifique Apellido Paterno de la Persona a Registrar"></i>
-										</label>
-										<input type="text" class="form-control form-control-solid" placeholder="Ingrese Apellido Paterno" name="apellido_paterno" />
-									</div>
-								</div>
-
-								<div class="row g-9 mb-8">
-									<div class="col-md-6 fv-row">
-										<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-											<span>Apellido Materno</span>
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Especifique Apellido Materno de la Persona a Registrar"></i>
-										</label>
-										<input type="text" class="form-control form-control-solid" placeholder="Ingrese Apellido Materno" name="apellido_materno" />
-									</div>
-									<div class="col-md-6 fv-row">
-										<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-											<span class="required">Alias (Apodo)</span>
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Especifique Alias de la Persona a Registrar"></i>
-										</label>
-										<input type="text" class="form-control form-control-solid" placeholder="Ingrese Alias" name="apodo" />
-									</div>
-								</div>
-
-								{{-- <div class="row g-9 mb-8">
-									<div class="col-md-6 fv-row">
-										<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-											<span class="required">Correo Electrónico</span>
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Especifique Correo Electrónico de la Persona a Registrar"></i>
-										</label>
-										<input type="text" class="form-control form-control-solid" placeholder="Ingrese Correo Electrónico" name="email" />
-									</div>
-									<div class="col-md-6 fv-row">
-										<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-											<span>Teléfono</span>
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Especifique Teléfono de la Persona a Registrar"></i>
-										</label>
-										<input type="text" class="form-control form-control-solid" placeholder="Ingrese Teléfono" name="telefono" />
-									</div>
-								</div> --}}
-
-								<div class="row g-9 mb-8">
-									<div class="col-md-6 fv-row">
-										<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-											<span>RFC</span>
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Especifique RFC de la Persona a Registrar"></i>
-										</label>
-										<input type="text" class="form-control form-control-solid" placeholder="Ingrese RFC" name="rfc" />
-									</div>
-									<div class="col-md-6 fv-row">
-										<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-											<span>CURP</span>
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Especifique CURP de la Persona a Registrar"></i>
-										</label>
-										<input type="text" class="form-control form-control-solid" placeholder="Ingrese CURP" name="curp" />
-									</div>
-								</div>
-
-								{{-- <div class="row g-9 mb-8">
-									<div class="col-md-6 fv-row">
-										<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-											<span class="required">Password</span>
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Especifique Password de la Persona a Registrar"></i>
-										</label>
-										<input type="password" class="form-control form-control-solid" placeholder="Ingrese Password" name="password" />
-									</div>
-									<div class="col-md-6 fv-row">
-										<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-											<span class="required">Confirma Password</span>
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Confirma Password de la Persona a Registrar"></i>
-										</label>
-										<input type="password" class="form-control form-control-solid" placeholder="Confirma Password de la Persona a Registrar" name="confirm-password" />
-									</div>
-								</div>
-
-								<div class="d-flex flex-stack mb-8">
-									<div class="me-5">
-										<label class="fs-6 fw-bold">Estatus de Usuario</label>
-										<div class="fs-7 fw-bold text-muted">Si Desactiva el Botón, no Permitira Entrar al Sistema</div>
-									</div>
-									<label class="form-check form-switch form-check-custom form-check-solid">
-										<input class="form-check-input" type="checkbox" name="activo" value="1" checked="checked" />
-										<span class="form-check-label fw-bold text-muted">Activo</span>
-									</label>
-								</div> --}}
-
-								{{-- <div class="d-flex flex-column mb-8 fv-row">
-									<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-										<span class="required">Roles</span>
-										<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Especifique Roles de la Persona a Registrar"></i>
-									</label>
-									<input class="form-control form-control-solid" name="roles" />
-								</div> --}}
-
-								<div class="text-center">
-									<button type="reset" id="modal_guarda_usuarios_cancel" class="btn btn-light me-3">Cancel</button>
-									<button type="submit" id="modal_guarda_usuarios_submit" class="btn btn-primary">
-										<span class="indicator-label">Submit</span>
-										<span class="indicator-progress">Please wait...
-										<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-									</button>
-								</div>
-							</form>
-
-						</div>
+			<div class="row fv-row">
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca Nombre del Implicado."></i></div>
+						<input type="text" id="nombre" name="nombre" value="{{ old('nombre', '') }}" placeholder="nombre" class="form-control fw-bold" />
+						<label for="nombre"><span class="required">NOMBRE(S)</span></label>
+					</div>
+				</div>
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca Apellido Paterno del Implicado."></i></div>
+						<input type="text" id="apellido_paterno" name="apellido_paterno" value="{{ old('apellido_paterno', '') }}" placeholder="apellido_paterno" class="form-control fw-bold" />
+						<label for="apellido_paterno">APELLIDO PATERNO</label>
+					</div>
+				</div>
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca Apellido Materno del Implicado."></i></div>
+						<input type="text" id="apellido_materno" name="apellido_materno" value="{{ old('apellido_materno', '') }}" placeholder="apellido_materno" class="form-control fw-bold" />
+						<label for="apellido_materno">APELLIDO MATERNO</label>
 					</div>
 				</div>
 			</div>
-		</div>
+
+			<div class="row fv-row">
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca Alias (Apodo) del Implicado."></i></div>
+						<input type="text" id="alias" name="alias" value="{{ old('alias', '') }}" placeholder="alias" class="form-control fw-bold" />
+						<label for="alias">ALIAS (APODO)</label>
+					</div>
+				</div>
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca RFC del Implicado."></i></div>
+						<input type="text" id="rfc" name="rfc" value="{{ old('rfc', '') }}" placeholder="rfc" class="form-control fw-bold" />
+						<label for="rfc">RFC</label>
+					</div>
+				</div>
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca CURP del Implicado."></i></div>
+						<input type="text" id="curp" name="curp" value="{{ old('curp', '') }}" placeholder="curp" class="form-control fw-bold" />
+						<label for="curp">CURP</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row fv-row">
+				<div class="col-md-2 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca Fecha de Nacimiento del Implicado."></i></div>
+						<input type="text" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ old('fecha_nacimiento', '') }}" placeholder="fecha_nacimiento" class="form-control fw-bold" />
+						<label for="fecha_nacimiento">FECHA DE NACIMIENTO</label>
+					</div>
+				</div>
+				<div class="col-md-2 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca Estatura del Implicado."></i></div>
+						<input type="text" id="estatura" name="estatura" value="{{ old('estatura', '') }}" placeholder="estatura" class="form-control fw-bold" />
+						<label for="estatura">ESTATURA</label>
+					</div>
+				</div>
+				<div class="col-md-2 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca No. Celular del Implicado."></i></div>
+						<input type="text" id="celular" name="celular" value="{{ old('celular', '') }}" placeholder="celular" class="form-control fw-bold" />
+						<label for="celular">No. CELULAR</label>
+					</div>
+				</div>
+				<div class="col-md-2 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca No. Telefono del Implicado."></i></div>
+						<input type="text" id="telefono" name="telefono" value="{{ old('telefono', '') }}" placeholder="telefono" class="form-control fw-bold" />
+						<label for="telefono">No. TELEFONO</label>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+			<div class="row mb-7">
+				<div class="col-md-12 text-center">
+					<h2>Datos Biograficos</h2>
+				</div>
+			</div>
+
+			<div class="row fv-row">
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca Nacionalidad del Implicado."></i></div>
+						<input type="text" id="nacionalidad" name="nacionalidad" value="{{ old('nacionalidad', '') }}" placeholder="nacionalidad" class="form-control fw-bold" />
+						<label for="nacionalidad">NACIONALIDAD</label>
+					</div>
+				</div>
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca País de Nacimiento del Implicado."></i></div>
+						<input type="text" id="pais_nacimiento" name="pais_nacimiento" value="{{ old('pais_nacimiento', '') }}" placeholder="pais_nacimiento" class="form-control fw-bold" />
+						<label for="pais_nacimiento">PAÍS DE NACIMIENTO</label>
+					</div>
+				</div>
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca Lugar de Nacimiento del Implicado."></i></div>
+						<input type="text" id="lugar_nacimiento" name="lugar_nacimiento" value="{{ old('lugar_nacimiento', '') }}" placeholder="lugar_nacimiento" class="form-control fw-bold" />
+						<label for="lugar_nacimiento"><span class="required">LUGAR DE NACIMIENTO</span></label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row fv-row">
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca Grado de Estudios del Implicado."></i></div>
+						<input type="text" id="estudios" name="estudios" value="{{ old('estudios', '') }}" placeholder="estudios" class="form-control fw-bold" />
+						<label for="estudios">GRADO DE ESTUDIOS</label>
+					</div>
+				</div>
+				<div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca Ocupación del Implicado."></i></div>
+						<input type="text" id="ocupacion" name="ocupacion" value="{{ old('ocupacion', '') }}" placeholder="ocupacion" class="form-control fw-bold" />
+						<label for="ocupacion">OCUPACIÓN</label>
+					</div>
+				</div>
+				{{-- <div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca RFC del Implicado."></i></div>
+						<input type="text" id="rfc" name="rfc" value="{{ old('rfc', '') }}" placeholder="rfc" class="form-control fw-bold" />
+						<label for="rfc">RFC</label>
+					</div>
+				</div> --}}
+				{{-- <div class="col-md-4 mb-7">
+					<div class="form-floating">
+						<div class="ribbon ribbon-triangle ribbon-top-end border-gray-0">
+							<i class="fas fa-exclamation-circle mt-n5 fs-7 text-gray-500" data-bs-toggle="tooltip" title="Establezca CURP del Implicado."></i></div>
+						<input type="text" id="curp" name="curp" value="{{ old('curp', '') }}" placeholder="curp" class="form-control fw-bold" />
+						<label for="curp">CURP</label>
+					</div>
+				</div> --}}
+			</div>
+
+			<div class="row py-5">
+				<div class="col-md-7 offset-md-5">
+					<div class="d-flex">
+						<button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">Cancel</button>
+						<button type="submit" data-kt-ecommerce-settings-type="submit" class="btn btn-primary">
+							<span class="indicator-label">Save</span>
+							<span class="indicator-progress">Please wait...
+							<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
 	</div>
+</div>
 
 </x-base-layout>
