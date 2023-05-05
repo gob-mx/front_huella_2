@@ -263,7 +263,7 @@
 			</div>
 
 			<div class="m-0">
-				<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_domicilio_implicado">
+				<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_lugar_delito">
 					<div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
 						<span class="svg-icon toggle-on svg-icon-primary svg-icon-1">
 							{!! theme()->getSvgIcon("demo1/media/icons/duotune/general/gen036.svg", "svg-icon-1") !!}
@@ -274,7 +274,7 @@
 					</div>
 					<h3 class="text-gray-700 fw-bold cursor-pointer mb-0">Lugar del Delito</h3>
 				</div>
-				<div id="kt_domicilio_implicado" class="collapse show fs-6 ms-1">
+				<div id="kt_lugar_delito" class="collapse show fs-6 ms-1">
 					<div class="mb-7 text-gray-600 fw-semibold fs-5 ps-10">Registre el Lugar del Delito.</div>
 
 					<div class="row fv-row">
