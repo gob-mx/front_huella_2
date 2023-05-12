@@ -213,6 +213,25 @@ return array(
             ),
         ),
     ),
+    
+    'registro' => array(
+        'implicados'  => array(
+            'title'  => 'Registro Implicado',
+            'assets' => array(
+                'custom' => array(
+                    'css' => array(
+                        // 'plugins/custom/datatables/datatables.bundle.css',
+                    ),
+                    'js'  => array(
+                        // 'js/widgets.bundle.js',
+                        // 'plugins/custom/datatables/datatables.bundle.js',
+                        // 'js/custom/apps/chat/chat.js',
+                        'js/registro/implicados.js',
+                    ),
+                ),
+            ),
+        ),
+    ),
 
     'account' => array(
         'overview' => array(

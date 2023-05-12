@@ -35,7 +35,33 @@ class ImplicadosController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $rules = [
+            'nombre' => 'required',
+            'apellido_paterno' => 'required',
+            'apellido_materno' => 'required'
+        ];
+        // $customMessages = [
+        //     'name.required' => 'Campo <b>Nombre Rol</b> es requerido',
+        //     'name.unique' => 'Campo <b>Nombre Rol</b> ya esxiste',
+        //     'permisos.required' => 'Debes Elegir un <b>Rol</b> al menos'
+        // ];
+
+        $errors = validateErrors($request, $rules);
+
+        if($errors){
+            $response = [
+                'st'    => true,
+                'title' => "Campos Requeridos",
+                'msg'   => $errors,
+                'type'  => 'warning',
+            ];
+            // \Log::debug(__METHOD__.' ==> '.auth()->user()->id.' ==> '.auth()->user()->email." ==> validateErrors \n".json_encode($response));
+            return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
+        }
+
+        $input = $request->all();
+
+        dd($input);
     }
 
     /**
