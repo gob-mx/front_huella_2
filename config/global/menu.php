@@ -322,6 +322,11 @@ return array(
                         'path'   => 'registro/implicados',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
+                    array(
+                        'title'  => 'Biometrico',
+                        'path'   => 'home_dpfp',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
                 ),
             ),
         ),

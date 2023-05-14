@@ -233,6 +233,54 @@ return array(
         ),
     ),
 
+    'home_dpfp' => array(
+        'title'  => 'Registro Implicado',
+        'assets' => array(
+            'custom' => array(
+                'css' => array(
+                    // 'plugins/custom/datatables/datatables.bundle.css',
+                ),
+                'js'  => array(
+                    // 'js/widgets.bundle.js',
+                    'plugins/custom/datatables/datatables.bundle.js',
+                    // 'js/custom/apps/chat/chat.js',
+                    // 'js/registro/jquery-1.7.2.min.js',
+                        // 'js/registro/SweetAlert2.js',
+                    'js/registro/funciones.js',
+                ),
+            ),
+        ),
+    ),
+
+    'users_list'  => array(
+        'title'  => 'users_list',
+        'assets' => array(
+            'custom' => array(
+                'css' => array(),
+                'js'  => array(
+                    'plugins/custom/datatables/datatables.bundle.js',
+                ),
+            ),
+        ),
+        '*' => array(
+            'finger-list'  => array(
+                'title'  => 'Enrola Implicado',
+                'path'   => 'users_list/finger-list',
+                'assets' => array(
+                    'custom' => array(
+                        'css' => array(),
+                        'js'  => array(
+                            'plugins/custom/datatables/datatables.bundle.js',
+                            'js/registro/funciones.js',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    ),
+
+
+
     'account' => array(
         'overview' => array(
             'title'  => 'Account Overview',
