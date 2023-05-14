@@ -8,7 +8,7 @@ date_default_timezone_set("America/Bogota");
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DpfpModels\TempFingerprint;
-use App\Models\DpfpModels\Fingerprint;
+use App\Models\DpfpModels\FingerPrint;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -54,7 +54,7 @@ class UserRestApiController extends Controller {
         if ($api == $key) {
             $temp = TempFingerprint::where("token_pc", $request->token_pc)->first();
             $dedo = explode("_", $temp->finger_name);
-            $fingerprint = new Fingerprint();
+            $fingerprint = new FingerPrint();
             $fingerprint->user_id = $temp->user_id;
             $fingerprint->finger_name = $dedo[0] . " " . $dedo[1];
             $fingerprint->image = $this->saveImage($request->image, $temp->finger_name.$temp->user_id);
@@ -177,9 +177,9 @@ class UserRestApiController extends Controller {
     }
 
     public function get_finger(User $user) {
-        $response = Fingerprint::where("notified", 0)->where("user_id", $user->id)->get();
+        $response = FingerPrint::where("notified", 0)->where("user_id", $user->id)->get();
         if (count($response) > 0) {
-            Fingerprint::where("id", $response[0]->id)->update(["notified" => 1]);
+            FingerPrint::where("id", $response[0]->id)->update(["notified" => 1]);
         }
         return $response;
     }
