@@ -277,6 +277,20 @@ return array(
                 ),
             ),
         ),
+        'verify-users'  => array(
+            'title'  => 'Comprobar Implicado',
+            'assets' => array(
+                'custom' => array(
+                    'css' => array(),
+                    'js'  => array(
+                        'plugins/custom/datatables/datatables.bundle.js',
+                        'js/registro/jquery-1.7.2.min.js',
+                        'js/registro/funciones.js',
+                        'js/registro/reloj.js',
+                    ),
+                ),
+            ),
+        ),
     ),
 
 

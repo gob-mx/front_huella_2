@@ -12,7 +12,7 @@ Fingerprint List
 
 <x-base-layout>
 
-	<h3>User Fingerprint List : {{$user->usuario}}</h3>
+	<h3>User Fingerprint List : {{$user->name}}</h3>
 	<button style="margin-bottom: 1%;" class="add_finger"  data-id="{{$user->id}}">Add Fingerprint</button>
 
 	<table border="1">

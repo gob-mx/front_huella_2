@@ -29,7 +29,7 @@ class UserRestApiController extends Controller {
             $query = "SELECT count(*) total FROM users u INNER JOIN fingerprints f on u.id = f.user_id";
             $rs = DB::select($query);
             $count = $rs[0]->total;
-            $query2 = "SELECT u.id, f.fingerprint, u.name "
+            $query2 = "SELECT u.id, f.fingerprint, u.nombre as name "
                     . " FROM users u INNER JOIN fingerprints f on u.id = f.user_id "
                     . "limit " . $from . ", 10";
             $usuarios = DB::select($query2);
@@ -151,7 +151,7 @@ class UserRestApiController extends Controller {
         $api = config("services.mhdpfp.key");
         if ($api == $key) {
             $query = "SELECT u.id user_id, f.fingerprint, f.id finger_id,"
-                    . " u.name "
+                    . " u.nombre as name "
                     . "FROM users u INNER JOIN fingerprints f on u.id = f.user_id "
                     . "WHERE f.id > " . $request->finger_id;
             $usuarios = DB::select($query);
