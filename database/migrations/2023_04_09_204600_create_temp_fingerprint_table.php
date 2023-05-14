@@ -27,6 +27,10 @@ class CreateTempFingerprintTable extends Migration {
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
+
+        // once the table is created use a raw query to ALTER it and add the LONGBLOB
+        DB::statement("ALTER TABLE temp_fingerprint MODIFY fingerprint LONGBLOB");
+        DB::statement("ALTER TABLE temp_fingerprint MODIFY image LONGBLOB");
     }
 
     /**
