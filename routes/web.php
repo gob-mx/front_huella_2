@@ -15,6 +15,9 @@ use App\Http\Controllers\Administracion\PermisosController;
 use App\Http\Controllers\Administracion\ModulosController;
 use App\Http\Controllers\Registro\ImplicadosController;
 
+use App\Http\Controllers\DpfpApi\UserRestApiController;
+use App\Http\Controllers\DpfpApi\TempFingerprintController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -135,6 +138,20 @@ Route::middleware('auth')->group(function () {
      Route::prefix('registro')->name('registro.')->group(function () {
         Route::resource('implicados', ImplicadosController::class);
     });
+
+    // Ruta Home del paquete 
+    Route::get('/home_dpfp', function () {
+        return view('dpfp_views/home_dpfp');
+    });
+
+    //Rutas para interactuar con el plugin
+    Route::get('/users_list/verify-users', [UserRestApiController::class, 'verify_users'])->name('verify-users');
+    Route::get('/users_list', [UserRestApiController::class, 'users_list'])->name('users_list');
+    Route::get("/users_list/{user}/finger-list", [UserRestApiController::class, "fingerList"])->name("finger-list");
+    Route::post('/active_sensor_read', [TempFingerprintController::class, 'store_read']);
+    Route::post('/active_sensor_enroll', [TempFingerprintController::class, 'store_enroll']);
+    Route::get("/get-finger/{user}", [UserRestApiController::class, "get_finger"])->name("get_finger");
+
 });
 
 Route::resource('users', UsersController::class);
