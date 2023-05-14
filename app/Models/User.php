@@ -102,4 +102,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(UserInfo::class);
     }
+
+    //Relacion uno a muchos
+    public function fingerprints() {
+           return $this->hasMany("App\Models\DpfpModels\FingerPrint");
+    }
 }
