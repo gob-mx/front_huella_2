@@ -327,6 +327,11 @@ return array(
                         'path'   => 'home_dpfp',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
+                    array(
+                        'title'  => 'Huella',
+                        'path'   => 'huella/comparacion',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
                 ),
             ),
         ),
