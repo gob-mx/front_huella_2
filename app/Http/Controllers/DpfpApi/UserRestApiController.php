@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\DpfpApi;
 
 set_time_limit(0);
-date_default_timezone_set("America/Bogota");
+date_default_timezone_set("America/Mexico_City");
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

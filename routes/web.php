@@ -151,6 +151,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/active_sensor_read', [TempFingerprintController::class, 'store_read']);
     Route::post('/active_sensor_enroll', [TempFingerprintController::class, 'store_enroll']);
     Route::get("/get-finger/{user}", [UserRestApiController::class, "get_finger"])->name("get_finger");
+    Route::get('/users_list/verify-users-2', function(){
+        return view('dpfp_views.finger_map');
+    });
 
 });
 
