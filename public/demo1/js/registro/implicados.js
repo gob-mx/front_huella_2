@@ -104,10 +104,10 @@ var KTRegistroImplicado = function () {
 						.then(function (response) {
 							// Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
 							Swal.fire({
-								text: "Thank you! You've updated your basic info",
+								text: "¡Gracias! Has actualizado tu información básica",
 								icon: "success",
 								buttonsStyling: false,
-								confirmButtonText: "Ok, got it!",
+								confirmButtonText: "Cerrar",
 								customClass: {
 									confirmButton: "btn btn-primary"
 								}
