@@ -36,14 +36,14 @@ class ImplicadosController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'nombre' => 'required',
-            'apellido_paterno' => 'required',
-            'apellido_materno' => 'required'
+            'carpeta_investigacion' => 'required',
+            // 'apellido_paterno' => 'required',
+            // 'apellido_materno' => 'required',
         ];
         // $customMessages = [
         //     'name.required' => 'Campo <b>Nombre Rol</b> es requerido',
         //     'name.unique' => 'Campo <b>Nombre Rol</b> ya esxiste',
-        //     'permisos.required' => 'Debes Elegir un <b>Rol</b> al menos'
+        //     'permisos.required' => 'Debes Elegir un <b>Rol</b> al menos',
         // ];
 
         $errors = validateErrors($request, $rules);

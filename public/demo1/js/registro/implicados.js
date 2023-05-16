@@ -93,58 +93,120 @@ var KTRegistroImplicado = function () {
 			// Validate form
 			validation.validate().then(function (status) {
 				if (status === 'Valid') {
-					// Show loading indication
-					submitButton.setAttribute('data-kt-indicator', 'on');
 
-					// Disable button to avoid multiple click
-					submitButton.disabled = true;
+					// submitButton.setAttribute('data-kt-indicator', 'on');
+					// submitButton.disabled = true;
 
-					// Send ajax request
-					axios.post(submitButton.closest('form').getAttribute('action'), new FormData(form))
-						.then(function (response) {
-							// Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-							Swal.fire({
-								text: "¡Gracias! Has actualizado tu información básica",
-								icon: "success",
-								buttonsStyling: false,
-								confirmButtonText: "Cerrar",
-								customClass: {
-									confirmButton: "btn btn-primary"
-								}
-							}).then(function (result) {
-								if (result.isConfirmed) {
-								}
-							});
-						})
-						.catch(function (error) {
-							let dataMessage = error.response.data.message;
-							let dataErrors = error.response.data.errors;
+					// let dataForm = new FormData(form);
+					var dataForm = $('#kt_registro_implicado_form').serialize();
+					console.log(dataForm);
+					// return;
 
-							for (const errorsKey in dataErrors) {
-								if (!dataErrors.hasOwnProperty(errorsKey)) continue;
-								dataMessage += "\r\n" + dataErrors[errorsKey];
-							}
-
-							if (error.response) {
-								Swal.fire({
-									text: dataMessage,
-									icon: "error",
-									buttonsStyling: false,
-									confirmButtonText: "Ok, got it!",
-									customClass: {
-										confirmButton: "btn btn-primary"
-									}
-								});
-							}
-						})
-						.then(function () {
-							// always executed
-							// Hide loading indication
+					$.ajax({
+						headers: {
+						   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						},
+						url: base_url + 'registro/implicados',
+						type: 'POST',
+						dataType: 'JSON',
+						data: dataForm,
+						beforeSend: function() {
+							submitButton.setAttribute('data-kt-indicator', 'on');
+							submitButton.disabled = true;
+						},
+						complete: function(respuesta) {
 							submitButton.removeAttribute('data-kt-indicator');
-
-							// Enable button
 							submitButton.disabled = false;
-						});
+						},
+						success: function (data) {
+							if (data.st) {
+
+								Swal.fire(data.title, data.msg, data.type);
+
+								// Swal.fire({
+								// 	title: data.title,
+								// 	html: data.msg,
+								// 	icon: data.type,
+								// 	showConfirmButton: true,
+								// 	showCancelButton: false,
+								// 	stopKeydownPropagation: false,
+								// 	showDenyButton: false,
+								// 	allowOutsideClick: false,
+								// 	showCloseButton: false,
+								// 	buttonsStyling: false,
+								// 	confirmButtonText: "OK",
+								// 	cancelButtonText: "Cancelar",
+								// 	customClass: {
+								// 		confirmButton: "btn btn-primary",
+								// 		cancelButton: "btn btn-active-light"
+								// 	}
+								// }).then(function (result) {
+								// 	if (result.value) {
+								// 		if(data.redirect){
+								// 			window.location = base_url + 'administracion/usuarios/'+data.u_id+'/edit';
+								// 		}else{
+								// 			window.location.reload();
+
+								// 		}
+								// 	}
+								// });
+							}else{
+								Swal.fire(data.title, data.msg, data.type);
+							}
+						},
+						error: function (xhr) {
+							submitButton.removeAttribute('data-kt-indicator');
+							submitButton.disabled = false;
+							Swal.fire('¡ERROR!', xhr.responseText, 'error');
+						}
+					});
+
+					// // Send ajax request
+					// axios.post(submitButton.closest('form').getAttribute('action'), new FormData(form))
+					// 	.then(function (response) {
+					// 		// Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+					// 		Swal.fire({
+					// 			text: "¡Gracias! Has actualizado tu información básica",
+					// 			icon: "success",
+					// 			buttonsStyling: false,
+					// 			confirmButtonText: "Cerrar",
+					// 			customClass: {
+					// 				confirmButton: "btn btn-primary"
+					// 			}
+					// 		}).then(function (result) {
+					// 			if (result.isConfirmed) {
+					// 			}
+					// 		});
+					// 	})
+					// 	.catch(function (error) {
+					// 		let dataMessage = error.response.data.message;
+					// 		let dataErrors = error.response.data.errors;
+
+					// 		for (const errorsKey in dataErrors) {
+					// 			if (!dataErrors.hasOwnProperty(errorsKey)) continue;
+					// 			dataMessage += "\r\n" + dataErrors[errorsKey];
+					// 		}
+
+					// 		if (error.response) {
+					// 			Swal.fire({
+					// 				text: dataMessage,
+					// 				icon: "error",
+					// 				buttonsStyling: false,
+					// 				confirmButtonText: "Ok, got it!",
+					// 				customClass: {
+					// 					confirmButton: "btn btn-primary"
+					// 				}
+					// 			});
+					// 		}
+					// 	})
+					// 	.then(function () {
+					// 		// always executed
+					// 		// Hide loading indication
+					// 		submitButton.removeAttribute('data-kt-indicator');
+
+					// 		// Enable button
+					// 		submitButton.disabled = false;
+					// 	});
 				} else {
 					// Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
 					Swal.fire({
