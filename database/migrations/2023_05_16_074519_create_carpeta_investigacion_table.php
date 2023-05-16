@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('carpeta_investigacion', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('carpeta_investigacion')->nullable();
-            $table->string('averiguacion_previa')->nullable();
+            $table->string('carpeta_investigacion')->nullable()->unique();
+            $table->string('averiguacion_previa')->nullable()->unique();
             $table->text('delito')->nullable();
             $table->text('descripcion_delito')->nullable();
             $table->unsignedInteger('total_implicados')->nullable();

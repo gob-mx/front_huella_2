@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Registro;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use \Exception;
+use App\Models\RegistroImplicados\CarpetaInvestigacion;
+
 class ImplicadosController extends Controller
 {
     /**
@@ -61,7 +64,51 @@ class ImplicadosController extends Controller
 
         $input = $request->all();
 
-        dd($input);
+        try {
+
+            $carpeta_investigacion = [
+                'carpeta_investigacion' => $input['carpeta_investigacion'],
+                'averiguacion_previa' => $input['averiguacion_previa'],
+                'delito' => $input['delito'],
+                'descripcion_delito' => $input['descripcion_delito'],
+                'total_implicados' => $input['total_implicados'],
+                'observaciones' => $input['observaciones'],
+                'fecha_hechos' => $input['fecha_hechos'],
+                'fecha_registro' => $input['fecha_registro'],
+                'estatus_investigacion_id' => $input['estatus_investigacion_id'],
+            ];
+
+            $storeCarpInv = CarpetaInvestigacion::create($carpeta_investigacion);
+            
+        } catch (Exception $e) {
+            $response = [
+                'st'    => false,
+                'title' => "Error",
+                'msg'   => (string)$e->getMessage(),
+                'type'  => 'error',
+            ];
+            return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
+        }
+
+        if ($storeCarpInv) {
+            $response = [
+                'st'    => true,
+                'title' => "Carpeta de Investigacion $request->carpeta_investigacion",
+                'msg'   => "Generada Correctamente",
+                'type'  => 'success',
+            ];
+        }else{
+            $response = [
+                'st'    => false,
+                'title' => "Error",
+                'msg'   => "Favor de Intentar Nuevamente o Comunicarse con un Administrador<br>MDL-ERR-STORE",
+                'type'  => 'error',
+            ];
+        }
+
+        return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
+
+        dd($carpeta_investigacion);
     }
 
     /**
