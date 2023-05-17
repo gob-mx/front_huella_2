@@ -123,6 +123,8 @@ var KTRegistroImplicado = function () {
 
 								Swal.fire(data.title, data.msg, data.type);
 
+								$('.label_carpeta').text('Carpeta de Investigacion No '+form.carpeta_investigacion.value);
+
 								// Swal.fire({
 								// 	title: data.title,
 								// 	html: data.msg,
