@@ -4,8 +4,7 @@ namespace App\Models\RegistroImplicados;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use App\Models\Administracion\ModulsPermissions;
-// use Spatie\Permission\Models\Permission;
+// use App\Models\RegistroImplicados\CatEstatusInvestigacion;
 
 class CarpetaInvestigacion extends Model
 {
@@ -24,8 +23,8 @@ class CarpetaInvestigacion extends Model
 		'estatus_investigacion_id',
 	];
 
-	// public function CatEstatusInvestigacion()
+	// public function EstatusInvestigacion()
 	// {
-	//     return $this->belongsTo(Permission::class,'cat_estatus_investigacion','id');
+	//     return $this->belongsTo(CatEstatusInvestigacion::class,'cat_estatus_investigacion','estatus_investigacion_id','id');
 	// }
 }

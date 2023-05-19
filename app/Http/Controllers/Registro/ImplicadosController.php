@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use \Exception;
 use App\Models\RegistroImplicados\CarpetaInvestigacion;
+use App\Models\RegistroImplicados\CatEstatusInvestigacion;
 
 class ImplicadosController extends Controller
 {
@@ -17,7 +18,8 @@ class ImplicadosController extends Controller
      */
     public function index()
     {
-        return view('registro.implicados.implicados_form');
+        $estatus_carpeta = CatEstatusInvestigacion::all();
+        return view('registro.implicados.implicados_form',compact('estatus_carpeta'));
     }
 
     /**
@@ -38,6 +40,7 @@ class ImplicadosController extends Controller
      */
     public function store(Request $request)
     {
+        dd( $request->all());
         $rules = [
             'carpeta_investigacion' => 'required',
             // 'apellido_paterno' => 'required',

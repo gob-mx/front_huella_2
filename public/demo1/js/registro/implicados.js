@@ -7,6 +7,14 @@ var KTRegistroImplicado = function () {
 	var submitButton;
 	var validation;
 
+	// var initForm = function() {
+	// 	var dueDate = $(form.querySelector('[name="due_date"]'));
+	// 	dueDate.flatpickr({
+	// 		enableTime: true,
+	// 		dateFormat: "d, M Y, H:i",
+	// 	});
+	// }
+
 	// Private functions
 	var initValidation = function () {
 		// Init form validation rules. For more info check the FormValidation plugin's official documentation: https://formvalidation.io/
@@ -15,26 +23,26 @@ var KTRegistroImplicado = function () {
 			{
 				fields: {
 
-					carpeta_investigacion: 		{ validators: { notEmpty: { message: 'NÚMERO DE CAPETA DE INVESTIGACIÓN es Requerido' }}},
-					// averiguacion_previa: 		{ validators: { notEmpty: { message: 'ESTATUS CARPETA DE INVESTIGACIÓN es Requerido' }}},
-					// delito: 					{ validators: { notEmpty: { message: 'NÚMERO DE AVERIGUACIÓN PREVIA es Requerido' }}},
-					// descripcion_delito: 		{ validators: { notEmpty: { message: 'DELITOS(S) es Requerido' }}},
-					// total_implicados: 			{ validators: { notEmpty: { message: 'DESCRPCIÓN DEL DELITO es Requerido' }}},
-					// observaciones: 				{ validators: { notEmpty: { message: 'NÚMERO IMPLICADOS es Requerido' }}},
-					// fecha_hechos: 				{ validators: { notEmpty: { message: 'FECHA DE HECHOS es Requerido' }}},
-					// fecha_registro: 			{ validators: { notEmpty: { message: 'FECHA DE REGISTRO es Requerido' }}},
-					// estatus_investigacion_id: 	{ validators: { notEmpty: { message: 'OBSERVACIONES es Requerido' }}},
+					carpeta_investigacion:		{ validators: { notEmpty: { message: 'NÚMERO DE CAPETA DE INVESTIGACIÓN es Requerido' }}},
+					// averiguacion_previa:			{ validators: { notEmpty: { message: 'ESTATUS CARPETA DE INVESTIGACIÓN es Requerido' }}},
+					// delito:						{ validators: { notEmpty: { message: 'NÚMERO DE AVERIGUACIÓN PREVIA es Requerido' }}},
+					// descripcion_delito:			{ validators: { notEmpty: { message: 'DELITOS(S) es Requerido' }}},
+					// total_implicados:			{ validators: { notEmpty: { message: 'DESCRPCIÓN DEL DELITO es Requerido' }}},
+					// observaciones:				{ validators: { notEmpty: { message: 'NÚMERO IMPLICADOS es Requerido' }}},
+					// fecha_hechos:				{ validators: { notEmpty: { message: 'FECHA DE HECHOS es Requerido' }}},
+					// fecha_registro:				{ validators: { notEmpty: { message: 'FECHA DE REGISTRO es Requerido' }}},
+					estatus_investigacion_id:	{ validators: { notEmpty: { message: 'ESTATUS CARPETA DE INVESTIGACIÓN es Requerido' }}},
 
-					// nombre: 			{ validators: { notEmpty: { message: 'NOMBRE(S) es Requerido' }}},
-					// apellido_paterno: 	{ validators: { notEmpty: { message: 'APELLIDO PATERNO es Requerido' }}},
-					// apellido_materno: 	{ validators: { notEmpty: { message: 'APELLIDO MATERNO es Requerido' }}},
-					// alias: 				{ validators: { notEmpty: { message: 'APODO es Requerido' }}},
-					// rfc: 				{ validators: { notEmpty: { message: 'RFC es Requerido' }}},
-					// curp: 				{ validators: { notEmpty: { message: 'CURP es Requerido' }}},
-					// fecha_nacimiento: 	{ validators: { notEmpty: { message: 'FECHA DE NACIMIENTO es Requerido' }}},
-					// estatura: 			{ validators: { notEmpty: { message: 'ESTATURA es Requerido' }}},
-					// celular: 			{ validators: { notEmpty: { message: 'No. CELULAR es Requerido' }}},
-					// telefono: 			{ validators: { notEmpty: { message: 'No. TELEFONO es Requerido' }}},
+					// nombre:				{ validators: { notEmpty: { message: 'NOMBRE(S) es Requerido' }}},
+					// apellido_paterno:	{ validators: { notEmpty: { message: 'APELLIDO PATERNO es Requerido' }}},
+					// apellido_materno:	{ validators: { notEmpty: { message: 'APELLIDO MATERNO es Requerido' }}},
+					// alias:				{ validators: { notEmpty: { message: 'APODO es Requerido' }}},
+					// rfc:					{ validators: { notEmpty: { message: 'RFC es Requerido' }}},
+					// curp:				{ validators: { notEmpty: { message: 'CURP es Requerido' }}},
+					// fecha_nacimiento:	{ validators: { notEmpty: { message: 'FECHA DE NACIMIENTO es Requerido' }}},
+					// estatura:			{ validators: { notEmpty: { message: 'ESTATURA es Requerido' }}},
+					// celular:				{ validators: { notEmpty: { message: 'No. CELULAR es Requerido' }}},
+					// telefono:			{ validators: { notEmpty: { message: 'No. TELEFONO es Requerido' }}},
 
 					// nacionalidad: 		{ validators: { notEmpty: { message: 'NACIONALIDAD es Requerido' }}},
 					// pais_nacimiento: 	{ validators: { notEmpty: { message: 'PAÍS DE NACIMIENTO es Requerido' }}},
@@ -42,20 +50,20 @@ var KTRegistroImplicado = function () {
 					// estudios: 			{ validators: { notEmpty: { message: 'GRADO DE ESTUDIOS es Requerido' }}},
 					// ocupacion: 			{ validators: { notEmpty: { message: 'OCUPACIÓN es Requerido' }}},
 
-					// calle: 					{ validators: { notEmpty: { message: 'CALLE DEL DOMICILIO es Requerido' }}},
-					// numero_exterior: 		{ validators: { notEmpty: { message: 'NO. EXTERIOR DEL DOMICILIO es Requerido' }}},
-					// numero_interior: 		{ validators: { notEmpty: { message: 'NO. INTERIOR DEL DOMICILIO es Requerido' }}},
-					// colonia: 				{ validators: { notEmpty: { message: 'COLONIA DEL DOMICILIO es Requerido' }}},
+					// calle:					{ validators: { notEmpty: { message: 'CALLE DEL DOMICILIO es Requerido' }}},
+					// numero_exterior:			{ validators: { notEmpty: { message: 'NO. EXTERIOR DEL DOMICILIO es Requerido' }}},
+					// numero_interior:			{ validators: { notEmpty: { message: 'NO. INTERIOR DEL DOMICILIO es Requerido' }}},
+					// colonia:					{ validators: { notEmpty: { message: 'COLONIA DEL DOMICILIO es Requerido' }}},
 					// delegacion_municipio:	{ validators: { notEmpty: { message: 'DELEGACIÓN / MUNICIPIO DEL DOMICILIO es Requerido' }}},
-					// codigo_postal: 			{ validators: { notEmpty: { message: 'CODOGO POSTAL DEL DOMICILIO es Requerido' }}},
+					// codigo_postal:			{ validators: { notEmpty: { message: 'CODOGO POSTAL DEL DOMICILIO es Requerido' }}},
 
-					// pais_delito: 					{ validators: { notEmpty: { message: 'PAÍS DEL DELITO es Requerido' }}},
-					// calle_delito: 					{ validators: { notEmpty: { message: 'CALLE DEL DELITO es Requerido' }}},
-					// numero_exterior_delito: 		{ validators: { notEmpty: { message: 'NO. EXTERIOR DEL DELITO es Requerido' }}},
-					// numero_interior_delito: 		{ validators: { notEmpty: { message: 'NO. INTERIOR DEL DELITO es Requerido' }}},
-					// colonia_delito: 				{ validators: { notEmpty: { message: 'COLONIA DEL DELITO es Requerido' }}},
+					// pais_delito:					{ validators: { notEmpty: { message: 'PAÍS DEL DELITO es Requerido' }}},
+					// calle_delito:				{ validators: { notEmpty: { message: 'CALLE DEL DELITO es Requerido' }}},
+					// numero_exterior_delito:		{ validators: { notEmpty: { message: 'NO. EXTERIOR DEL DELITO es Requerido' }}},
+					// numero_interior_delito:		{ validators: { notEmpty: { message: 'NO. INTERIOR DEL DELITO es Requerido' }}},
+					// colonia_delito:				{ validators: { notEmpty: { message: 'COLONIA DEL DELITO es Requerido' }}},
 					// delegacion_municipio_delito:	{ validators: { notEmpty: { message: 'DELEGACIÓN / MUNICIPIO DEL DELITO es Requerido' }}},
-					// codigo_postal_delito: 			{ validators: { notEmpty: { message: 'CODOGO POSTAL DEL DELITO es Requerido' }}},
+					// codigo_postal_delito:		{ validators: { notEmpty: { message: 'CODOGO POSTAL DEL DELITO es Requerido' }}},
 
 				},
 				plugins: {
@@ -229,8 +237,9 @@ var KTRegistroImplicado = function () {
 			form = document.getElementById('kt_registro_implicado_form');
 			submitButton = form.querySelector('#kt_registro_implicado_submit');
 
+			initForm();
 			initValidation();
-			handleForm();
+			// handleForm();
 		}
 	}
 }();

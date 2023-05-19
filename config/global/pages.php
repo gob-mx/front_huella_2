@@ -221,11 +221,17 @@ return array(
                 'custom' => array(
                     'css' => array(
                         // 'plugins/custom/datatables/datatables.bundle.css',
+                        // 'plugins/global/plugins.bundle.css',
+                        // 'css/style.bundle.css',
                     ),
                     'js'  => array(
-                        // 'js/widgets.bundle.js',
+                        // 'plugins/global/plugins.bundle.js',
+                        // 'js/scripts.bundle.js',
                         // 'plugins/custom/datatables/datatables.bundle.js',
+                        // 'js/widgets.bundle.js',
+                        // 'js/custom/widgets.js',
                         // 'js/custom/apps/chat/chat.js',
+                       
                         'js/registro/implicados.js',
                     ),
                 ),
