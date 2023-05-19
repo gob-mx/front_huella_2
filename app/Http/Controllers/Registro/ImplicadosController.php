@@ -40,7 +40,7 @@ class ImplicadosController extends Controller
      */
     public function store(Request $request)
     {
-        dd( $request->all());
+        // dd( $request->all());
         $rules = [
             'carpeta_investigacion' => 'required',
             // 'apellido_paterno' => 'required',
@@ -99,6 +99,7 @@ class ImplicadosController extends Controller
                 'title' => "Carpeta de Investigacion $request->carpeta_investigacion",
                 'msg'   => "Generada Correctamente",
                 'type'  => 'success',
+                'ci_id' => $storeCarpInv->id,
             ];
         }else{
             $response = [
@@ -133,7 +134,9 @@ class ImplicadosController extends Controller
      */
     public function edit($id)
     {
-        dd('edit');
+        $carpeta = CarpetaInvestigacion::find($id);
+        $estatus_carpeta = CatEstatusInvestigacion::all();
+        return view('registro.implicados.implicados_form',compact('estatus_carpeta','carpeta'));
     }
 
     /**

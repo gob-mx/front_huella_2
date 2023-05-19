@@ -131,6 +131,8 @@ var KTRegistroImplicado = function () {
 
 								Swal.fire(data.title, data.msg, data.type);
 
+								window.location = base_url + 'registro/implicados/'+data.ci_id+'/edit';
+
 								// Swal.fire({
 								// 	title: data.title,
 								// 	html: data.msg,
@@ -168,53 +170,6 @@ var KTRegistroImplicado = function () {
 							Swal.fire('¡ERROR!', xhr.responseText, 'error');
 						}
 					});
-
-					// // Send ajax request
-					// axios.post(submitButton.closest('form').getAttribute('action'), new FormData(form))
-					// 	.then(function (response) {
-					// 		// Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-					// 		Swal.fire({
-					// 			text: "¡Gracias! Has actualizado tu información básica",
-					// 			icon: "success",
-					// 			buttonsStyling: false,
-					// 			confirmButtonText: "Cerrar",
-					// 			customClass: {
-					// 				confirmButton: "btn btn-primary"
-					// 			}
-					// 		}).then(function (result) {
-					// 			if (result.isConfirmed) {
-					// 			}
-					// 		});
-					// 	})
-					// 	.catch(function (error) {
-					// 		let dataMessage = error.response.data.message;
-					// 		let dataErrors = error.response.data.errors;
-
-					// 		for (const errorsKey in dataErrors) {
-					// 			if (!dataErrors.hasOwnProperty(errorsKey)) continue;
-					// 			dataMessage += "\r\n" + dataErrors[errorsKey];
-					// 		}
-
-					// 		if (error.response) {
-					// 			Swal.fire({
-					// 				text: dataMessage,
-					// 				icon: "error",
-					// 				buttonsStyling: false,
-					// 				confirmButtonText: "Ok, got it!",
-					// 				customClass: {
-					// 					confirmButton: "btn btn-primary"
-					// 				}
-					// 			});
-					// 		}
-					// 	})
-					// 	.then(function () {
-					// 		// always executed
-					// 		// Hide loading indication
-					// 		submitButton.removeAttribute('data-kt-indicator');
-
-					// 		// Enable button
-					// 		submitButton.disabled = false;
-					// 	});
 				} else {
 					// Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
 					Swal.fire({
@@ -237,9 +192,9 @@ var KTRegistroImplicado = function () {
 			form = document.getElementById('kt_registro_implicado_form');
 			submitButton = form.querySelector('#kt_registro_implicado_submit');
 
-			initForm();
+			// initForm();
 			initValidation();
-			// handleForm();
+			handleForm();
 		}
 	}
 }();

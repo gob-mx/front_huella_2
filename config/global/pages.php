@@ -236,6 +236,22 @@ return array(
                     ),
                 ),
             ),
+            '*' => array(
+                'edit'  => array(
+                    'title'  => 'Edita Usuario',
+                    'path'   => 'registro/implicados/edit',
+                    'assets' => array(
+                        'custom' => array(
+                            'css' => array(),
+                            'js'  => array(
+                                'plugins/custom/datatables/datatables.bundle.js',
+                                // 'js/administracion/usuarios.js',
+                                // 'js/administracion/usuarios_roles.js',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ),
     ),
 
