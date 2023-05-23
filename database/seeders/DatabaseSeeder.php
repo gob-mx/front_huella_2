@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             // RolesSeeder::class,
             PermissionTableSeeder::class,
             CreateAdminUserSeeder::class,
+            CatalogosSeeder::class,
         ]);
     }
 }
