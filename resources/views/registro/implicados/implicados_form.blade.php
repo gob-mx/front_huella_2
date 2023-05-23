@@ -31,11 +31,15 @@
 				<div id="kt_carpeta_investigacion" class="collapse show fs-6 ms-1">
 					<div class="mb-7 text-gray-600 fw-semibold fs-5 ps-10">Registre los Datos de la Carpeta de Investigación.</div>
 
+					{{-- @foreach($estatus_carpeta as $key)
+						{{ dd( $carpeta->EstatusInvestigacion->id ) }}
+					@endforeach --}}
+
 					<div class="row fv-row">
 						<div class="col-md-4 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Número de Capeta de Investigación."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="carpeta_investigacion" value="{{ $carpeta->carpeta_investigacion ?? '' }}" name="carpeta_investigacion" placeholder="carpeta_investigacion" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="carpeta_investigacion" name="carpeta_investigacion" value="{{ $carpeta->carpeta_investigacion ?? '' }}" placeholder="carpeta_investigacion" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="carpeta_investigacion"><span class="required">NÚMERO DE CAPETA DE INVESTIGACIÓN</span></label>
 							</div>
 						</div>
@@ -44,8 +48,12 @@
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Estatus de la Carpeta de Investigación."><b style="font-size:10px">Info</b></div>
 								<select class="form-select fw-bold pb-0" id="estatus_investigacion_id" name="estatus_investigacion_id" placeholder="estatus_investigacion_id" {{-- data-control="select2" --}}>
 									<option value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...Seleccione una Opción...</option>
-									@foreach($estatus_carpeta as $key)
-										<option value="{{ $key->id }}">{{ $key->estatus_carpeta }}</option>
+									@foreach($estatus_carpeta as $sc)
+										@if(isset($carpeta->EstatusInvestigacion->id) AND $carpeta->EstatusInvestigacion->id == $sc->id)
+											<option value="{{ $sc->id }}" selected>{{ $sc->estatus_carpeta }}</option>
+										@else
+											<option value="{{ $sc->id }}">{{ $sc->estatus_carpeta }}</option>
+										@endif
 									@endforeach
 								</select>
 								<label for="estatus_investigacion_id"><span class="required">ESTATUS CARPETA DE INVESTIGACIÓN</span></label>
@@ -54,7 +62,7 @@
 						<div class="col-md-4 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Número de Averiguación Previa."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="averiguacion_previa" name="averiguacion_previa" placeholder="averiguacion_previa" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="averiguacion_previa" name="averiguacion_previa" value="{{ $carpeta->averiguacion_previa ?? '' }}" placeholder="averiguacion_previa" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="averiguacion_previa">NÚMERO DE AVERIGUACIÓN PREVIA</label>
 							</div>
 						</div>
@@ -64,14 +72,14 @@
 						<div class="col-md-6 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Delitos(s)."><b style="font-size:10px">Info</b></div>
-								<textarea id="delito" name="delito" placeholder="delito" class="form-control fw-bold" style="height: 75px" onkeyup="upper(this)"></textarea>
-								<label for="delito">DELITOS(S)</label>
+								<textarea id="delito" name="delito" placeholder="delito" class="form-control fw-bold" style="height: 75px" onkeyup="upper(this)">{{ $carpeta->delito ?? '' }}</textarea>
+								<label for="delito">DELITO(S)</label>
 							</div>
 						</div>
 						<div class="col-md-6 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Descrpción del Delito."><b style="font-size:10px">Info</b></div>
-								<textarea id="descripcion_delito" name="descripcion_delito" placeholder="descripcion_delito" class="form-control fw-bold" style="height: 75px" onkeyup="upper(this)"></textarea>
+								<textarea id="descripcion_delito" name="descripcion_delito" value="{{ $carpeta->descripcion_delito ?? '' }}" placeholder="descripcion_delito" class="form-control fw-bold" style="height: 75px" onkeyup="upper(this)">{{ $carpeta->descripcion_delito ?? '' }}</textarea>
 								<label for="descripcion_delito">DESCRPCIÓN DEL DELITO</label>
 							</div>
 						</div>
@@ -81,7 +89,7 @@
 						<div class="col-md-2 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Número Total de Implicados."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="total_implicados" name="total_implicados" placeholder="total_implicados" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="total_implicados" name="total_implicados" value="{{ $carpeta->total_implicados ?? '' }}" placeholder="total_implicados" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="total_implicados">NÚMERO IMPLICADOS</label>
 							</div>
 						</div>
@@ -103,21 +111,21 @@
 						<div class="col-md-2 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Fecha de Hechos."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="fecha_hechos" name="fecha_hechos" placeholder="fecha_hechos" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="fecha_hechos" name="fecha_hechos" value="{{ $carpeta->fecha_hechos ?? '' }}" placeholder="fecha_hechos" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="fecha_hechos">FECHA DE HECHOS</label>
 							</div>
 						</div>
 						<div class="col-md-2 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Fecha de Registro."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="fecha_registro" name="fecha_registro" placeholder="fecha_registro" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="fecha_registro" name="fecha_registro" value="{{ $carpeta->fecha_registro ?? '' }}" placeholder="fecha_registro" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="fecha_registro">FECHA DE REGISTRO</label>
 							</div>
 						</div>
 						<div class="col-md-6 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Observaciones."><b style="font-size:10px">Info</b></div>
-								<textarea id="observaciones" name="observaciones" placeholder="observaciones" class="form-control fw-bold" style="height: 75px" onkeyup="upper(this)"></textarea>
+								<textarea id="observaciones" name="observaciones" placeholder="observaciones" class="form-control fw-bold" style="height: 75px" onkeyup="upper(this)">{{ $carpeta->observaciones ?? '' }}</textarea>
 								<label for="observaciones">OBSERVACIONES</label>
 							</div>
 						</div>

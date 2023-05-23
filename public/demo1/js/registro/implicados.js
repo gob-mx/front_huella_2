@@ -7,13 +7,44 @@ var KTRegistroImplicado = function () {
 	var submitButton;
 	var validation;
 
-	// var initForm = function() {
-	// 	var dueDate = $(form.querySelector('[name="due_date"]'));
-	// 	dueDate.flatpickr({
-	// 		enableTime: true,
-	// 		dateFormat: "d, M Y, H:i",
-	// 	});
-	// }
+	function locale() {
+		return {
+			format: 'YYYY-MM-DD HH:mm:ss',
+			separator: ' - ',
+			applyLabel: 'Aplicar',
+			cancelLabel: 'Cancelar',
+			// fromLabel: 'From',
+			// toLabel: 'To',
+			customRangeLabel: 'Personalizado',
+			// weekLabel: 'W',
+			daysOfWeek: daysOfWeek(),
+			monthNames: monthNames()
+		}
+	}
+
+	function daysOfWeek(){
+		return ['Do','Lu','Ma','Mi','Ju','Vi','Sa'];
+	}
+
+	function monthNames(){
+		return ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiempbre','Octubtre','Noviembre','Diciembre'];
+	}
+
+	$('#fecha_hechos').daterangepicker({
+		singleDatePicker: true,
+		timePicker: true,
+		timePickerSeconds: true,
+		timePicker24Hour: true,
+		locale: locale()
+	});
+
+	$('#fecha_registro').daterangepicker({
+		singleDatePicker: true,
+		timePicker: true,
+		timePickerSeconds: true,
+		timePicker24Hour: true,
+		locale: locale()
+	});
 
 	// Private functions
 	var initValidation = function () {

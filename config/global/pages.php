@@ -245,8 +245,7 @@ return array(
                             'css' => array(),
                             'js'  => array(
                                 'plugins/custom/datatables/datatables.bundle.js',
-                                // 'js/administracion/usuarios.js',
-                                // 'js/administracion/usuarios_roles.js',
+                                'js/registro/implicados.js',
                             ),
                         ),
                     ),

@@ -4,7 +4,7 @@ namespace App\Models\RegistroImplicados;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use App\Models\RegistroImplicados\CarpetaInvestigacion;
+use App\Models\RegistroImplicados\CarpetaInvestigacion;
 
 class CatEstatusInvestigacion extends Model
 {

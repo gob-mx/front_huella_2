@@ -40,23 +40,23 @@ class ImplicadosController extends Controller
      */
     public function store(Request $request)
     {
-        // dd( $request->all());
         $rules = [
-            'carpeta_investigacion' => 'required',
-            // 'apellido_paterno' => 'required',
-            // 'apellido_materno' => 'required',
+            'carpeta_investigacion' => 'required|unique:carpeta_investigacion,carpeta_investigacion',
+            'estatus_investigacion_id' => 'required',
+            'averiguacion_previa' => 'nullable|unique:carpeta_investigacion,averiguacion_previa',
         ];
-        // $customMessages = [
-        //     'name.required' => 'Campo <b>Nombre Rol</b> es requerido',
-        //     'name.unique' => 'Campo <b>Nombre Rol</b> ya esxiste',
-        //     'permisos.required' => 'Debes Elegir un <b>Rol</b> al menos',
-        // ];
+        $customMessages = [
+            'carpeta_investigacion.required' => 'Campo <b>CARPETA DE INVESTIGACIÓN</b> es requerido',
+            'carpeta_investigacion.unique' => '<b>CARPETA DE INVESTIGACIÓN</b> ya esxiste',
+            'averiguacion_previa.required' => 'Campo <b>NÚMERO DE AVERIGUACIÓN PREVIA</b> es requerido',
+            'averiguacion_previa.unique' => '<b>NÚMERO DE AVERIGUACIÓN PREVIA</b> ya esxiste',
+        ];
 
-        $errors = validateErrors($request, $rules);
+        $errors = validateErrors($request, $rules, $customMessages);
 
         if($errors){
             $response = [
-                'st'    => true,
+                'st'    => false,
                 'title' => "Campos Requeridos",
                 'msg'   => $errors,
                 'type'  => 'warning',
@@ -64,6 +64,7 @@ class ImplicadosController extends Controller
             // \Log::debug(__METHOD__.' ==> '.auth()->user()->id.' ==> '.auth()->user()->email." ==> validateErrors \n".json_encode($response));
             return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
         }
+        // dd( $request->all());
 
         $input = $request->all();
 
