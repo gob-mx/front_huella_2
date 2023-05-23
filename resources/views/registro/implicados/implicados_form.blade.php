@@ -11,7 +11,7 @@
 		<input type="hidden" name="_token" value="{{ csrf_token() }}" onkeyup="upper(this)" />
 			<div class="row mb-7">
 				<div class="col-md-12 text-center">
-					<h1>{{-- Registro Implicado --}}</h1>
+					<h1 class="label_carpeta">{{-- Registro Implicado --}}</h1>
 					<div class="text-muted fw-bold fs-5">Los campos con (<label class="required"></label> ) son obligatorios</div>
 				</div>
 			</div>
