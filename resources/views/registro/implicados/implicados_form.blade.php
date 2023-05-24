@@ -128,35 +128,35 @@
 					</div>
 					<h3 class="text-gray-700 fw-bold cursor-pointer mb-0">Lugar del Delito</h3>
 				</div>
-				<div id="kt_lugar_delito" class="collapse fs-6 ms-1">
+				<div id="kt_lugar_delito" class="collapse show fs-6 ms-1">
 					<div class="mb-7 text-gray-600 fw-semibold fs-5 ps-10">Registre el Lugar del Delito.</div>
 
 					<div class="row fv-row">
 						<div class="col-md-4 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca País del Delito del Delito."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="pais_delito" name="pais_delito" placeholder="pais_delito" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="pais_delito" name="pais_delito" value="{{ $carpeta->DomicilioDelito->pais ?? '' }}" placeholder="pais_delito" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="pais_delito">PAÍS DEL DELITO</label>
 							</div>
 						</div>
 						<div class="col-md-4 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Calle del Delito."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="calle_delito" name="calle_delito" placeholder="calle_delito" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="calle_delito" name="calle_delito" value="{{ $carpeta->DomicilioDelito->calle ?? '' }}" placeholder="calle_delito" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="calle_delito">CALLE DEL DELITO</label>
 							</div>
 						</div>
 						<div class="col-md-2 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca No. Exterior del Delito."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="numero_exterior_delito" name="numero_exterior_delito" placeholder="numero_exterior_delito" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="numero_exterior_delito" name="numero_exterior_delito" value="{{ $carpeta->DomicilioDelito->numero_exterior ?? '' }}" placeholder="numero_exterior_delito" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="numero_exterior_delito">NO. EXTERIOR DEL DELITO</label>
 							</div>
 						</div>
 						<div class="col-md-2 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca No. Interior del Delito."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="numero_interior_delito" name="numero_interior_delito" placeholder="numero_interior_delito" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="numero_interior_delito" name="numero_interior_delito" value="{{ $carpeta->DomicilioDelito->numero_interior ?? '' }}" placeholder="numero_interior_delito" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="numero_interior_delito">NO. INTERIOR DEL DELITO</label>
 							</div>
 						</div>
@@ -166,21 +166,21 @@
 						<div class="col-md-4 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Colonia del Delito."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="colonia_delito" name="colonia_delito" placeholder="colonia_delito" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="colonia_delito" name="colonia_delito" value="{{ $carpeta->DomicilioDelito->colonia ?? '' }}" placeholder="colonia_delito" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="colonia_delito">COLONIA DEL DELITO</label>
 							</div>
 						</div>
 						<div class="col-md-4 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Delegación / Municipio del Delito."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="delegacion_municipio_delito" name="delegacion_municipio_delito" placeholder="delegacion_municipio_delito" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="delegacion_municipio_delito" name="delegacion_municipio_delito" value="{{ $carpeta->DomicilioDelito->delegacion_municipio ?? '' }}" placeholder="delegacion_municipio_delito" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="delegacion_municipio_delito">DELEGACIÓN / MUNICIPIO DEL DELITO</label>
 							</div>
 						</div>
 						<div class="col-md-4 mb-7">
 							<div class="form-floating ribbon ribbon-top">
 								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Codogo Postal del Delito."><b style="font-size:10px">Info</b></div>
-								<input type="text" id="codigo_postal_delito" name="codigo_postal_delito" placeholder="codigo_postal_delito" class="form-control fw-bold" onkeyup="upper(this)" />
+								<input type="text" id="codigo_postal_delito" name="codigo_postal_delito" value="{{ $carpeta->DomicilioDelito->codigo_postal ?? '' }}" placeholder="codigo_postal_delito" class="form-control fw-bold" onkeyup="upper(this)" />
 								<label for="codigo_postal_delito">CODOGO POSTAL DEL DELITO</label>
 							</div>
 						</div>

@@ -10,14 +10,13 @@ class DomicilioDelito extends Model
 	protected $table = "domicilio_delito";
 
 	protected $fillable = [
+		'pais',
 		'calle',
 		'numero_exterior',
 		'numero_interior',
 		'colonia',
 		'delegacion_municipio',
 		'codigo_postal',
-		'ciudad',
-		'pais',
-		'persona_id',
+		'carpeta_investigacion_id'
 	];
 }

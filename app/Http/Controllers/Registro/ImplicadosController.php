@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use \Exception;
 use App\Models\RegistroImplicados\CarpetaInvestigacion;
 use App\Models\RegistroImplicados\CatEstatusInvestigacion;
+use App\Models\RegistroImplicados\DomicilioDelito;
 
 class ImplicadosController extends Controller
 {
@@ -82,7 +83,20 @@ class ImplicadosController extends Controller
                 'estatus_investigacion_id' => $input['estatus_investigacion_id'],
             ];
 
-            $storeCarpInv = CarpetaInvestigacion::create($carpeta_investigacion);
+            $storeCI = CarpetaInvestigacion::create($carpeta_investigacion);
+
+            $domicilio_delito = [
+                'pais' => $input['pais_delito'],
+                'calle' => $input['calle_delito'],
+                'numero_exterior' => $input['numero_exterior_delito'],
+                'numero_interior' => $input['numero_interior_delito'],
+                'colonia' => $input['colonia_delito'],
+                'delegacion_municipio' => $input['delegacion_municipio_delito'],
+                'codigo_postal' => $input['codigo_postal_delito'],
+                'carpeta_investigacion_id' => $storeCI->id,
+            ];
+
+            $storeDD = DomicilioDelito::create($domicilio_delito);
             
         } catch (Exception $e) {
             $response = [
@@ -94,13 +108,13 @@ class ImplicadosController extends Controller
             return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
         }
 
-        if ($storeCarpInv) {
+        if ($storeCI) {
             $response = [
                 'st'    => true,
                 'title' => "Carpeta de Investigacion $request->carpeta_investigacion",
                 'msg'   => "Generada Correctamente",
                 'type'  => 'success',
-                'ci_id' => $storeCarpInv->id,
+                'ci_id' => $storeCI->id,
             ];
         }else{
             $response = [
