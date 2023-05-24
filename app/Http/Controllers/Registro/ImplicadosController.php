@@ -151,7 +151,7 @@ class ImplicadosController extends Controller
     {
         $carpeta = CarpetaInvestigacion::find($id);
         $estatus_carpeta = CatEstatusInvestigacion::all();
-        return view('registro.implicados.implicados_form',compact('estatus_carpeta','carpeta'));
+        return view('registro.implicados.implicados_editar',compact('estatus_carpeta','carpeta'));
     }
 
     /**

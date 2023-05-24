@@ -245,7 +245,7 @@ return array(
                             'css' => array(),
                             'js'  => array(
                                 'plugins/custom/datatables/datatables.bundle.js',
-                                'js/registro/implicados.js',
+                                'js/registro/implicados_editar.js',
                             ),
                         ),
                     ),
