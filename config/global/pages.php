@@ -238,7 +238,7 @@ return array(
             ),
             '*' => array(
                 'edit'  => array(
-                    'title'  => 'Edita Usuario',
+                    'title'  => 'Actualiza Carpeta e Implicados',
                     'path'   => 'registro/implicados/edit',
                     'assets' => array(
                         'custom' => array(
@@ -246,6 +246,7 @@ return array(
                             'js'  => array(
                                 'plugins/custom/datatables/datatables.bundle.js',
                                 'js/registro/implicados_editar.js',
+                                'js/registro/agrega_implicado.js',
                             ),
                         ),
                     ),
