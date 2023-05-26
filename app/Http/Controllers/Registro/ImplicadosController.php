@@ -157,7 +157,16 @@ class ImplicadosController extends Controller
     {
         $carpeta = CarpetaInvestigacion::find($id);
         $estatus_carpeta = CatEstatusInvestigacion::all();
-        return view('registro.implicados.implicados_editar',compact('estatus_carpeta','carpeta'));
+
+        $personas = \DB::connection('mysql')->table('carpeta_investigacion')
+            ->join("implicados","implicados.carpeta_investigacion_id","=","carpeta_investigacion.id")
+            ->join("personas","personas.id","=","implicados.persona_id")
+            ->where('carpeta_investigacion.id',$id)
+            ->get();
+
+        // dd($personas);
+
+        return view('registro.implicados.implicados_editar',compact('estatus_carpeta','carpeta','personas'));
     }
 
     /**
