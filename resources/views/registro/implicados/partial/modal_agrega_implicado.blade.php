@@ -25,6 +25,7 @@
 					<form id="kt_agrega_implicado_form" class="form" method="post" action="{{ route('registro.implicados.store') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 						<input type="hidden" name="store_implicado" value="1" />
+						<input type="hidden" name="carpeta_investigacion_id" value="{{ $carpeta->id }}" />
 
 						<div class="m-0">
 							<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_datos_personales">

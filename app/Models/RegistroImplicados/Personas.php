@@ -7,15 +7,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use App\Models\RegistroImplicados\CatEstatusInvestigacion;
 // use App\Models\RegistroImplicados\DomicilioDelito;
 
-class Implicados extends Model
+class Personas extends Model
 {
-	protected $table = "implicados";
-	protected $primaryKey = 'carpeta_investigacion_id';
+	protected $table = "personas";
 
 	protected $fillable = [
-		'carpeta_investigacion_id',
-		'persona_id',
-		'tipo_implicado_id',
+		'nombre',
+		'apellido_paterno',
+		'apellido_materno',
+		'alias',
+		'rfc',
+		'curp',
+		'fecha_nacimiento',
+		'estatura',
+		'celular',
+		'telefono',
+		'nacionalidad',
+		'pais_nacimiento',
+		'lugar_nacimiento',
+		'estudios',
+		'ocupacion',
 	];
 
 	// public function EstatusInvestigacion()

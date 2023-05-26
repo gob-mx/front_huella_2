@@ -9,6 +9,8 @@ use \Exception;
 use App\Models\RegistroImplicados\CarpetaInvestigacion;
 use App\Models\RegistroImplicados\CatEstatusInvestigacion;
 use App\Models\RegistroImplicados\DomicilioDelito;
+use App\Models\RegistroImplicados\Implicados;
+use App\Models\RegistroImplicados\Personas;
 
 class ImplicadosController extends Controller
 {
@@ -184,35 +186,39 @@ class ImplicadosController extends Controller
     public function store_implicado($request)
     {
 
-        // dd('store_implicado');
+        // dd('store_implicado',$request->all());
+
+        $input = $request->all();
+
         try {
 
-            $carpeta_investigacion = [
-                'carpeta_investigacion' => $input['carpeta_investigacion'],
-                'averiguacion_previa' => $input['averiguacion_previa'],
-                'delito' => $input['delito'],
-                'descripcion_delito' => $input['descripcion_delito'],
-                'total_implicados' => $input['total_implicados'],
-                'observaciones' => $input['observaciones'],
-                'fecha_hechos' => $input['fecha_hechos'],
-                'fecha_registro' => $input['fecha_registro'],
-                'estatus_investigacion_id' => $input['estatus_investigacion_id'],
+            $personas = [
+                'nombre' => $input['nombre'],
+                'apellido_paterno' => $input['apellido_paterno'],
+                'apellido_materno' => $input['apellido_materno'],
+                'alias' => $input['alias'],
+                'rfc' => $input['rfc'],
+                'curp' => $input['curp'],
+                'fecha_nacimiento' => $input['fecha_nacimiento'],
+                'estatura' => $input['estatura'],
+                'celular' => $input['celular'],
+                'telefono' => $input['telefono'],
+                'nacionalidad' => $input['nacionalidad'],
+                'pais_nacimiento' => $input['pais_nacimiento'],
+                'lugar_nacimiento' => $input['lugar_nacimiento'],
+                'estudios' => $input['estudios'],
+                'ocupacion' => $input['ocupacion'],
             ];
 
-            $storeCI = CarpetaInvestigacion::create($carpeta_investigacion);
+            $storePer = Personas::create($personas);
 
-            $domicilio_delito = [
-                'pais' => $input['pais_delito'],
-                'calle' => $input['calle_delito'],
-                'numero_exterior' => $input['numero_exterior_delito'],
-                'numero_interior' => $input['numero_interior_delito'],
-                'colonia' => $input['colonia_delito'],
-                'delegacion_municipio' => $input['delegacion_municipio_delito'],
-                'codigo_postal' => $input['codigo_postal_delito'],
-                'carpeta_investigacion_id' => $storeCI->id,
+            $implicados = [
+                'carpeta_investigacion_id' => $input['carpeta_investigacion_id'],
+                'persona_id' => $storePer->id,
+                'tipo_implicado_id' => '1',
             ];
 
-            $storeDD = DomicilioDelito::create($domicilio_delito);
+            $storeImp = Implicados::create($implicados);
             
         } catch (Exception $e) {
             $response = [
@@ -224,13 +230,13 @@ class ImplicadosController extends Controller
             return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
         }
 
-        if ($storeCI) {
+        if ($storePer) {
             $response = [
                 'st'    => true,
                 'title' => "Carpeta de Investigacion $request->carpeta_investigacion",
                 'msg'   => "Generada Correctamente",
                 'type'  => 'success',
-                'ci_id' => $storeCI->id,
+                'ci_id' => $input['carpeta_investigacion_id'],
             ];
         }else{
             $response = [
