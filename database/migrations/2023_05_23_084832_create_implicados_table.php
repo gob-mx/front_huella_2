@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('implicados', function (Blueprint $table) {
             $table->unsignedBigInteger('carpeta_investigacion_id')->nullable();
-            $table->unsignedBigInteger('implicado_id')->nullable();
+            $table->unsignedBigInteger('persona_id')->nullable();
             $table->unsignedInteger('tipo_implicado_id')->nullable();
             $table->timestamps();
         });

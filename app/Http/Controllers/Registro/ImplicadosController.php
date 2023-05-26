@@ -184,35 +184,7 @@ class ImplicadosController extends Controller
     public function store_implicado($request)
     {
 
-        dd('store_implicado');
-        $rules = [
-            'carpeta_investigacion' => 'required|unique:carpeta_investigacion,carpeta_investigacion',
-            'estatus_investigacion_id' => 'required',
-            'averiguacion_previa' => 'nullable|unique:carpeta_investigacion,averiguacion_previa',
-        ];
-        $customMessages = [
-            'carpeta_investigacion.required' => 'Campo <b>CARPETA DE INVESTIGACIÓN</b> es requerido',
-            'carpeta_investigacion.unique' => '<b>CARPETA DE INVESTIGACIÓN</b> ya esxiste',
-            'averiguacion_previa.required' => 'Campo <b>NÚMERO DE AVERIGUACIÓN PREVIA</b> es requerido',
-            'averiguacion_previa.unique' => '<b>NÚMERO DE AVERIGUACIÓN PREVIA</b> ya esxiste',
-        ];
-
-        $errors = validateErrors($request, $rules, $customMessages);
-
-        if($errors){
-            $response = [
-                'st'    => false,
-                'title' => "Campos Requeridos",
-                'msg'   => $errors,
-                'type'  => 'warning',
-            ];
-            // \Log::debug(__METHOD__.' ==> '.auth()->user()->id.' ==> '.auth()->user()->email." ==> validateErrors \n".json_encode($response));
-            return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
-        }
-        // dd( $request->all());
-
-        $input = $request->all();
-
+        // dd('store_implicado');
         try {
 
             $carpeta_investigacion = [
@@ -270,7 +242,5 @@ class ImplicadosController extends Controller
         }
 
         return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
-
-        dd($carpeta_investigacion);
     }
 }
