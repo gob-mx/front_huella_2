@@ -129,8 +129,9 @@ class PersonaRestApiController extends Controller {
 
 	public function desdos_list(Personas $persona) {
 
-		dd('$persona','desdos_list');
-		// $finger_list = $user->fingerprints;
+		// dd('$persona','desdos_list');
+		$finger_list = $persona->persona;
+		dd($finger_list);
 		// return view("dpfp_views.finger-list", compact("user", "finger_list"));
 	}
 

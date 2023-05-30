@@ -29,6 +29,11 @@ class Personas extends Model
 		'ocupacion',
 	];
 
+	//Relacion uno a muchos
+    public function huellas() {
+           return $this->hasMany("App\Models\ResgitroImplicados\Huellas");
+    }
+
 	// public function EstatusInvestigacion()
 	// {
 	// 	return $this->hasOne(CatEstatusInvestigacion::class,'id','estatus_investigacion_id');
