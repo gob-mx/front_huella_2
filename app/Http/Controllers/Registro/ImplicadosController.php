@@ -229,7 +229,7 @@ class ImplicadosController extends Controller
 
         $personas = \DB::connection('mysql')->table('carpeta_investigacion')
             ->join("implicados","implicados.carpeta_investigacion_id","=","carpeta_investigacion.id")
-            ->join("personas","personas.id","=","implicados.persona_id")
+            ->join("users","users.id","=","implicados.persona_id")
             ->where('carpeta_investigacion.id',$id)
             ->get();
 
