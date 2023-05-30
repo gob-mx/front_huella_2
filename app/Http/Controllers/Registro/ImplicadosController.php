@@ -12,6 +12,8 @@ use App\Models\RegistroImplicados\DomicilioDelito;
 use App\Models\RegistroImplicados\Implicados;
 use App\Models\RegistroImplicados\Personas;
 
+use App\Models\User;
+
 class ImplicadosController extends Controller
 {
     /**
@@ -44,7 +46,8 @@ class ImplicadosController extends Controller
     public function store(Request $request)
     {
         if($request->store_implicado){
-            return $this->store_implicado($request);
+            // return $this->store_implicado($request);
+            return $this->store_implicado_demo($request);
         }
 
         $rules = [
@@ -136,6 +139,66 @@ class ImplicadosController extends Controller
         dd($carpeta_investigacion);
     }
 
+    public function store_implicado_demo($request)
+    {
+
+        // dd('store_implicado',$request->all());
+
+        $input = $request->all();
+
+        try {
+
+            $personas = [
+                'nombre' => $input['nombre'],
+                'apellido_paterno' => $input['apellido_paterno'],
+                'apellido_materno' => $input['apellido_materno'],
+                'carpeta_investigacion_id' => $input['carpeta_investigacion_id'],
+                'implicado' => '1',
+                'password' => bcrypt('12345678'),
+            ];
+
+            // DD($personas);
+
+            $storePer = User::create($personas);
+
+            $implicados = [
+                'carpeta_investigacion_id' => $input['carpeta_investigacion_id'],
+                'persona_id' => $storePer->id,
+                'tipo_implicado_id' => '1',
+            ];
+
+            $storeImp = Implicados::create($implicados);
+            
+        } catch (Exception $e) {
+            $response = [
+                'st'    => false,
+                'title' => "Error",
+                'msg'   => (string)$e->getMessage(),
+                'type'  => 'error',
+            ];
+            return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
+        }
+
+        if ($storePer) {
+            $response = [
+                'st'    => true,
+                'title' => "Carpeta de Investigacion $request->carpeta_investigacion",
+                'msg'   => "Generada Correctamente",
+                'type'  => 'success',
+                'ci_id' => $input['carpeta_investigacion_id'],
+            ];
+        }else{
+            $response = [
+                'st'    => false,
+                'title' => "Error",
+                'msg'   => "Favor de Intentar Nuevamente o Comunicarse con un Administrador<br>MDL-ERR-STORE",
+                'type'  => 'error',
+            ];
+        }
+
+        return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -157,6 +220,12 @@ class ImplicadosController extends Controller
     {
         $carpeta = CarpetaInvestigacion::find($id);
         $estatus_carpeta = CatEstatusInvestigacion::all();
+
+        // $personas = \DB::connection('mysql')->table('carpeta_investigacion')
+        //     ->join("implicados","implicados.carpeta_investigacion_id","=","carpeta_investigacion.id")
+        //     ->join("personas","personas.id","=","implicados.persona_id")
+        //     ->where('carpeta_investigacion.id',$id)
+        //     ->get();
 
         $personas = \DB::connection('mysql')->table('carpeta_investigacion')
             ->join("implicados","implicados.carpeta_investigacion_id","=","carpeta_investigacion.id")

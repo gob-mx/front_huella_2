@@ -167,7 +167,7 @@ class UserRestApiController extends Controller {
     }
 
     public function users_list() {
-        $users = User::paginate(10);
+        $users = User::where('implicado',1)->paginate(10);
         return view("dpfp_views.index", compact("users"));
     }
 

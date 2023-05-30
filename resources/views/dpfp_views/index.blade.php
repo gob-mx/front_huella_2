@@ -24,7 +24,7 @@ Crear Usuarios
 			@foreach($users as $user)
 			<tr>
 				<td>{{$user->id}}</td>
-				<td>{{$user->name}}</td>
+				<td>{{$user->nombre}}</td>
 				<td>{{$user->email}}</td>
 				<td>
 			   <a href="users_list/{{$user->id}}/finger-list" style="font-size: 15px;margin-left: 7px;color:#03579f;" >fingerprint_list</a>
