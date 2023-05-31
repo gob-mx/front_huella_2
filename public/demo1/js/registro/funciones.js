@@ -177,24 +177,24 @@ function getData() {
                 jQuery("#" + localStorage.getItem("srnPc") + "_name").text(data.name);
                 jQuery("#" + localStorage.getItem("srnPc")).attr("src", "data:image/png;base64," + data.image);
                 if (data.user_id != null) {
-                    jQuery("#" + localStorage.getItem("srnPc") + "_identifier").text("User Id: " + data.user_id);
-                    jQuery("#" + localStorage.getItem("srnPc") + "_texto").text("Usuario verificado");
+                    jQuery("#" + localStorage.getItem("srnPc") + "_identifier").text("Identificador: " + data.user_id);
+                    jQuery("#" + localStorage.getItem("srnPc") + "_texto").text("Persona Identificada");
                     icono = "success";
                     Swal.fire({
                         position: 'top-end',
                         icon: icono,
-                        title: 'Usuario Verificado',
+                        title: 'Persona Identificada',
                         showConfirmButton: false,
                         timer: 3000
                     });
                 } else {
-                    jQuery("#" + localStorage.getItem("srnPc") + "_identifier").text("User Id: ");
-                    jQuery("#" + localStorage.getItem("srnPc") + "_texto").text("El Usuario No existe");
+                    jQuery("#" + localStorage.getItem("srnPc") + "_identifier").text("");
+                    jQuery("#" + localStorage.getItem("srnPc") + "_texto").text("Huella no Encontrada");
                     icono = "error";
                     Swal.fire({
                         position: 'top-end',
                         icon: icono,
-                        title: 'El usuario no existe',
+                        title: 'Huella no Encontrada',
                         showConfirmButton: false,
                         timer: 3000
                     });
