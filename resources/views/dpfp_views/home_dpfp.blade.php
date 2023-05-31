@@ -7,40 +7,40 @@
 			</div> --}}
 			<div class="card-body pt-8">
 				<div class="d-flex align-items-center mb-8">
-					<span class="bullet bullet-vertical h-40px bg-success"></span>
+					<span class="bullet bullet-vertical h-40px bg-warning"></span>
 					<div class="form-check form-check-custom form-check-solid mx-5"></div>
 					<div class="flex-grow-1">
 						<a href="javascript:void(0)" class="text-gray-800 text-hover-primary fw-bold fs-6 create_token">Crear Token</a>
-						{{-- <span class="text-muted fw-semibold d-block">Due in 2 Days</span> --}}
+						<span class="text-muted fw-semibold d-block">Tocken de comunicación</span>
 					</div>
-					{{-- <span class="badge badge-light-success fs-8 fw-bold">New</span> --}}
+					<span class="badge badge-light-warning fs-8 fw-bold">Genera</span>
 				</div>
-				<div class="d-flex align-items-center mb-8">
+				{{-- <div class="d-flex align-items-center mb-8">
 					<span class="bullet bullet-vertical h-40px bg-primary"></span>
 					<div class="form-check form-check-custom form-check-solid mx-5"></div>
 					<div class="flex-grow-1">
 						<a href="{{ route('users_list') }}" id="btn_user_list" class="text-gray-800 text-hover-primary fw-bold fs-6">Enrolar Usuarios</a>
-						{{-- <span class="text-muted fw-semibold d-block">Due in 3 Days</span> --}}
+						<span class="text-muted fw-semibold d-block">Módulo Enrolar Usuarios</span>
 					</div>
-					{{-- <span class="badge badge-light-primary fs-8 fw-bold">New</span> --}}
+					<span class="badge badge-light-primary fs-8 fw-bold">Nuevo</span>
 				</div>
 				<div class="d-flex align-items-center mb-8">
 					<span class="bullet bullet-vertical h-40px bg-warning"></span>
 					<div class="form-check form-check-custom form-check-solid mx-5"></div>
 					<div class="flex-grow-1">
 						<a href="{{ route('verify-users') }}" class="text-gray-800 text-hover-primary fw-bold fs-6">Comprobar Usuarios</a>
-						{{-- <span class="text-muted fw-semibold d-block">Due in 5 Days</span> --}}
+						<span class="text-muted fw-semibold d-block">Módulo Comprobar Usuarios</span>
 					</div>
-					{{-- <span class="badge badge-light-warning fs-8 fw-bold">New</span> --}}
-				</div>
+					<span class="badge badge-light-warning fs-8 fw-bold">Nuevo</span>
+				</div> --}}
 				<div class="d-flex align-items-center mb-8">
-					<span class="bullet bullet-vertical h-40px bg-danger"></span>
+					<span class="bullet bullet-vertical h-40px bg-success"></span>
 					<div class="form-check form-check-custom form-check-solid mx-5"></div>
 					<div class="flex-grow-1">
-						<a href="https://drive.google.com/drive/folders/1U_P6h7sJfjW6INqFMnS3HeJ9DAgnIcdy?usp=share_link" class="text-gray-800 text-hover-primary fw-bold fs-6">Descarga Complemento FingerprintRader</a>
-						{{-- <span class="text-muted fw-semibold d-block">Due in 12 Days</span> --}}
+						<a href="https://drive.google.com/drive/folders/1U_P6h7sJfjW6INqFMnS3HeJ9DAgnIcdy?usp=share_link" class="text-gray-800 text-hover-primary fw-bold fs-6">Descarga FingerprintRader</a>
+						<span class="text-muted fw-semibold d-block">Descarga Complemento FingerprintRader</span>
 					</div>
-					{{-- <span class="badge badge-light-danger fs-8 fw-bold">New</span> --}}
+					<span class="badge badge-light-success fs-8 fw-bold">Descarga</span>
 				</div>
 			</div>
 		</div>
