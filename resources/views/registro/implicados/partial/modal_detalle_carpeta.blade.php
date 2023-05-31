@@ -16,7 +16,7 @@
 				<div class="scroll-y me-n7 pe-7" id="kt_modal_new_address_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
 
 					<div class="mb-13 text-center">
-						<h1 class="mb-3">Carpeta de Investigación {{ $carpeta->carpeta_investigacion }}</h1>
+						<h1 class="mb-3">Expediente {{ $carpeta->carpeta_investigacion }}</h1>
 						<div class="text-muted fw-semibold fs-5">Los campos con (<label class="required"></label> )
 						<a href="#" class="link-primary fw-bold">son obligatorios</a>.</div>
 					</div>

@@ -20,7 +20,7 @@
 
 					<div class="mb-13 text-center">
 						<h1 class="mb-3">Agregar Implicado a:</h1>
-						<h2 class="mb-3">Carpeta de Investigación {{ $carpeta->carpeta_investigacion }}</h2>
+						<h2 class="mb-3">EXPEDIENTE {{ $carpeta->carpeta_investigacion }}</h2>
 						<div class="text-muted fw-semibold fs-5">Los campos con (<label class="required"></label> )
 						<a href="#" class="link-primary fw-bold">son obligatorios</a>.</div>
 					</div>

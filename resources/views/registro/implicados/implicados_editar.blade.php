@@ -1,7 +1,7 @@
 <x-base-layout>
 
 <x-slot name="actiontoolbar">
-	<a href="" class="btn btn-sm fw-bold btn-primary boton_edit" data-bs-toggle="modal" data-bs-target="#kt_modal_detalle_carpeta">Detalle Carpeta de Investigación</a>
+	<a href="" class="btn btn-sm fw-bold btn-primary boton_edit" data-bs-toggle="modal" data-bs-target="#kt_modal_detalle_carpeta">Detalle Expediente</a>
 	<a href="" class="btn btn-sm fw-bold btn-primary boton_edit" data-bs-toggle="modal" data-bs-target="#kt_modal_agrega_implicado">Agregar Implicado</a>
 	<a href="{{ route('users_list') }}" class="btn btn-sm fw-bold btn-primary boton_edit">Enrolar Implicados</a>
 </x-slot>
@@ -17,7 +17,7 @@
 	<div class="col-md-3 pb-5">
 		<div class="card card-flush shadow-sm">
 			<div class="card-header">
-				<h3 class="card-title fw-bold fs-4 text-gray-500">CI {{ $carpeta->carpeta_investigacion }}</h3>
+				<h3 class="card-title fw-bold fs-4 text-gray-500">EXPEDIENTE {{ $carpeta->carpeta_investigacion }}</h3>
 				<div class="card-toolbar">
 					<h5 class="fw-bold fs-4 text-gray-500 pt-2">{{ $carpeta->EstatusInvestigacion->estatus_carpeta }}</h5>
 				</div>
@@ -44,7 +44,7 @@
 	<div class="col-md-4 pb-5">
 		<div class="card card-flush shadow-sm">
 			<div class="card-header">
-				<h3 class="card-title fw-bold fs-4 text-gray-500">CI {{ $carpeta->carpeta_investigacion }}</h3>
+				<h3 class="card-title fw-bold fs-4 text-gray-500">EXPEDIENTE {{ $carpeta->carpeta_investigacion }}</h3>
 				<div class="card-toolbar">
 					<h5 class="fw-bold fs-4 text-gray-500 pt-2">{{----}}</h5>
 				</div>
