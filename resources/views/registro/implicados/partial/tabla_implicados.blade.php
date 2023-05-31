@@ -64,7 +64,7 @@
 										</a>
 									</td> --}}
 									<td class="text-end">
-										<a href="{{ route('users_list') }}" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
+										<a href="{{ route('finger-list',$persona->id) }}" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
 											<span class="svg-icon svg-icon-5 svg-icon-gray-700">
 												<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 													<path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="currentColor" />
