@@ -3,11 +3,11 @@
 	<!--begin::Logo image-->
 	<a href="javascript:;">
         @if (setting('layout.layout', 'light-sidebar') === 'dark-sidebar')
-		    <img alt="Logo" src="{{ asset(theme()->getMediaUrlPath() . 'saf/top_logo_saf.svg') }}" class="h-55px app-sidebar-logo-default" />
+		    <img alt="Logo" src="{{ asset(theme()->getMediaUrlPath() . 'saf/logo_fiscalia.jpeg') }}" class="h-55px app-sidebar-logo-default" />
         @else
-            <img alt="Logo" src="{{ asset(theme()->getMediaUrlPath() . 'saf/top_logo_saf.svg') }}" class="h-55px app-sidebar-logo-default" />
+            <img alt="Logo" src="{{ asset(theme()->getMediaUrlPath() . 'saf/logo_fiscalia.jpeg') }}" class="h-55px app-sidebar-logo-default" />
         @endif
-        <img alt="Logo" src="{{ asset(theme()->getMediaUrlPath() . 'saf/top_logo_saf.svg') }}" class="h-20px app-sidebar-logo-minimize" />
+        <img alt="Logo" src="{{ asset(theme()->getMediaUrlPath() . 'saf/logo_fiscalia.jpeg') }}" class="h-20px app-sidebar-logo-minimize" />
     </a>
 	<!--end::Logo image-->
 	<!--begin::Sidebar toggle-->
