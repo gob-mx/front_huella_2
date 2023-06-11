@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\RegistroImplicados\CatEstatusInvestigacion;
 use App\Models\RegistroImplicados\DomicilioDelito;
 
-class CarpetaInvestigacion extends Model
+class Expediente extends Model
 {
-	protected $table = "carpeta_investigacion";
+	protected $table = "expediente";
 	// protected $primaryKey = 'admin_id';
 
 	protected $fillable = [

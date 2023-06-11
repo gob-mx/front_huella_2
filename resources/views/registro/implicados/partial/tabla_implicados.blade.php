@@ -3,7 +3,7 @@
 			<div class="card-header pt-7">
 				<h3 class="card-title align-items-start flex-column">
 					<span class="card-label fw-bold text-gray-800">Implicados</span>
-					<span class="text-gray-400 mt-1 fw-semibold fs-6">Expediente {{ $carpeta->carpeta_investigacion }}</span>
+					<span class="text-gray-400 mt-1 fw-semibold fs-6">Expediente {{ $expediente->carpeta_investigacion }}</span>
 				</h3>
 				{{-- <div class="card-toolbar">
 					<a href="../../demo1/dist/apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">History</a>

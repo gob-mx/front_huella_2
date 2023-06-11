@@ -157,16 +157,6 @@ Route::middleware('auth')->group(function () {
         return view('dpfp_views.finger_map');
     });
 
-    // Route::get('/users/verify-users', [UserRestApiController::class, 'verify_users'])->name('verify-users');
-    // Route::get('/personas', [PersonaRestApiController::class, 'personas_list'])->name('personas_list');
-    // Route::get("/personas/{persona}/desdos_list", [PersonaRestApiController::class, "desdos_list"])->name("desdos_list");
-    // Route::post('/active_sensor_read', [TempFingerprintController::class, 'store_read']);
-    // Route::post('/active_sensor_enroll', [TempFingerprintController::class, 'store_enroll']);
-    // Route::get("/get-finger/{user}", [UserRestApiController::class, "get_finger"])->name("get_finger");
-    // Route::get('/huella/comparacion', function(){
-    //     return view('dpfp_views.finger_map');
-    // });
-
 });
 
 Route::resource('users', UsersController::class);

@@ -17,9 +17,9 @@
 	<div class="col-md-3 pb-5">
 		<div class="card card-flush shadow-sm">
 			<div class="card-header">
-				<h3 class="card-title fw-bold fs-4 text-gray-500">EXPEDIENTE {{ $carpeta->carpeta_investigacion }}</h3>
+				<h3 class="card-title fw-bold fs-4 text-gray-500">CARPETA DE INVESTIGACIÓN {{ $expediente->carpeta_investigacion }}</h3>
 				<div class="card-toolbar">
-					<h5 class="fw-bold fs-4 text-gray-500 pt-2">{{ $carpeta->EstatusInvestigacion->estatus_carpeta }}</h5>
+					<h5 class="fw-bold fs-4 text-gray-500 pt-2">{{ $expediente->EstatusInvestigacion->estatus_carpeta }}</h5>
 				</div>
 			</div>
 			<div class="card-body py-0">
@@ -28,11 +28,11 @@
 					<div class="col-md-12">
 						<div class="pb-5 fs-6">
 							<div class="fw-bold">AVERIGUACIÓN PREVIA</div>
-							<div class="text-gray-600">{{ $carpeta->averiguacion_previa ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->averiguacion_previa ?? '' }}</div>
 							<div class="fw-bold mt-5">FECHA HECHOS</div>
-							<div class="text-gray-600">{{ $carpeta->fecha_hechos ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->fecha_hechos ?? '' }}</div>
 							<div class="fw-bold mt-5">FECHA REGISTRO</div>
-							<div class="text-gray-600">{{ $carpeta->fecha_registro ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->fecha_registro ?? '' }}</div>
 						</div>
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 	<div class="col-md-4 pb-5">
 		<div class="card card-flush shadow-sm">
 			<div class="card-header">
-				<h3 class="card-title fw-bold fs-4 text-gray-500">EXPEDIENTE {{ $carpeta->carpeta_investigacion }}</h3>
+				<h3 class="card-title fw-bold fs-4 text-gray-500">CARPETA DE INVESTIGACIÓN {{ $expediente->carpeta_investigacion }}</h3>
 				<div class="card-toolbar">
 					<h5 class="fw-bold fs-4 text-gray-500 pt-2">{{----}}</h5>
 				</div>
@@ -55,11 +55,11 @@
 					<div class="col-md-12">
 						<div class="pb-5 fs-6">
 							<div class="fw-bold">DELITOS(S)</div>
-							<div class="text-gray-600">{{ $carpeta->delito ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->delito ?? '' }}</div>
 							<div class="fw-bold mt-5">DESCRIPCION</div>
-							<div class="text-gray-600">{{ $carpeta->descripcion_delito ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->descripcion_delito ?? '' }}</div>
 							<div class="fw-bold mt-5">OBSERVACIONES</div>
-							<div class="text-gray-600">{{ $carpeta->observaciones ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->observaciones ?? '' }}</div>
 						</div>
 					</div>
 				</div>
@@ -82,17 +82,17 @@
 					<div class="col-md-6">
 						<div class="pb-0 fs-6">
 							<div class="fw-bold">PAIS</div>
-							<div class="text-gray-600">{{ $carpeta->DomicilioDelito->pais ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->DomicilioDelito->pais ?? '' }}</div>
 							<div class="fw-bold mt-5">CALLE</div>
-							<div class="text-gray-600">{{ $carpeta->DomicilioDelito->calle ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->DomicilioDelito->calle ?? '' }}</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="pb-0 fs-6">
 							<div class="fw-bold">COLONIA</div>
-							<div class="text-gray-600">{{ $carpeta->DomicilioDelito->colonia ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->DomicilioDelito->colonia ?? '' }}</div>
 							<div class="fw-bold mt-5">MUNICIPIO</div>
-							<div class="text-gray-600">{{ $carpeta->DomicilioDelito->delegacion_municipio ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->DomicilioDelito->delegacion_municipio ?? '' }}</div>
 						</div>
 					</div>
 				</div>
@@ -100,19 +100,19 @@
 					<div class="col-md-4">
 						<div class="pb-5 fs-6">
 							<div class="fw-bold mt-5">EXTERIOR</div>
-							<div class="text-gray-600">{{ $carpeta->DomicilioDelito->numero_interior ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->DomicilioDelito->numero_interior ?? '' }}</div>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="pb-5 fs-6">
 							<div class="fw-bold mt-5">INTERIOR</div>
-							<div class="text-gray-600">{{ $carpeta->DomicilioDelito->numero_exterior ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->DomicilioDelito->numero_exterior ?? '' }}</div>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="pb-5 fs-6">
 							<div class="fw-bold mt-5">CODIGO POSTAL</div>
-							<div class="text-gray-600">{{ $carpeta->DomicilioDelito->codigo_postal ?? '' }}</div>
+							<div class="text-gray-600">{{ $expediente->DomicilioDelito->codigo_postal ?? '' }}</div>
 						</div>
 					</div>
 				</div>

@@ -34,9 +34,9 @@
 					<div class="row fv-row">
 						<div class="col-md-4 mb-7">
 							<div class="form-floating ribbon ribbon-top">
-								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Número del Expediente."><b style="font-size:10px">Info</b></div>
+								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Número de Carpeta de Investigación."><b style="font-size:10px">Info</b></div>
 								<input type="text" id="carpeta_investigacion" name="carpeta_investigacion" value="{{ $carpeta->carpeta_investigacion ?? '' }}" placeholder="carpeta_investigacion" class="form-control fw-bold" onkeyup="upper(this)" />
-								<label for="carpeta_investigacion"><span class="required">NÚMERO DE EXPEDIENTE</span></label>
+								<label for="carpeta_investigacion"><span class="required">CARPETA DE INVESTIGACIÓN</span></label>
 							</div>
 						</div>
 						<div class="col-md-4 mb-7">

@@ -12,90 +12,13 @@
 				</div>
 			</div>
 
-
-
-			{{-- <div class="modal-body pt-0 pb-15 px-5 px-xl-20">
-
-				<div class="scroll-y me-n7 pe-7" id="kt_modal_new_address_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
-
-					<div class="mb-13 text-center">
-						<h1 class="mb-3">Agregar Implicado a:</h1>
-						<h2 class="mb-3">EXPEDIENTE {{ $carpeta->carpeta_investigacion }}</h2>
-						<div class="text-muted fw-semibold fs-5">Los campos con (<label class="required"></label> )
-						<a href="#" class="link-primary fw-bold">son obligatorios</a>.</div>
-					</div>
-
-					<form id="kt_agrega_implicado_form" class="form" method="post" action="{{ route('registro.implicados.store') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-						<input type="hidden" name="store_implicado" value="1" />
-						<input type="hidden" name="carpeta_investigacion_id" value="{{ $carpeta->id }}" />
-
-						<div class="m-0">
-							<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_datos_personales">
-								<div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
-									<span class="svg-icon toggle-on svg-icon-primary svg-icon-1">
-										{!! theme()->getSvgIcon("demo1/media/icons/duotune/general/gen036.svg", "svg-icon-1") !!}
-									</span>
-									<span class="svg-icon toggle-off svg-icon-1">
-										{!! theme()->getSvgIcon("demo1/media/icons/duotune/general/gen035.svg", "svg-icon-1") !!}
-									</span>
-								</div>
-								<h3 class="text-gray-700 fw-bold cursor-pointer mb-0">Datos Personales</h3>
-							</div>
-							<div id="kt_datos_personales" class="collapse show fs-6 ms-1">
-								<div class="mb-7 text-gray-600 fw-semibold fs-5 ps-10">Registre los Datos Personales del Implicado.</div>
-
-								<div class="row fv-row">
-									<div class="col-md-4 mb-7">
-										<div class="form-floating ribbon ribbon-top">
-											<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Nombre del Implicado."><b style="font-size:10px">Info</b></div>
-											<input type="text" id="nombre" name="nombre" placeholder="nombre" class="form-control fw-bold" onkeyup="upper(this)" />
-											<label for="nombre"><span class="required">NOMBRE(S)</span></label>
-										</div>
-									</div>
-									<div class="col-md-4 mb-7">
-										<div class="form-floating ribbon ribbon-top">
-											<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Apellido Paterno del Implicado."><b style="font-size:10px">Info</b></div>
-											<input type="text" id="apellido_paterno" name="apellido_paterno" placeholder="apellido_paterno" class="form-control fw-bold" onkeyup="upper(this)" />
-											<label for="apellido_paterno">APELLIDO PATERNO</label>
-										</div>
-									</div>
-									<div class="col-md-4 mb-7">
-										<div class="form-floating ribbon ribbon-top">
-											<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Apellido Materno del Implicado."><b style="font-size:10px">Info</b></div>
-											<input type="text" id="apellido_materno" name="apellido_materno" placeholder="apellido_materno" class="form-control fw-bold" onkeyup="upper(this)" />
-											<label for="apellido_materno">APELLIDO MATERNO</label>
-										</div>
-									</div>
-								</div>
-
-							</div>
-							<div class="separator separator-dashed"></div>
-						</div>
-
-						<div class="d-flex flex-center flex-row-fluid pt-12">
-							<button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-primary" id="kt_agrega_implicado_submit">
-								<span class="indicator-label">Agregar Implicado</span>
-								<span class="indicator-progress">Espere Por Favor...
-								<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-							</button>
-						</div>
-
-
-					</form>
-				</div>
-			</div> --}}
-
-
-
 			<div class="modal-body pt-0 pb-15 px-5 px-xl-20">
 
 				<div class="scroll-y me-n7 pe-7" id="kt_modal_new_address_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
 
 					<div class="mb-13 text-center">
 						<h1 class="mb-3">Agregar Implicado a:</h1>
-						<h2 class="mb-3">Carpeta de Investigación {{ $carpeta->carpeta_investigacion }}</h2>
+						<h2 class="mb-3">Carpeta de Investigación {{ $expediente->carpeta_investigacion }}</h2>
 						<div class="text-muted fw-semibold fs-5">Los campos con (<label class="required"></label> )
 						<a href="#" class="link-primary fw-bold">son obligatorios</a>.</div>
 					</div>
@@ -103,7 +26,7 @@
 					<form id="kt_agrega_implicado_form" class="form" method="post" action="{{ route('registro.implicados.store') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 						<input type="hidden" name="store_implicado" value="1" />
-						<input type="hidden" name="carpeta_investigacion_id" value="{{ $carpeta->id }}" />
+						<input type="hidden" name="carpeta_investigacion_id" value="{{ $expediente->id }}" />
 
 						<div class="m-0">
 							<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_datos_personales">

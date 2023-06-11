@@ -161,7 +161,7 @@ function getFingerprintByUser() {
     var _url = get_path("public") + "/users_list/" + userId + "/finger-list";
     jQuery.get(get_path("public") + "/get-finger/" + userId, function (data) {
         if (data.length > 0) {
-            window.location = _url;
+            window.location.reload();
         }
     });
 }
