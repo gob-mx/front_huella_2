@@ -149,17 +149,17 @@ Route::middleware('auth')->group(function () {
     //Rutas para interactuar con el plugin
     Route::get('/users_list/verify-users', [UserRestApiController::class, 'verify_users'])->name('verify-users');
     Route::get('/users_list', [UserRestApiController::class, 'users_list'])->name('users_list');
-    Route::get("/users_list/{user}/finger-list", [UserRestApiController::class, "fingerList"])->name("finger-list");
+    Route::get("/users_list/{persona}/finger-list", [UserRestApiController::class, "fingerList"])->name("finger-list");
     Route::post('/active_sensor_read', [TempFingerprintController::class, 'store_read']);
     Route::post('/active_sensor_enroll', [TempFingerprintController::class, 'store_enroll']);
-    Route::get("/get-finger/{user}", [UserRestApiController::class, "get_finger"])->name("get_finger");
+    Route::get("/get-finger/{persona}", [UserRestApiController::class, "get_finger"])->name("get_finger");
     Route::get('/huella/comparacion', function(){
         return view('dpfp_views.finger_map');
     });
 
     // Route::get('/users/verify-users', [UserRestApiController::class, 'verify_users'])->name('verify-users');
     // Route::get('/personas', [PersonaRestApiController::class, 'personas_list'])->name('personas_list');
-    Route::get("/personas/{persona}/desdos_list", [PersonaRestApiController::class, "desdos_list"])->name("desdos_list");
+    // Route::get("/personas/{persona}/desdos_list", [PersonaRestApiController::class, "desdos_list"])->name("desdos_list");
     // Route::post('/active_sensor_read', [TempFingerprintController::class, 'store_read']);
     // Route::post('/active_sensor_enroll', [TempFingerprintController::class, 'store_enroll']);
     // Route::get("/get-finger/{user}", [UserRestApiController::class, "get_finger"])->name("get_finger");

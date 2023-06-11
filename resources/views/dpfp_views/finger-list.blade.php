@@ -1,5 +1,10 @@
 <x-base-layout>
 
+<x-slot name="actiontoolbar">
+	<button class="btn btn-sm fw-bold btn-primary" id="btn_user_list">sensor close</button>
+	{{-- <a href="{{ route('users_list') }}" class="btn btn-sm fw-bold btn-primary boton_edit">Enrolar Implicados</a> --}}
+</x-slot>
+
 <div class="row">
 	
 	<div class="col-xl-12">
@@ -10,7 +15,7 @@
 					<span class="text-gray-400 mt-1 fw-semibold fs-6">Expediente {{-- {{ $carpeta->carpeta_investigacion }} --}}</span>
 				</h3>
 				<div class="card-toolbar">
-					<button class="btn btn-sm btn-light add_finger" data-id="{{$user->id}}">Agregar huella digital</button>
+					<button class="btn btn-sm btn-light add_finger" data-id="{{$persona->id}}">Agregar huella digital</button>
 				</div>
 			</div>
 			<div class="card-body">
@@ -33,27 +38,27 @@
 											<img src="{{ asset('avatars/blank.png') }}" class="" alt="" />
 										</div>
 										<div class="d-flex justify-content-start flex-column">
-											<a href="" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{ $user->nombre }}</a>
-											<span class="text-gray-400 fw-semibold d-block fs-7">{{ $user->apellido_paterno }} {{ $user->apellido_materno }}</span>
+											<a href="" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{ $persona->nombre }}</a>
+											<span class="text-gray-400 fw-semibold d-block fs-7">{{ $persona->apellido_paterno }} {{ $persona->apellido_materno }}</span>
 										</div>
 									</div>
 								</td>
 								<td class="text-end pe-0">
-									<span class="text-gray-600 fw-bold fs-6">{{ $user->alias ?? 'ALIAS (APODO)' }}</span>
+									<span class="text-gray-600 fw-bold fs-6">{{ $persona->alias ?? 'ALIAS (APODO)' }}</span>
 								</td>
 								<td class="text-end pe-0">
-									<span class="text-gray-600 fw-bold fs-6">{{ $user->rfc ?? 'RFC' }}</span>
+									<span class="text-gray-600 fw-bold fs-6">{{ $persona->rfc ?? 'RFC' }}</span>
 								</td>
 								<td class="pe-0">
 									<div class="d-flex align-items-center justify-content-end">
 										<div class="symbol symbol-30px me-3">
 											{{-- <img src="assets/media/avatars/300-13.jpg" class="" alt="" /> --}}
 										</div>
-										<span class="text-gray-600 fw-bold d-block fs-6">{{ $user->curp ?? 'CURP' }}</span>
+										<span class="text-gray-600 fw-bold d-block fs-6">{{ $persona->curp ?? 'CURP' }}</span>
 									</div>
 								</td>
 								<td class="text-end pe-0">
-									<span class="text-gray-600 fw-bold fs-6">{{ $user->nacionalidad ?? 'MEXICANA' }}</span>
+									<span class="text-gray-600 fw-bold fs-6">{{ $persona->nacionalidad ?? 'MEXICANA' }}</span>
 								</td>
 							</tr>
 						</tbody>
@@ -71,10 +76,10 @@
 	@foreach($finger_list as $finger)
 		<div class="card card-flush flex-row-fluid p-6 {{-- pb-5 --}} mw-100">
 			<div class="card-body text-center p-0">
-				<img src="{{ asset($finger->image) }}" class="rounded-3 mb-4 w-150px h-150px w-xxl-200px h-xxl-200px border-dashed border-primary" alt="" />
+				<img src="{{ asset($finger->ruta_imagen) }}" class="rounded-3 mb-4 w-150px h-150px w-xxl-200px h-xxl-200px border-dashed border-primary" alt="" />
 				<div class="mb-2">
 					<div class="text-center">
-						<span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-3 fs-xl-1">{{$finger->finger_name}}</span>
+						<span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-3 fs-xl-1">{{$finger->nombre_dedo}}</span>
 					</div>
 				</div>
 			</div>
@@ -85,8 +90,8 @@
 
 {{-- <br> --}}
 
-	{{-- <h3>User Fingerprint List : {{$user->nombre}}</h3>
-	<button style="margin-bottom: 1%;" class="add_finger"  data-id="{{$user->id}}">Agregar huella digital</button> --}}
+	{{-- <h3>User Fingerprint List : {{$persona->nombre}}</h3>
+	<button style="margin-bottom: 1%;" class="add_finger"  data-id="{{$persona->id}}">Agregar huella digital</button> --}}
 
 	{{-- <table border="1">
 		<tr>

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use App\Models\RegistroImplicados\CatEstatusInvestigacion;
 // use App\Models\RegistroImplicados\DomicilioDelito;
+use App\Models\RegistroImplicados\Huellas;
 
 class Personas extends Model
 {
@@ -31,7 +32,8 @@ class Personas extends Model
 
 	//Relacion uno a muchos
     public function huellas() {
-           return $this->hasMany("App\Models\ResgitroImplicados\Huellas");
+           // return $this->hasMany("App\Models\ResgistroImplicados\Huellas");
+           return $this->hasMany(Huellas::class, 'persona_id','id');
     }
 
 	// public function EstatusInvestigacion()

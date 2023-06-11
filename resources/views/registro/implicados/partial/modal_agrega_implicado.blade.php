@@ -14,7 +14,7 @@
 
 
 
-			<div class="modal-body pt-0 pb-15 px-5 px-xl-20">
+			{{-- <div class="modal-body pt-0 pb-15 px-5 px-xl-20">
 
 				<div class="scroll-y me-n7 pe-7" id="kt_modal_new_address_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
 
@@ -85,11 +85,11 @@
 
 					</form>
 				</div>
-			</div>
+			</div> --}}
 
 
 
-			{{-- <div class="modal-body pt-0 pb-15 px-5 px-xl-20">
+			<div class="modal-body pt-0 pb-15 px-5 px-xl-20">
 
 				<div class="scroll-y me-n7 pe-7" id="kt_modal_new_address_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
 
@@ -342,7 +342,7 @@
 
 					</form>
 				</div>
-			</div> --}}
+			</div>
 		</div>
 	</div>
 </div>

@@ -6,14 +6,16 @@ date_default_timezone_set("America/Bogota");
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\DpfpModels\TempFingerprint;
+// use App\Models\DpfpModels\TempFingerprint;
+
+use App\Models\RegistroImplicados\HuellasTemp;
 
 class TempFingerprintController extends Controller {
 
     public function store_read(Request $request) {
-        TempFingerprint::where("token_pc", $request->token_pc)->delete();
+        HuellasTemp::where("token_pc", $request->token_pc)->delete();
         $id = strtotime("now");
-        $TempFingerprint = new TempFingerprint();
+        $TempFingerprint = new HuellasTemp();
         $TempFingerprint->id = $id;
         $TempFingerprint->token_pc = $request->token_pc;
         $TempFingerprint->option = "read";
@@ -30,12 +32,13 @@ class TempFingerprintController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store_enroll(Request $request) {
-        TempFingerprint::where("token_pc", $request->token_pc)->delete();
+    \Log::debug(__METHOD__);
+        HuellasTemp::where("token_pc", $request->token_pc)->delete();
         $id = strtotime("now");
-        $TempFingerprint = new TempFingerprint();
+        $TempFingerprint = new HuellasTemp();
         $TempFingerprint->id = $id;
-        $TempFingerprint->user_id = $request->user_id;
-        $TempFingerprint->finger_name = $request->finger_name;
+        $TempFingerprint->persona_id = $request->user_id;
+        $TempFingerprint->nombre_dedo = $request->finger_name;
         $TempFingerprint->token_pc = $request->token_pc;
         $TempFingerprint->option = "enroll";
         $TempFingerprint->created_at = date("Y-m-d H:i:s");
@@ -52,8 +55,9 @@ class TempFingerprintController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request) {
-        $result = TempFingerprint::where("token_pc", $request->token_pc)
-                ->update(["option" => "close", "image" => null]);
+    \Log::debug(__METHOD__);
+        $result = HuellasTemp::where("token_pc", $request->token_pc)
+                ->update(["option" => "close", "imagen" => null]);
         $arrayResponse = array("code" => $result, "message" => "Ok");
         return $arrayResponse;
     }

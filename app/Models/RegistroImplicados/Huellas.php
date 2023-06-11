@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Models\ResgitroImplicados;
+namespace App\Models\RegistroImplicados;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\RegistroImplicados\Personas;
 
 class Huellas extends Model {
 
@@ -22,9 +23,10 @@ class Huellas extends Model {
     ];
         
     
-    //Relacion uno a uno Inversa    
+    // Relacion uno a uno Inversa
     public function persona() {
-        return $this->belongsTo("App\Models\ResgitroImplicados\Personas");
+        // return $this->belongsTo("App\Models\ResgistroImplicados\Personas");
+        return $this->belongsTo(Personas::class, 'id','persona_id');
     }
 
 }
