@@ -1,2 +1,14 @@
 *
 !.gitignore
+!image_user/
+image_user/*
+!image_user/Anular_Derecho1.png
+!image_user/Anular_Izquierdo1.png
+!image_user/Corazon_Derecho1.png
+!image_user/Corazon_Izquierdo1.png
+!image_user/Indice_Derecho1.png
+!image_user/Indice_Izquierdo1.png
+!image_user/Meñique_Derecho1.png
+!image_user/Meñique_Izquierdo1.png
+!image_user/Pulgar_Derecho1.png
+!image_user/Pulgar_Izquierdo1.png
