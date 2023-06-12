@@ -123,25 +123,7 @@
 @if($personas->count() > 0)
 	@include('registro.implicados.partial.tabla_implicados')
 @endif
-	{{-- <div class="col-xxl-4">
-		<div class="card h-md-100">
-			<div class="card-body d-flex flex-column flex-center">
-				<div class="mb-2">
-					<h1 class="fw-semibold text-gray-800 text-center lh-lg">Try out our
-					<br />new
-					<span class="fw-bolder">Invoice Manager</span></h1>
-					<div class="py-10 text-center">
-						<img src="{{ asset(theme()->getMediaUrlPath() . 'svg/illustrations/easy/2.svg') }}" class="theme-light-show w-200px" alt="" />
-						<img src="{{ asset(theme()->getMediaUrlPath() . 'svg/illustrations/easy/2.svg') }}" class="theme-dark-show w-200px" alt="" />
-					</div>
-				</div>
-				<div class="text-center mb-1">
-					<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_create_account" data-bs-toggle="modal">Try Now</a>
-					<a class="btn btn-sm btn-light" href="../../demo1/dist/apps/ecommerce/sales/listing.html">Learn More</a>
-				</div>
-			</div>
-		</div>
-	</div> --}}
+
 
 </div>
 

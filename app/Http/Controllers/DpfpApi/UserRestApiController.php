@@ -59,11 +59,14 @@ class UserRestApiController extends Controller {
         if ($api == $key) {
             $temp = HuellasTemp::where("token_pc", $request->token_pc)->first();
             $dedo = explode("_", $temp->nombre_dedo);
+            $nombre_dedo = $dedo[0].' '. $dedo[1];
+            Huellas::where('nombre_dedo',$nombre_dedo)->where('persona_id',$temp->persona_id)->delete();
             $fingerprint = new Huellas();
             $fingerprint->persona_id = $temp->persona_id;
-            $fingerprint->nombre_dedo = $dedo[0] . " " . $dedo[1];
+            $fingerprint->nombre_dedo = $nombre_dedo;
+            $fingerprint->imagen = $request->image;
             $fingerprint->ruta_imagen = $this->saveImage($request->image, $temp->nombre_dedo.$temp->persona_id);
-            $fingerprint->huella_dactilar = $request->huella_dactilar;
+            $fingerprint->huella_dactilar = $request->fingerprint;
             $fingerprint->notificada = 0;
             $response = $fingerprint->save();
             HuellasTemp::destroy($temp->id);
@@ -188,7 +191,7 @@ class UserRestApiController extends Controller {
 
     public function fingerList(Personas $persona) {
     \Log::debug(__METHOD__);
-        $finger_list = $persona->huellas;
+        $finger_list = $persona->Huellas;
         // dd($persona,$finger_list);
         return view("dpfp_views.finger-list", compact("persona", "finger_list"));
     }

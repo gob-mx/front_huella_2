@@ -31,10 +31,18 @@ class Personas extends Model
 	];
 
 	//Relacion uno a muchos
-    public function huellas() {
-           // return $this->hasMany("App\Models\ResgistroImplicados\Huellas");
-           return $this->hasMany(Huellas::class, 'persona_id','id');
-    }
+	// public function Huellas() {
+	// 	// return $this->hasMany("App\Models\ResgistroImplicados\Huellas");
+	// 	// return $this->belongsTo(Huellas::class, 'persona_id','id');
+	// 	// return $this->belongsTo(Huellas::class, 'persona_id','id');
+	// 	// return $this->belongsTo("App\Models\User");
+	// 	// return $this->hasMany(Huellas::class, 'persona_id','id');
+	// }
+
+	//Relacion uno a muchos
+	public function Huellas() {
+		return $this->hasMany(Huellas::class,'persona_id','id');
+	}
 
 	// public function EstatusInvestigacion()
 	// {

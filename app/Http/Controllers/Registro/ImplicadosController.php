@@ -197,14 +197,25 @@ class ImplicadosController extends Controller
 
     public function edit($id)
     {
-        $expediente = Expediente::find($id);
         $estatus_carpeta = CatEstatusInvestigacion::all();
+        $expediente = Expediente::find($id);
+        $personas = $expediente->Personas;
 
-        $personas = \DB::connection('mysql')->table('expediente')
-            ->join("implicados","implicados.carpeta_investigacion_id","=","expediente.id")
-            ->join("personas","personas.id","=","implicados.persona_id")
-            ->where('expediente.id',$id)
-            ->get();
+        // foreach ($personas as $persona) {
+        //     dd($persona->Huellas);
+        // }
+
+        // foreach ($personas->Huellas as $huella) {
+        //     dd($huella);
+        // }
+
+        // $personas = \DB::connection('mysql')->table('expediente')
+        //     ->join("implicados","implicados.carpeta_investigacion_id","=","expediente.id")
+        //     ->join("personas","personas.id","=","implicados.persona_id")
+        //     ->where('expediente.id',$id)
+        //     ->get();
+
+        // $finger_list = $personas->huellas;
 
         // $personas = \DB::connection('mysql')->table('carpeta_investigacion')
         //     ->join("implicados","implicados.carpeta_investigacion_id","=","carpeta_investigacion.id")

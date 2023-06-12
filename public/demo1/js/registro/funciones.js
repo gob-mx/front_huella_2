@@ -10,9 +10,9 @@ function get_path(str_limit) {
 }
 
 
-if (get_path("finger-list").includes("finger-list")) {
-    setInterval(getFingerprintByUser, 1500);
-}
+// if (get_path("finger-list").includes("finger-list")) {
+//     setInterval(getFingerprintByUser, 1500);
+// }
 
 if (get_path("verify-users").includes("verify-users")) {
     activeSensorRead(false);
@@ -123,6 +123,7 @@ jQuery('body').on('click', '.add_finger', function () {
         inputValidator: (value) => {
             return new Promise((resolve) => {
                 if (value !== 'Seleccione') {
+                    setInterval(getFingerprintByUser, 1500);
                     var token = jQuery("meta[name='csrf-token']").attr("content");
                     var data = new FormData();
                     data.append("_token", token);

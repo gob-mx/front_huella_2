@@ -247,6 +247,7 @@ return array(
                                 'plugins/custom/datatables/datatables.bundle.js',
                                 'js/registro/implicados_editar.js',
                                 'js/registro/agrega_implicado.js',
+                                'js/registro/funciones.js',
                             ),
                         ),
                     ),

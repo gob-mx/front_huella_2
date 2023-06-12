@@ -16,6 +16,7 @@ class Huellas extends Model {
     protected $fillable = [
         "id",
         "nombre_dedo",
+        "imagen",
         "ruta_imagen",
         "huella_dactilar",
         "notificada",
