@@ -15,19 +15,19 @@ Crear Usuarios
 	<h3>Users List</h3>
 	<table border="1">
 		<tr>
-			<th>id</th>
-			<th>name</th>
-			<th>email</th>
+			<th>IDENTIFICADOR</th>
+			<th>NOMBRE</th>
+			{{-- <th>email</th> --}}
 			<th></th>
 		</tr>
 		<tbody>
 			@foreach($users as $user)
 			<tr>
 				<td>{{$user->id}}</td>
-				<td>{{$user->name}}</td>
-				<td>{{$user->email}}</td>
+				<td>{{$user->nombre}} {{$user->apellido_paterno}} {{$user->apellido_materno}}</td>
+				{{-- <td>{{$user->email}}</td> --}}
 				<td>
-			   <a href="users_list/{{$user->id}}/finger-list" style="font-size: 15px;margin-left: 7px;color:#03579f;" >fingerprint_list</a>
+			   <a href="users_list/{{$user->id}}/finger-list" style="font-size: 15px;margin-left: 7px;color:#03579f;" >Enrolar Dedos --></a>
 				</td>
 			</tr>
 			@endforeach

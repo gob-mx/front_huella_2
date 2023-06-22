@@ -13,6 +13,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Storage;
+use App\Models\RegistroImplicados\Personas;
+use App\Models\RegistroImplicados\Huellas;
+use App\Models\RegistroImplicados\HuellasTemp;
 
 class UserRestApiController extends Controller {
 
@@ -22,6 +25,7 @@ class UserRestApiController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
+    \Log::debug(__METHOD__);
         $key = str_replace("Basic ", "", $request->header("Authorization"));
         $api = config("services.mhdpfp.key");
         if ($api == $key) {
@@ -48,20 +52,24 @@ class UserRestApiController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+    \Log::debug(__METHOD__.' ==> '.json_encode($request->all()));
 
         $key = str_replace("Basic ", "", $request->header("Authorization"));
         $api = config("services.mhdpfp.key");
         if ($api == $key) {
-            $temp = TempFingerprint::where("token_pc", $request->token_pc)->first();
-            $dedo = explode("_", $temp->finger_name);
-            $fingerprint = new FingerPrint();
-            $fingerprint->user_id = $temp->user_id;
-            $fingerprint->finger_name = $dedo[0] . " " . $dedo[1];
-            $fingerprint->image = $this->saveImage($request->image, $temp->finger_name.$temp->user_id);
-            $fingerprint->fingerprint = $request->fingerprint;
-            $fingerprint->notified = 0;
+            $temp = HuellasTemp::where("token_pc", $request->token_pc)->first();
+            $dedo = explode("_", $temp->nombre_dedo);
+            $nombre_dedo = $dedo[0].' '. $dedo[1];
+            Huellas::where('nombre_dedo',$nombre_dedo)->where('persona_id',$temp->persona_id)->delete();
+            $fingerprint = new Huellas();
+            $fingerprint->persona_id = $temp->persona_id;
+            $fingerprint->nombre_dedo = $nombre_dedo;
+            $fingerprint->imagen = $request->image;
+            $fingerprint->ruta_imagen = $this->saveImage($request->image, $temp->nombre_dedo.$temp->persona_id);
+            $fingerprint->huella_dactilar = $request->fingerprint;
+            $fingerprint->notificada = 0;
             $response = $fingerprint->save();
-            TempFingerprint::destroy($temp->id);
+            HuellasTemp::destroy($temp->id);
             $arrayResponse = array("response" => $response);
             return $arrayResponse;
 //            return $temp;
@@ -72,6 +80,7 @@ class UserRestApiController extends Controller {
     }
 
     function saveImage($image, $image_name) {
+    \Log::debug(__METHOD__);
         $rutaDirectorio = public_path('/storage/image_user');
         if (!File::isDirectory($rutaDirectorio)) {
             File::makeDirectory($rutaDirectorio, 0755, true);
@@ -92,6 +101,7 @@ class UserRestApiController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request) {
+    \Log::debug(__METHOD__);
         $response = 0;
         $key = str_replace("Basic ", "", $request->header("Authorization"));
         $api = config("services.mhdpfp.key");
@@ -147,6 +157,7 @@ class UserRestApiController extends Controller {
 //    }
 
     public function sincronizar(Request $request) {
+    \Log::debug(__METHOD__);
         $key = str_replace("Basic ", "", $request->header("Authorization"));
         $api = config("services.mhdpfp.key");
         if ($api == $key) {
@@ -163,23 +174,41 @@ class UserRestApiController extends Controller {
     }
 
     public function verify_users() {
+    \Log::debug(__METHOD__);
         return view("dpfp_views.verify-users");
     }
 
     public function users_list() {
-        $users = User::paginate(10);
+    \Log::debug(__METHOD__);
+        $users = User::where('implicado',1)->paginate(10);
         return view("dpfp_views.index", compact("users"));
     }
 
-    public function fingerList(User $user) {
-        $finger_list = $user->fingerprints;
-        return view("dpfp_views.finger-list", compact("user", "finger_list"));
+    // public function fingerList(User $user) {
+    //     $finger_list = $user->fingerprints;
+    //     return view("dpfp_views.finger-list", compact("user", "finger_list"));
+    // }
+
+    public function fingerList(Personas $persona) {
+    \Log::debug(__METHOD__);
+        $finger_list = $persona->Huellas;
+        // dd($persona,$finger_list);
+        return view("dpfp_views.finger-list", compact("persona", "finger_list"));
     }
 
-    public function get_finger(User $user) {
-        $response = FingerPrint::where("notified", 0)->where("user_id", $user->id)->get();
+    // public function get_finger(User $user) {
+    //     $response = FingerPrint::where("notified", 0)->where("user_id", $user->id)->get();
+    //     if (count($response) > 0) {
+    //         FingerPrint::where("id", $response[0]->id)->update(["notified" => 1]);
+    //     }
+    //     return $response;
+    // }
+
+    public function get_finger(Personas $persona) {
+    // \Log::debug(__METHOD__);
+        $response = Huellas::where("notificada", 0)->where("persona_id", $persona->id)->get();
         if (count($response) > 0) {
-            FingerPrint::where("id", $response[0]->id)->update(["notified" => 1]);
+            Huellas::where("id", $response[0]->id)->update(["notificada" => 1]);
         }
         return $response;
     }

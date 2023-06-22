@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('carpeta_investigacion', function (Blueprint $table) {
+        Schema::create('expediente', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('carpeta_investigacion')->nullable()->unique();
             $table->string('averiguacion_previa')->nullable()->unique();
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carpeta_investigacion');
+        Schema::dropIfExists('expediente');
     }
 };

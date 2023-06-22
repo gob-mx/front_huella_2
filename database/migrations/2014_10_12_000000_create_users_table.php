@@ -23,9 +23,15 @@ class CreateUsersTable extends Migration
             $table->string('rfc', 13)->nullable();
             $table->string('curp', 18)->nullable();
 
-            $table->string('email')->unique();
+            // $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            $table->integer('implicado')->nullable();
+            $table->unsignedBigInteger('carpeta_investigacion_id')->nullable();
+
             $table->rememberToken();
 
             // $table->string('first_name')->nullable();

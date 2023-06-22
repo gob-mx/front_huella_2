@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('huellas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre_dedo',30)->nullable();
+            $table->binary('imagen')->nullable();
             $table->string('ruta_imagen')->nullable();
             $table->binary('huella_dactilar')->nullable();
             $table->integer('notificada')->nullable();
@@ -26,6 +27,7 @@ return new class extends Migration
 
         // once the table is created use a raw query to ALTER it and add the LONGBLOB
         DB::statement("ALTER TABLE huellas MODIFY huella_dactilar LONGBLOB");
+        DB::statement("ALTER TABLE huellas MODIFY imagen LONGBLOB");
     }
 
     /**

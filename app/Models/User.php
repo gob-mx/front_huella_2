@@ -38,6 +38,9 @@ class User extends Authenticatable implements MustVerifyEmail
         // 'created_at',
         // 'updated_at',
         // 'api_token',
+
+        'carpeta_investigacion_id',
+        'implicado',
     ];
 
     /**

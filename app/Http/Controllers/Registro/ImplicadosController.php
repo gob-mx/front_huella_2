@@ -6,41 +6,28 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use \Exception;
-use App\Models\RegistroImplicados\CarpetaInvestigacion;
+use App\Models\RegistroImplicados\Expediente;
 use App\Models\RegistroImplicados\CatEstatusInvestigacion;
 use App\Models\RegistroImplicados\DomicilioDelito;
 use App\Models\RegistroImplicados\Implicados;
 use App\Models\RegistroImplicados\Personas;
 
+use App\Models\User;
+
 class ImplicadosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $estatus_carpeta = CatEstatusInvestigacion::all();
         return view('registro.implicados.implicados_form',compact('estatus_carpeta'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         dd('create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         if($request->store_implicado){
@@ -48,9 +35,9 @@ class ImplicadosController extends Controller
         }
 
         $rules = [
-            'carpeta_investigacion' => 'required|unique:carpeta_investigacion,carpeta_investigacion',
+            'carpeta_investigacion' => 'required|unique:expediente,carpeta_investigacion',
             'estatus_investigacion_id' => 'required',
-            'averiguacion_previa' => 'nullable|unique:carpeta_investigacion,averiguacion_previa',
+            'averiguacion_previa' => 'nullable|unique:expediente,averiguacion_previa',
         ];
         $customMessages = [
             'carpeta_investigacion.required' => 'Campo <b>CARPETA DE INVESTIGACIÓN</b> es requerido',
@@ -77,7 +64,7 @@ class ImplicadosController extends Controller
 
         try {
 
-            $carpeta_investigacion = [
+            $expediente = [
                 'carpeta_investigacion' => $input['carpeta_investigacion'],
                 'averiguacion_previa' => $input['averiguacion_previa'],
                 'delito' => $input['delito'],
@@ -89,7 +76,7 @@ class ImplicadosController extends Controller
                 'estatus_investigacion_id' => $input['estatus_investigacion_id'],
             ];
 
-            $storeCI = CarpetaInvestigacion::create($carpeta_investigacion);
+            $storeExp = Expediente::create($expediente);
 
             $domicilio_delito = [
                 'pais' => $input['pais_delito'],
@@ -99,7 +86,7 @@ class ImplicadosController extends Controller
                 'colonia' => $input['colonia_delito'],
                 'delegacion_municipio' => $input['delegacion_municipio_delito'],
                 'codigo_postal' => $input['codigo_postal_delito'],
-                'carpeta_investigacion_id' => $storeCI->id,
+                'carpeta_investigacion_id' => $storeExp->id,
             ];
 
             $storeDD = DomicilioDelito::create($domicilio_delito);
@@ -114,13 +101,13 @@ class ImplicadosController extends Controller
             return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
         }
 
-        if ($storeCI) {
+        if ($storeExp) {
             $response = [
                 'st'    => true,
                 'title' => "Carpeta de Investigacion $request->carpeta_investigacion",
                 'msg'   => "Generada Correctamente",
                 'type'  => 'success',
-                'ci_id' => $storeCI->id,
+                'ci_id' => $storeExp->id,
             ];
         }else{
             $response = [
@@ -133,63 +120,7 @@ class ImplicadosController extends Controller
 
         return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
 
-        dd($carpeta_investigacion);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        dd('show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $carpeta = CarpetaInvestigacion::find($id);
-        $estatus_carpeta = CatEstatusInvestigacion::all();
-
-        $personas = \DB::connection('mysql')->table('carpeta_investigacion')
-            ->join("implicados","implicados.carpeta_investigacion_id","=","carpeta_investigacion.id")
-            ->join("personas","personas.id","=","implicados.persona_id")
-            ->where('carpeta_investigacion.id',$id)
-            ->get();
-
-        // dd($personas);
-
-        return view('registro.implicados.implicados_editar',compact('estatus_carpeta','carpeta','personas'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        dd('update');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        dd($expediente);
     }
 
     public function store_implicado($request)
@@ -258,4 +189,59 @@ class ImplicadosController extends Controller
 
         return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
     }
+
+    public function show($id)
+    {
+        dd('show');
+    }
+
+    public function edit($id)
+    {
+        $estatus_carpeta = CatEstatusInvestigacion::all();
+        $expediente = Expediente::find($id);
+        $personas = $expediente->Personas;
+
+        // foreach ($personas as $persona) {
+        //     dd($persona->Huellas);
+        // }
+
+        // foreach ($personas->Huellas as $huella) {
+        //     dd($huella);
+        // }
+
+        // $personas = \DB::connection('mysql')->table('expediente')
+        //     ->join("implicados","implicados.carpeta_investigacion_id","=","expediente.id")
+        //     ->join("personas","personas.id","=","implicados.persona_id")
+        //     ->where('expediente.id',$id)
+        //     ->get();
+
+        // $finger_list = $personas->huellas;
+
+        // $personas = \DB::connection('mysql')->table('carpeta_investigacion')
+        //     ->join("implicados","implicados.carpeta_investigacion_id","=","carpeta_investigacion.id")
+        //     ->join("users","users.id","=","implicados.persona_id")
+        //     // ->join("fingerprints","users.id","=","fingerprints.user_id")
+        //     ->where('carpeta_investigacion.id',$id)
+        //     ->get();
+
+        // dd($personas);
+
+        // $huellas = \DB::connection('mysql')->table('users')
+        //     ->join("fingerprints","users.id","=","fingerprints.user_id")
+        //     ->where('users.carpeta_investigacion_id',$id)
+        //     ->get();
+
+        return view('registro.implicados.implicados_editar',compact('estatus_carpeta','expediente','personas'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        dd('update');
+    }
+
+    public function destroy($id)
+    {
+        //
+    }
+
 }

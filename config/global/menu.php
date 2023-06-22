@@ -323,6 +323,11 @@ return array(
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
                     array(
+                        'title'  => 'Consulta',
+                        'path'   => 'users_list/verify-users',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                    array(
                         'title'  => 'Biometrico',
                         'path'   => 'home_dpfp',
                         'bullet' => '<span class="bullet bullet-dot"></span>',

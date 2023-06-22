@@ -11,13 +11,14 @@
 					</span>
 				</div>
 			</div>
+
 			<div class="modal-body pt-0 pb-15 px-5 px-xl-20">
 
 				<div class="scroll-y me-n7 pe-7" id="kt_modal_new_address_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
 
 					<div class="mb-13 text-center">
 						<h1 class="mb-3">Agregar Implicado a:</h1>
-						<h2 class="mb-3">Carpeta de Investigación {{ $carpeta->carpeta_investigacion }}</h2>
+						<h2 class="mb-3">Carpeta de Investigación {{ $expediente->carpeta_investigacion }}</h2>
 						<div class="text-muted fw-semibold fs-5">Los campos con (<label class="required"></label> )
 						<a href="#" class="link-primary fw-bold">son obligatorios</a>.</div>
 					</div>
@@ -25,7 +26,7 @@
 					<form id="kt_agrega_implicado_form" class="form" method="post" action="{{ route('registro.implicados.store') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 						<input type="hidden" name="store_implicado" value="1" />
-						<input type="hidden" name="carpeta_investigacion_id" value="{{ $carpeta->id }}" />
+						<input type="hidden" name="carpeta_investigacion_id" value="{{ $expediente->id }}" />
 
 						<div class="m-0">
 							<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_datos_personales">

@@ -4,7 +4,7 @@ namespace App\Models\RegistroImplicados;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\RegistroImplicados\CarpetaInvestigacion;
+use App\Models\RegistroImplicados\Expediente;
 
 class CatEstatusInvestigacion extends Model
 {
@@ -15,8 +15,8 @@ class CatEstatusInvestigacion extends Model
 		'activo',
 	];
 
-	// public function CarpetaInvestigacion()
+	// public function Expediente()
 	// {
-	//     return $this->belongsTo(CarpetaInvestigacion::class,'carpeta_investigacion','estatus_investigacion_id');
+	//     return $this->belongsTo(Expediente::class,'carpeta_investigacion','estatus_investigacion_id');
 	// }
 }

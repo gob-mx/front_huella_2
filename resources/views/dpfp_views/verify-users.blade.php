@@ -24,18 +24,14 @@
 					</div>
 					<div>
 						<div  style="margin:0px auto;width: 30% !important;">
-							<div style="border: solid 1px; border-radius: 10px;text-align: center;">
+							<div style="text-align: center;">
 								<div>
 									<div>
-										<img class="imgFinger" src="{{asset('dpfp/images/finger.png')}}" alt="Card image cap">
-										<h5 class="u_nombre" >--</h5>
-										<div style="border: solid 1px; border-radius: 10px;" class="location text-sm-center u_identificacion">--</div>
+										<img src="{{asset('dpfp/images/finger.png')}}" class="rounded-3 mb-4 w-500px h-550px border-dashed border-success imgFinger" />
+										<h5 class="u_nombre" ></h5>
+										<h5 class="location text-sm-center u_identificacion" ></h5>
+										<h5 class="txtFinger" ></h5>
 									</div>
-								</div>
-								<div style="border: solid 1px;background-color: white; border-bottom-left-radius: 10px;border-bottom-right-radius: 10px">
-									<strong class="txtFinger">
-										----
-									</strong>
 								</div>
 							</div>
 						</div> 

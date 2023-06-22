@@ -26,17 +26,17 @@
 							{!! theme()->getSvgIcon("demo1/media/icons/duotune/general/gen035.svg", "svg-icon-1") !!}
 						</span>
 					</div>
-					<h3 class="text-gray-700 fw-bold cursor-pointer mb-0">Carpeta de Investigación</h3>
+					<h3 class="text-gray-700 fw-bold cursor-pointer mb-0">Expediente</h3>
 				</div>
 				<div id="kt_carpeta_investigacion" class="collapse show fs-6 ms-1">
-					<div class="mb-7 text-gray-600 fw-semibold fs-5 ps-10">Registre los Datos de la Carpeta de Investigación.</div>
+					<div class="mb-7 text-gray-600 fw-semibold fs-5 ps-10">Registre los datos del Expediente.</div>
 
 					<div class="row fv-row">
 						<div class="col-md-4 mb-7">
 							<div class="form-floating ribbon ribbon-top">
-								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Número de Capeta de Investigación."><b style="font-size:10px">Info</b></div>
+								<div class="ribbon-label bg-primary pt-0 pb-0" style="cursor:pointer;" data-bs-toggle="tooltip" title="Establezca Número de Carpeta de Investigación."><b style="font-size:10px">Info</b></div>
 								<input type="text" id="carpeta_investigacion" name="carpeta_investigacion" value="{{ $carpeta->carpeta_investigacion ?? '' }}" placeholder="carpeta_investigacion" class="form-control fw-bold" onkeyup="upper(this)" />
-								<label for="carpeta_investigacion"><span class="required">NÚMERO DE CAPETA DE INVESTIGACIÓN</span></label>
+								<label for="carpeta_investigacion"><span class="required">CARPETA DE INVESTIGACIÓN</span></label>
 							</div>
 						</div>
 						<div class="col-md-4 mb-7">

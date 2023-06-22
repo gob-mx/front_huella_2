@@ -54,7 +54,7 @@ var KTRegistroImplicado = function () {
 			{
 				fields: {
 
-					carpeta_investigacion:		{ validators: { notEmpty: { message: 'NÚMERO DE CAPETA DE INVESTIGACIÓN es Requerido' }}},
+					carpeta_investigacion:		{ validators: { notEmpty: { message: 'CARPETA DE INVESTIGACIÓN es Requerido' }}},
 					// averiguacion_previa:			{ validators: { notEmpty: { message: 'ESTATUS CARPETA DE INVESTIGACIÓN es Requerido' }}},
 					// delito:						{ validators: { notEmpty: { message: 'NÚMERO DE AVERIGUACIÓN PREVIA es Requerido' }}},
 					// descripcion_delito:			{ validators: { notEmpty: { message: 'DELITOS(S) es Requerido' }}},

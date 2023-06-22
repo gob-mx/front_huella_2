@@ -9,14 +9,20 @@ use Illuminate\Http\Request;
 use App\Models\DpfpModels\TempFingerprint;
 use Illuminate\Support\Facades\Config;
 
+use App\Models\RegistroImplicados\HuellasTemp;
+use \Log;
+
 class SseController extends Controller {
 
     //Stream para java
     public function stream($token_pc) {
+
+    \Log::debug(__METHOD__);
+
         return response()->stream(function () use ($token_pc) {
                     $response = array("token_pc" => $token_pc, "option" => null);
                     while (true) {
-                        $rows = TempFingerprint::where("token_pc", $token_pc)->whereNotNull("option")->first();
+                        $rows = HuellasTemp::where("token_pc", $token_pc)->whereNotNull("option")->first();
                         if (!empty($rows)) {
                             $response["token_pc"] = $token_pc;
                             $response["updated_at"] = strtotime($rows->updated_at);
@@ -35,26 +41,29 @@ class SseController extends Controller {
 
     //Stream para javascript
     public function streamjs($token_pc) {
+    \Log::debug(__METHOD__);
         return response()->stream(function () use ($token_pc) {
                     $response = array();
 //                    $response["user_id_number"] = null;
-                    $response["user_id"] = null;
-                    $response["name"] = null;
-                    $response["image"] = null;
+                    $response["persona_id"] = null;
+                    $response["nombre"] = null;
+                    $response["imagen"] = null;
                     $response["updated_at"] = null;
-                    $response["text"] = null;
+                    $response["texto"] = null;
                     $response["token_pc"] = $token_pc;
-                    $rows = TempFingerprint::where("token_pc", $token_pc)->where("option", "=", "read")->first();
+
+
+                    $rows = HuellasTemp::where("token_pc", $token_pc)->where("option", "=", "read")->first();
                     if (!empty($rows)) {
                         $response["token_pc"] = $token_pc;
                         $response["updated_at"] = strtotime($rows->updated_at);
                         $response["option"] = $rows->option;
-                        $response["user_id"] = $rows->user_id;
-                        $response["name"] = $rows->name;
-                        $response["image"] = $rows->image;
-                        $response["text"] = $rows->text;
-                        if (!empty($response["image"])) {
-                            TempFingerprint::where("token_pc", $token_pc)->update(["image" => null]);
+                        $response["persona_id"] = $rows->persona_id;
+                        $response["nombre"] = $rows->nombre;
+                        $response["imagen"] = $rows->imagen;
+                        $response["nombre"] = $rows->nombre;
+                        if (!empty($response["imagen"])) {
+                            HuellasTemp::where("token_pc", $token_pc)->update(["imagen" => null]);
                         }
                     }
                     echo 'data: ' . json_encode($response) . "\n\n";
@@ -71,8 +80,9 @@ class SseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request) {
-        $result = TempFingerprint::where("token_pc", $request->token_pc)
-                ->update(["option" => "close", "image" => null]);
+        \Log::debug(__METHOD__);
+        $result = HuellasTemp::where("token_pc", $request->token_pc)
+                ->update(["option" => "close", "imagen" => null]);
         $arrayResponse = array("code" => $result, "message" => "Ok");
         return $arrayResponse;
     }

@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\RegistroImplicados\CatEstatusInvestigacion;
 use App\Models\RegistroImplicados\DomicilioDelito;
+use App\Models\RegistroImplicados\Personas;
 
-class CarpetaInvestigacion extends Model
+class Expediente extends Model
 {
-	protected $table = "carpeta_investigacion";
+	protected $table = "expediente";
 	// protected $primaryKey = 'admin_id';
 
 	protected $fillable = [
@@ -32,5 +33,10 @@ class CarpetaInvestigacion extends Model
 	public function DomicilioDelito()
 	{
 		return $this->hasOne(DomicilioDelito::class,'carpeta_investigacion_id','id');
+	}
+
+	public function Personas()
+	{
+		return $this->belongsToMany(Personas::class,'implicados','carpeta_investigacion_id','persona_id');
 	}
 }
