@@ -1,13 +1,13 @@
 .link-primary, .link-primary:hover, .link-primary:focus {
-    color: #691c32 !important;
+    color: #003765 !important;
 }
 .btn.btn-primary {
     color: #fff;
-    border-color: #691c32;
-    background-color: #691c32;
+    border-color: #003765;
+    background-color: #003765;
 }
 .btn-check:checked + .btn.btn-primary, .btn-check:active + .btn.btn-primary, .btn.btn-primary:focus:not(.btn-active), .btn.btn-primary:hover:not(.btn-active), .btn.btn-primary:active:not(.btn-active), .btn.btn-primary.active, .btn.btn-primary.show, .show > .btn.btn-primary {
     color: var(--kt-primary-inverse);
     border-color: var(--kt-primary-active);
-    background-color: #912543  !important;
+    background-color: #003765  !important;
 }

@@ -1,19 +1,19 @@
 .link-primary, .link-primary:hover, .link-primary:focus {
-    color: #691c32 !important;
+    color: #003765 !important;
 }
 .btn.btn-primary {
     color: #fff;
-    border-color: #691c32;
-    background-color: #691c32;
+    border-color: #003765;
+    background-color: #003765;
 }
 .btn-check:checked + .btn.btn-primary, .btn-check:active + .btn.btn-primary, .btn.btn-primary:focus:not(.btn-active), .btn.btn-primary:hover:not(.btn-active), .btn.btn-primary:active:not(.btn-active), .btn.btn-primary.active, .btn.btn-primary.show, .show > .btn.btn-primary {
     color: var(--kt-primary-inverse);
     border-color: var(--kt-primary-active);
-    background-color: #912543  !important;
+    background-color: #003765  !important;
 }
 
 .bg-cdmx{
-    background-color: #912543  !important;
+    background-color: #003765  !important;
 }
 
 /***** SE AGREGA CURSOR POINTER PARA LOS CHECK *****/
@@ -25,21 +25,21 @@
 }
 
 .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.endRange.nextMonthDay{
-    background-color: #912543  !important;
+    background-color: #003765  !important;
 }
 
 .form-control.round-cmdx:focus {
-    border-color: #912543;
+    border-color: #003765;
     box-shadow: 0 0 0 0.25rem rgba(80, 205, 137, 0.25);
 }
 
 .bg-primary {
     --kt-bg-rgb-color: var(--kt-primary-rgb);
-    background-color: #235B4E!important;
+    background-color: #003765!important;
 }
 
 .btn.btn-active-color-primary.active i{
-    color: #691c32;
+    color: #003765;
 }
 
 .btn-check:checked + .btn.btn-active-color-primary i,
@@ -51,37 +51,37 @@
 .btn.btn-active-color-primary.active .svg-icon, .btn.btn-active-color-primary.show i,
 .btn.btn-active-color-primary.show .svg-icon, .show > .btn.btn-active-color-primary i,
 .show > .btn.btn-active-color-primary .svg-icon {
-  color: #691c32;
+  color: #003765;
 }
 /*========================================
 =            CSS DARK SIDEBAR            =
 ========================================*/
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-title, [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-title {
-  color: #9F2241;
+  color: #003765;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-icon .svg-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-icon i, [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon .svg-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon i {
-  color: #9F2241;
+  color: #003765;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-bullet .bullet, [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-bullet .bullet {
-  background-color: #9F2241;
+  background-color: #003765;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.here > .menu-link .menu-bullet .bullet {
-  background-color: #9F2241;
+  background-color: #003765;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-title {
-  color: #9F2241;
+  color: #003765;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-icon .svg-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-icon i {
-  color: #9F2241;
+  color: #003765;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-bullet .bullet {
-  background-color: #9F2241;
+  background-color: #003765;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active {
   transition: color 0.2s ease;
@@ -89,59 +89,59 @@
   color: var(--kt-primary-inverse);
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-title {
-  color: #235B4E;
+  color: #003765;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-icon .svg-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-icon i {
-  color: #235B4E;
+  color: #003765;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-bullet .bullet {
-  background-color: #235B4E;
+  background-color: #003765;
 }
 /*=========================================
 =            CSS LIGHT SIDEBAR            =
 =========================================*/
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-title, [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-title {
-  color: #235B4E;
+  color: #003765;
 }
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-icon,
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-icon .svg-icon,
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-icon i, [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon,
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon .svg-icon,
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon i {
-  color: #235B4E;
+  color: #003765;
 }
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-bullet .bullet, [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-bullet .bullet {
-  background-color: #235B4E;
+  background-color: #003765;
 }
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-bullet .bullet {
-  background-color: #235B4E;
+  background-color: #003765;
 }
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.here > .menu-link .menu-title {
-  color: #235B4E;
+  color: #003765;
 }
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.here > .menu-link .menu-icon,
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.here > .menu-link .menu-icon .svg-icon,
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.here > .menu-link .menu-icon i {
-  color: #235B4E;
+  color: #003765;
 }
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item.here > .menu-link .menu-bullet .bullet {
-  background-color: #235B4E;
+  background-color: #003765;
 }
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item .menu-link.active {
   transition: color 0.2s ease;
-  background-color: #DDc9A3;
+  background-color: #8BA1A6;
   color: var(--kt-primary);
 }
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-title {
-  color: #9F2241;
+  color: #003765;
 }
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-icon,
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-icon .svg-icon,
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-icon i {
-  color: #9F2241;
+  color: #003765;
 }
 [data-kt-app-layout=light-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-bullet .bullet {
-  background-color: #9F2241;
+  background-color: #003765;
 }
