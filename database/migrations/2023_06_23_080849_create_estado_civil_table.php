@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('estado_civil', function (Blueprint $table) {
             $table->increments('id');
             $table->string('estado_civil')->nullable();
+            $table->boolean('activo')->default(1);
             $table->timestamps();
         });
     }

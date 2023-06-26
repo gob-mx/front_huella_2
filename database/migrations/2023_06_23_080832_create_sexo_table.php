@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('sexo', function (Blueprint $table) {
             $table->increments('id');
             $table->string('sexo')->nullable();
+            $table->boolean('activo')->default(1);
             $table->timestamps();
         });
     }

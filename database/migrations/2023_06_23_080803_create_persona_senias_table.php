@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('senia_particular', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('senia_particular')->nullable();
-            $table->string('nombre_archivo')->nullable();
-            $table->string('url')->nullable();
+        Schema::create('persona_senias', function (Blueprint $table) {
+            $table->unsignedBigInteger('persona_id')->nullable();
+            $table->unsignedBigInteger('senias_id')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('senia_particular');
+        Schema::dropIfExists('persona_senia_particular');
     }
 };

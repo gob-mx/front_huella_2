@@ -297,10 +297,49 @@ return array(
             ),
         ),
 
-        //// Módulos
+        //// Expediente
         array(
             'classes' => array('content' => 'pt-8 pb-2'),
-            'content' => '<span class="menu-section text-muted text-uppercase fs-8 ls-1">Módulos</span>',
+            'content' => '<span class="menu-section text-muted text-uppercase fs-8 ls-1">Expediente</span>',
+        ),
+
+        // Captura Inicial
+        array(
+            'title'     => 'Captura Inicial',
+            'icon'      => array(
+                'svg'   => theme()->getSvgIcon("demo1/media/icons/duotune/communication/com006.svg", "svg-icon-2"),
+                'font'  => '<i class="bi bi-person fs-2"></i>',
+            ),
+            'classes'    => array('item' => 'menu-accordion'),
+            'attributes' => array(
+                "data-kt-menu-trigger" => "click",
+            ),
+            'sub'        => array(
+                'class' => 'menu-sub-accordion menu-active-bg',
+                'items' => array(
+                    array(
+                        'title'  => 'Datos Biográficos y Huellas Dactilares',
+                        'path'   => 'expediente',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                    array(
+                        'title'  => 'Agregar Biometrías (Face e Iris)',
+                        'path'   => 'expediente/biometrias',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                    array(
+                        'title'  => 'Consulta',
+                        'path'   => 'expediente/consulta',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                ),
+            ),
+        ),
+
+        //// Demo FingerPrint 4500
+        array(
+            'classes' => array('content' => 'pt-8 pb-2'),
+            'content' => '<span class="menu-section text-muted text-uppercase fs-8 ls-1">Demo FingerPrint 4500</span>',
         ),
 
         // Registro del Implicado

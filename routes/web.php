@@ -14,11 +14,10 @@ use App\Http\Controllers\Administracion\RolesController;
 use App\Http\Controllers\Administracion\PermisosController;
 use App\Http\Controllers\Administracion\ModulosController;
 use App\Http\Controllers\Registro\ImplicadosController;
-
 use App\Http\Controllers\DpfpApi\UserRestApiController;
 use App\Http\Controllers\DpfpApi\TempFingerprintController;
-
 use App\Http\Controllers\Registro\PersonaRestApiController;
+use App\Http\Controllers\Expediente\ExpedienteBiometricoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -155,6 +154,11 @@ Route::middleware('auth')->group(function () {
     Route::get("/get-finger/{persona}", [UserRestApiController::class, "get_finger"])->name("get_finger");
     Route::get('/huella/comparacion', function(){
         return view('dpfp_views.finger_map');
+    });
+
+    // Administracion pages
+     Route::prefix('expediente')->name('expediente.')->group(function () {
+        Route::resource('/', ExpedienteBiometricoController::class);
     });
 
 });

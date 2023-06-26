@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('situacion_persona', function (Blueprint $table) {
             $table->increments('id');
             $table->string('situacion_persona')->nullable();
+            $table->boolean('activo')->default(1);
             $table->timestamps();
         });
     }

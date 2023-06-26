@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nacionalidad', function (Blueprint $table) {
+        Schema::create('senia_particular', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nacionalidad')->nullable();
+            $table->string('senia_particular')->nullable();
             $table->boolean('activo')->default(1);
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nacionalidad');
+        Schema::dropIfExists('senia_particular');
     }
 };

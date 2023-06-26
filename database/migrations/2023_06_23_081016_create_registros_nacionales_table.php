@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('registros_nacionales', function (Blueprint $table) {
             $table->increments('id');
             $table->string('registros_nacionales')->nullable();
+            $table->boolean('activo')->default(1);
             $table->timestamps();
         });
     }

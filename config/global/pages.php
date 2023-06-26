@@ -213,6 +213,36 @@ return array(
             ),
         ),
     ),
+
+    'expediente' => array(
+        'title'  => 'Captura Expediente',
+        'assets' => array(
+            'custom' => array(
+                'css' => array(),
+                'js'  => array(
+                    'plugins/custom/datatables/datatables.bundle.js',
+                    'js/expediente/captura.js',
+                ),
+            ),
+        ),
+        // '*' => array(
+        //     'edit'  => array(
+        //         'title'  => 'Actualiza Carpeta e Implicados',
+        //         'path'   => 'registro/implicados/edit',
+        //         'assets' => array(
+        //             'custom' => array(
+        //                 'css' => array(),
+        //                 'js'  => array(
+        //                     'plugins/custom/datatables/datatables.bundle.js',
+        //                     'js/registro/implicados_editar.js',
+        //                     'js/registro/agrega_implicado.js',
+        //                     'js/registro/funciones.js',
+        //                 ),
+        //             ),
+        //         ),
+        //     ),
+        // ),
+    ),
     
     'registro' => array(
         'implicados'  => array(
