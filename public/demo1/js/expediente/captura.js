@@ -80,6 +80,98 @@ var KTRegistroImplicado = function () {
 		);
 	}
 
+	var handleForm = function () {
+		submitButton.addEventListener('click', function (e) {
+			e.preventDefault();
+
+			// Validate form
+			validation.validate().then(function (status) {
+				if (status === 'Valid') {
+
+					// submitButton.setAttribute('data-kt-indicator', 'on');
+					// submitButton.disabled = true;
+
+					// let dataForm = new FormData(form);
+					var dataForm = $('#kt_captura_inicial_form').serialize();
+					console.log(dataForm);
+					// return;
+
+					$.ajax({
+						headers: {
+						   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						},
+						url: base_url + 'expediente',
+						type: 'POST',
+						dataType: 'JSON',
+						data: dataForm,
+						beforeSend: function() {
+							submitButton.setAttribute('data-kt-indicator', 'on');
+							submitButton.disabled = true;
+						},
+						complete: function(respuesta) {
+							submitButton.removeAttribute('data-kt-indicator');
+							submitButton.disabled = false;
+						},
+						success: function (data) {
+							if (data.st) {
+
+								Swal.fire(data.title, data.msg, data.type);
+
+								window.location = base_url + 'expediente/'+data.expediente_id+'/edit';
+
+								// Swal.fire({
+								// 	title: data.title,
+								// 	html: data.msg,
+								// 	icon: data.type,
+								// 	showConfirmButton: true,
+								// 	showCancelButton: false,
+								// 	stopKeydownPropagation: false,
+								// 	showDenyButton: false,
+								// 	allowOutsideClick: false,
+								// 	showCloseButton: false,
+								// 	buttonsStyling: false,
+								// 	confirmButtonText: "OK",
+								// 	cancelButtonText: "Cancelar",
+								// 	customClass: {
+								// 		confirmButton: "btn btn-primary",
+								// 		cancelButton: "btn btn-active-light"
+								// 	}
+								// }).then(function (result) {
+								// 	if (result.value) {
+								// 		if(data.redirect){
+								// 			window.location = base_url + 'administracion/usuarios/'+data.u_id+'/edit';
+								// 		}else{
+								// 			window.location.reload();
+
+								// 		}
+								// 	}
+								// });
+							}else{
+								Swal.fire(data.title, data.msg, data.type);
+							}
+						},
+						error: function (xhr) {
+							submitButton.removeAttribute('data-kt-indicator');
+							submitButton.disabled = false;
+							Swal.fire('¡ERROR!', xhr.responseText, 'error');
+						}
+					});
+				} else {
+					// Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+					Swal.fire({
+						text: "Lo sentimos, parece que se han detectado algunos errores, inténtalo de nuevo.",
+						icon: "error",
+						buttonsStyling: false,
+						confirmButtonText: "Revisar formulario",
+						customClass: {
+							confirmButton: "btn btn-primary"
+						}
+					});
+				}
+			});
+		});
+	}
+
 	// Public methods
 	return {
 		init: function () {
@@ -88,7 +180,7 @@ var KTRegistroImplicado = function () {
 
 			initForm();
 			initValidation();
-			// handleForm();
+			handleForm();
 		}
 	}
 }();

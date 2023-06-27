@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ExpedienteBiometrico extends Model
 {
-	protected $table = "personas";
+	protected $table = "expediente_biometrico";
 
 	protected $fillable = [
 		'codigo_delito',

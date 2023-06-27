@@ -7,7 +7,7 @@
 <div class="card card-flush">
 	<div class="card-body">
 
-		<form id="kt_captura_inicial_form" class="form" method="post" action="{{ route('registro.implicados.store') }}">
+		<form id="kt_captura_inicial_form" class="form" method="post" action="{{ route('expediente.store') }}">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}" onkeyup="upper(this)" />
 			<div class="row mb-7">
 				<div class="col-md-12 text-center">
@@ -454,7 +454,7 @@
 				<div class="col-md-7 offset-md-5">
 					<div class="d-flex">
 						<button type="reset" data-kt-ecommerce-settings-type="cancel" class="btn btn-light me-3">Cancelar</button>
-						<button type="submit" data-kt-ecommerce-settings-type="submit" class="btn btn-primary" id="kt_captura_inicial_submit">
+						<button type="button" data-kt-ecommerce-settings-type="submit" class="btn btn-primary" id="kt_captura_inicial_submit">
 							<span class="indicator-label">Guadar</span>
 							<span class="indicator-progress">Espere Por Favor...
 							<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

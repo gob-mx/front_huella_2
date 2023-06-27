@@ -157,9 +157,9 @@ Route::middleware('auth')->group(function () {
     });
 
     // Administracion pages
-     Route::prefix('expediente')->name('expediente.')->group(function () {
-        Route::resource('/', ExpedienteBiometricoController::class);
-    });
+    // Route::prefix('expediente')->name('expediente')->group(function () {
+    Route::resource('expediente', ExpedienteBiometricoController::class);
+    // });
 
 });
 

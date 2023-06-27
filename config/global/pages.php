@@ -225,23 +225,30 @@ return array(
                 ),
             ),
         ),
-        // '*' => array(
-        //     'edit'  => array(
-        //         'title'  => 'Actualiza Carpeta e Implicados',
-        //         'path'   => 'registro/implicados/edit',
-        //         'assets' => array(
-        //             'custom' => array(
-        //                 'css' => array(),
-        //                 'js'  => array(
-        //                     'plugins/custom/datatables/datatables.bundle.js',
-        //                     'js/registro/implicados_editar.js',
-        //                     'js/registro/agrega_implicado.js',
-        //                     'js/registro/funciones.js',
-        //                 ),
-        //             ),
-        //         ),
-        //     ),
-        // ),
+        '*' => array(
+            'edit'  => array(
+                'title'  => 'Actualiza Espediente e Implicado',
+                'path'   => 'expediente/edit',
+                'assets' => array(
+                    'custom' => array(
+                        'css' => array(
+                            // 'plugins/custom/datatables/datatables.bundle.css',
+                            // 'plugins/global/plugins.bundle.css',
+                            // 'css/style.bundle.css',
+                        ),
+                        'js'  => array(
+                            'plugins/custom/datatables/datatables.bundle.js',
+                            'js/widgets.bundle.js',
+                            // 'js/custom/widgets.js',
+                            // 'js/custom/apps/chat/chat.js',
+                            // 'js/registro/implicados_editar.js',
+                            // 'js/registro/agrega_implicado.js',
+                            // 'js/registro/funciones.js',
+                        ),
+                    ),
+                ),
+            ),
+        ),
     ),
     
     'registro' => array(
