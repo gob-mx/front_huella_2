@@ -140,7 +140,7 @@ class ExpedienteBiometricoController extends Controller
 
 		$expediente = ExpedienteBiometrico::find($id);
 
-		// dd($expediente);
+		// dd($expediente->Persona->Subject);
 		
 
 		return view('expediente.expediente_detalle',

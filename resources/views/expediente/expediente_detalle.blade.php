@@ -30,6 +30,7 @@
 
 	<div class="tab-content" id="myTabContent">
 		<div class="tab-pane fade show active" id="kt_biograficos" role="tabpanel">
+
 			<div class="row mt-5">
 				<div class="card card-flush shadow-sm">
 					<div class="card-body">
@@ -53,110 +54,231 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-12 fs-6">
-								<div class="fw-bold fs-4 text-gray-500">BIOGRÁFICOS</div>
+								<div class="fw-bold fs-4 text-gray-500">PERSONALES</div>
 								<div class="py-2"></div>
 							</div>
 							<div class="col-md-3 fs-6">
 								<div class="fw-bold">NOMBRE</div>
-								<div class="text-gray-600">{{ $persona->nombre ?? 'NOMBRE' }}</div>
+								<div class="text-gray-600">{{ $expediente->Persona->nombre ?? 'NOMBRE' }}</div>
 							</div>
 							<div class="col-md-3 fs-6">
 								<div class="fw-bold">APELLIDO PATERNO</div>
-								<div class="text-gray-600">{{ $persona->apellido_paterno ?? 'APELLIDO PATERNO' }}</div>
+								<div class="text-gray-600">{{ $expediente->Persona->apellido_paterno ?? 'APELLIDO PATERNO' }}</div>
 							</div>
 							<div class="col-md-3 fs-6">
 								<div class="fw-bold">APELLIDO MATERNO</div>
-								<div class="text-gray-600">{{ $persona->apellido_materno ?? 'APELLIDO MATERNO' }}</div>
+								<div class="text-gray-600">{{ $expediente->Persona->apellido_materno ?? 'APELLIDO MATERNO' }}</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 fs-6">
+								<div class="py-2"></div>
+							</div>
+							<div class="col-md-3 fs-6">
+								<div class="fw-bold">SEXO</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Sexo->sexo ?? 'SEXO' }}</div>
+							</div>
+							<div class="col-md-3 fs-6">
+								<div class="fw-bold">ESTADO CIVIL</div>
+								<div class="text-gray-600">{{ $expediente->Persona->EstadoCivil->estado_civil ?? 'ESTADO CIVIL' }}</div>
+							</div>
+							<div class="col-md-3 fs-6">
+								<div class="fw-bold">CURP</div>
+								<div class="text-gray-600">{{ $expediente->Persona->curp ?? 'CURP' }}</div>
+							</div>
+							<div class="col-md-3 fs-6">
+								<div class="fw-bold">NACIONALIDAD</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Nacionalidad->nacionalidad ?? 'NACIONALIDAD' }}</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 fs-6">
+								<div class="py-2"></div>
+							</div>
+							<div class="col-md-3 fs-6">
+								<div class="fw-bold">PAÍS DE NACIMIENTO</div>
+								<div class="text-gray-600">{{ $expediente->Persona->pais_nacimiento ?? 'PAÍS DE NACIMIENTO' }}</div>
+							</div>
+							<div class="col-md-3 fs-6">
+								<div class="fw-bold">ENTIDAD DE NACIMIENTO</div>
+								<div class="text-gray-600">{{ $expediente->Persona->entidad_nacimiento ?? 'ENTIDAD DE NACIMIENTO' }}</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-				{{-- <div class="col-md-4 pb-5">
-					<div class="card card-flush shadow-sm">
-						<div class="card-header">
-							<h3 class="card-title fw-bold fs-4 text-gray-500">CARPETA DE INVESTIGACIÓN {{ $expediente->carpeta_investigacion ?? '' }}</h3>
-							<div class="card-toolbar">
-								<h5 class="fw-bold fs-4 text-gray-500 pt-2"> </h5>
+			<div class="row mt-5">
+				<div class="card card-flush shadow-sm">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12 fs-6">
+								<div class="fw-bold fs-4 text-gray-500">DOMICILIO</div>
+								<div class="py-2"></div>
 							</div>
-						</div>
-						<div class="card-body py-0">
-
-							<div class="row">
-								<div class="col-md-12">
-									<div class="pb-5 fs-6">
-										<div class="fw-bold">DELITOS(S)</div>
-										<div class="text-gray-600">{{ $expediente->delito ?? 'DELITOS' }}</div>
-										<div class="fw-bold mt-5">DESCRIPCION</div>
-										<div class="text-gray-600">{{ $expediente->descripcion_delito ?? 'descripcion_delito' }}</div>
-										<div class="fw-bold mt-5">OBSERVACIONES</div>
-										<div class="text-gray-600">{{ $expediente->observaciones ?? '' }}</div>
-									</div>
+							<div class="col-md-12 fs-6">
+								{{-- <div class="fw-bold">NOMBRE</div> --}}
+								<div class="text-gray-600">
+									{{ $expediente->Persona->Domicilio->calle }}
+									{{ $expediente->Persona->Domicilio->numero_exterior }}
+									{{ $expediente->Persona->Domicilio->numero_interior }}
+									{{ $expediente->Persona->Domicilio->colinia }}
+									{{ $expediente->Persona->Domicilio->delegacion_municipio }}
+									{{ $expediente->Persona->Domicilio->codigo_postal }}
+									{{ $expediente->Persona->Domicilio->ciudad }}
+									{{ $expediente->Persona->Domicilio->pais }}
 								</div>
 							</div>
-
 						</div>
 					</div>
-				</div> --}}
+				</div>
+			</div>
 
-				{{-- <div class="col-md-5 pb-5">
-					<div class="card card-flush shadow-sm">
-						<div class="card-header">
-							<h3 class="card-title fw-bold fs-4 text-gray-500">DOMICILIO DEL DELITO</h3>
-							<div class="card-toolbar">
-								<h5 class="fw-bold fs-4 text-gray-500 pt-2"> </h5>
+			{{-- <div class="row mt-5">
+				<div class="card card-flush shadow-sm">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12 fs-6">
+								<div class="fw-bold fs-4 text-gray-500">SEÑAS PARTICULARES</div>
+								<div class="py-2"></div>
 							</div>
-						</div>
-						<div class="card-body py-0">
-
-							<div class="row">
-								<div class="col-md-6">
-									<div class="pb-0 fs-6">
-										<div class="fw-bold">PAIS</div>
-										<div class="text-gray-600">{{ $expediente->DomicilioDelito->pais ?? '' }}</div>
-										<div class="fw-bold mt-5">CALLE</div>
-										<div class="text-gray-600">{{ $expediente->DomicilioDelito->calle ?? '' }}</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="pb-0 fs-6">
-										<div class="fw-bold">COLONIA</div>
-										<div class="text-gray-600">{{ $expediente->DomicilioDelito->colonia ?? '' }}</div>
-										<div class="fw-bold mt-5">MUNICIPIO</div>
-										<div class="text-gray-600">{{ $expediente->DomicilioDelito->delegacion_municipio ?? '' }}</div>
-									</div>
-								</div>
+							<div class="col-md-12 fs-6">
+								<div class="fw-bold">SEÑAS</div>
+								<div class="text-gray-600">{{ $senias->senia ?? 'SEÑA PARTICULAR' }}</div>
 							</div>
-							<div class="row">
-								<div class="col-md-4">
-									<div class="pb-5 fs-6">
-										<div class="fw-bold mt-5">EXTERIOR</div>
-										<div class="text-gray-600">{{ $expediente->DomicilioDelito->numero_interior ?? '' }}</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="pb-5 fs-6">
-										<div class="fw-bold mt-5">INTERIOR</div>
-										<div class="text-gray-600">{{ $expediente->DomicilioDelito->numero_exterior ?? '' }}</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="pb-5 fs-6">
-										<div class="fw-bold mt-5">CODIGO POSTAL</div>
-										<div class="text-gray-600">{{ $expediente->DomicilioDelito->codigo_postal ?? '' }}</div>
-									</div>
-								</div>
-							</div>
-
 						</div>
 					</div>
-				</div> --}}
+				</div>
+			</div> --}}
+
+			<div class="row mt-5">
+				<div class="card card-flush shadow-sm">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12 fs-6">
+								<div class="fw-bold fs-4 text-gray-500">EXPEDIENTE</div>
+								<div class="py-2"></div>
+							</div>
+							<div class="col-md-4 fs-6">
+								<div class="fw-bold">CODIGO DELITO</div>
+								<div class="text-gray-600">{{ $expediente->codigo_delito ?? 'CODIGO DELITO' }}</div>
+							</div>
+							<div class="col-md-4 fs-6">
+								<div class="fw-bold">TIPO REGISTRO</div>
+								<div class="text-gray-600">{{ $expediente->TipoRegistro->tipo_registro ?? 'TIPO REGISTRO' }}</div>
+							</div>
+							<div class="col-md-4 fs-6">
+								<div class="fw-bold">TIPO POLICIA</div>
+								<div class="text-gray-600">{{ $expediente->tipo_policia ?? 'TIPO POLICIA' }}</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="py-2"></div>
+							<div class="col-md-4 fs-6">
+								<div class="fw-bold">SITUACION DE PERSONA</div>
+								<div class="text-gray-600">{{ $expediente->SituacionPersona->situacion_persona ?? 'SITUACION DE PERS' }}</div>
+							</div>
+							<div class="col-md-4 fs-6">
+								<div class="fw-bold">INFORMACION</div>
+								<div class="text-gray-600">{{ $expediente->informacion ?? 'INFORMACI' }}</div>
+							</div>
+							<div class="col-md-4 fs-6">
+								<div class="fw-bold">PELIGROSIDAD</div>
+								<div class="text-gray-600">{{ $expediente->Peligrosidad->peligrosidad ?? 'PELIGROSIDA' }}</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="py-2"></div>
+							<div class="col-md-4 fs-6">
+								<div class="fw-bold">CONTACTO AGENCIA</div>
+								<div class="text-gray-600">{{ $expediente->contacto_agencia ?? 'CONTACTO AGENC' }}</div>
+							</div>
+							<div class="col-md-4 fs-6">
+								<div class="fw-bold">VINCULO CON LOS REGISTROS NACIONALES</div>
+								<div class="text-gray-600">{{ $expediente->RegistrosNacionales->registros_nacionales ?? 'REGISTROS NACIO' }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<div class="tab-pane fade show" id="kt_huellas" role="tabpanel">
-			<div class="row">
-				<h1>HUELLAS</h1>
+
+			<div class="row mt-5">
+				<div class="card card-flush shadow-sm">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12 fs-6">
+								<div class="py-2"></div>
+							</div>
+							<div class="col-md-2 fs-6">
+								<div class="fw-bold">SUBJECT ID</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Subject->SubjectId ?? 'SUBJECT ID' }}</div>
+							</div>
+							{{-- <div class="col-md-2 fs-6">
+								<div class="fw-bold">GALERYID</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Subject->GaleryId ?? 'GALERYID' }}</div>
+							</div> --}}
+							<div class="col-md-2 fs-6">
+								<div class="fw-bold">FIRST NAME</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Subject->FirstName ?? 'FIRST NAME' }}</div>
+							</div>
+							<div class="col-md-2 fs-6">
+								<div class="fw-bold">LAST NAME</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Subject->LastName ?? 'LAST NAME' }}</div>
+							</div>
+							<div class="col-md-2 fs-6">
+								<div class="fw-bold">YEAR OF BIRTH</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Subject->YearOfBirth ?? 'YEAR OF BIRTH' }}</div>
+							</div>
+							{{-- <div class="col-md-2 fs-6">
+								<div class="fw-bold">GENDERSTRING</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Subject->GenderString ?? 'GENDERSTRING' }}</div>
+							</div> --}}
+							<div class="col-md-2 fs-6">
+								<div class="fw-bold">COUNTRY</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Subject->Country ?? 'COUNTRY' }}</div>
+							</div>
+							<div class="col-md-2 fs-6">
+								<div class="fw-bold">City</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Subject->City ?? 'City' }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			<div class="row mt-5">
+				<div class="card card-flush shadow-sm">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12 fs-6">
+								<div class="py-2"></div>
+							</div>
+							<div class="col-md-2 fs-6">
+								<div class="fw-bold">TEMPLATE</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Subject->SubjectId ?? 'TEMPLATE' }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="card card-flush shadow-sm">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12 fs-6">
+								<div class="py-2"></div>
+							</div>
+							<div class="col-md-2 fs-6">
+								<div class="fw-bold">ENROLL DATA</div>
+								<div class="text-gray-600">{{ $expediente->Persona->Subject->SubjectId ?? 'ENROLL DATA' }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 
