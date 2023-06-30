@@ -2,8 +2,8 @@
 	<div class="card card-flush h-xl-100">
 		<div class="card-header pt-7">
 			<h3 class="card-title align-items-start flex-column">
-				<span class="card-label fw-bold text-gray-800">Implicados</span>
-				<span class="text-gray-400 mt-1 fw-semibold fs-6">Expediente {{ $expediente->carpeta_investigacion ?? '' }}</span>
+				<span class="card-label fw-bold text-gray-800">Implicado</span>
+				<span class="text-gray-400 mt-1 fw-semibold fs-6">Expediente {{ $expediente->id ?? '' }}</span>
 			</h3>
 			{{-- <div class="card-toolbar">
 				<a href="../../demo1/dist/apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">History</a>
@@ -15,11 +15,11 @@
 					<thead>
 						<tr class="fs-7 fw-bold text-gray-400 border-bottom-0">
 							<th class="p-0 pb-3 min-w-100px text-start">IMPLICADO</th>
-							<th class="p-0 pb-3 min-w-100px text-end">ALIAS</th>
-							<th class="p-0 pb-3 min-w-100px text-end">RFC</th>
+							<th class="p-0 pb-3 min-w-100px text-end">CIB</th>
+							{{-- <th class="p-0 pb-3 min-w-100px text-end">RFC</th> --}}
 							<th class="p-0 pb-3 min-w-125px text-end">CURP</th>
 							<th class="p-0 pb-3 min-w-100px text-end">NACIONALIDAD</th>
-							<th class="p-0 pb-3 w-80px text-end">ENROLAR</th>
+							<th class="p-0 pb-3 w-160px text-end">ENROLAR HUELLAS</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -31,23 +31,23 @@
 											<img src="{{ asset('avatars/blank.png') }}" class="" alt="" />
 										</div>
 										<div class="d-flex justify-content-start flex-column">
-											<a href="" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{ $persona->nombre ?? '' }}</a>
-											<span class="text-gray-400 fw-semibold d-block fs-7">{{ $persona->apellido_paterno ?? '' }} {{ $persona->apellido_materno ?? '' }}</span>
+											<a href="" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{ $expediente->persona->nombre ?? '' }}</a>
+											<span class="text-gray-400 fw-semibold d-block fs-7">{{ $expediente->persona->apellido_paterno ?? '' }} {{ $expediente->persona->apellido_materno ?? '' }}</span>
 										</div>
 									</div>
 								</td>
 								<td class="text-end pe-0">
-									<span class="text-gray-600 fw-bold fs-6">{{ $persona->alias ?? 'ALIAS (APODO)' }}</span>
+									<span class="text-gray-600 fw-bold fs-6">{{ $expediente->CIB ?? '123456789QWERTY' }}</span>
 								</td>
-								<td class="text-end pe-0">
+								{{-- <td class="text-end pe-0">
 									<span class="text-gray-600 fw-bold fs-6">{{ $persona->rfc ?? 'RFC' }}</span>
-								</td>
+								</td> --}}
 								<td class="pe-0">
 									<div class="d-flex align-items-center justify-content-end">
 										<div class="symbol symbol-30px me-3">
 											{{-- <img src="assets/media/avatars/300-13.jpg" class="" alt="" /> --}}
 										</div>
-										<span class="text-gray-600 fw-bold d-block fs-6">{{ $persona->curp ?? 'CURP' }}</span>
+										<span class="text-gray-600 fw-bold d-block fs-6">{{ $expediente->persona->curp ?? 'CURP' }}</span>
 									</div>
 								</td>
 								<td class="text-end pe-0">
