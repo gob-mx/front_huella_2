@@ -255,9 +255,9 @@
 							<div class="col-md-12 fs-6">
 								<div class="py-2"></div>
 							</div>
-							<div class="col-md-2 fs-6">
+							<div class="col-md-12 fs-6">
 								<div class="fw-bold">TEMPLATE</div>
-								<div class="text-gray-600">{{ $expediente->Persona->Subject->SubjectId ?? 'TEMPLATE' }}</div>
+								<div class="text-gray-600">{{ base64_encode($expediente->Persona->Subject->Template) ?? 'TEMPLATE' }}</div>
 							</div>
 						</div>
 					</div>
@@ -270,9 +270,9 @@
 							<div class="col-md-12 fs-6">
 								<div class="py-2"></div>
 							</div>
-							<div class="col-md-2 fs-6">
+							<div class="col-md-12 fs-6">
 								<div class="fw-bold">ENROLL DATA</div>
-								<div class="text-gray-600">{{ $expediente->Persona->Subject->SubjectId ?? 'ENROLL DATA' }}</div>
+								<div class="text-gray-600">{{ base64_encode($expediente->Persona->Subject->EnrollData) ?? 'ENROLL DATA' }}</div>
 							</div>
 						</div>
 					</div>
