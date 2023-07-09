@@ -4,18 +4,24 @@
 		<a href="" class="btn btn-sm fw-bold btn-primary boton_edit" data-bs-toggle="modal" data-bs-target="#kt_lista_implicados_modal">Lista Implicados</a>
 	</x-slot>
 
-<div class="card card-flush">
-	<div class="card-body">
+	<form id="kt_captura_inicial_form" class="form" method="post" action="{{ route('expediente.store') }}">
+	<input type="hidden" name="_token" value="{{ csrf_token() }}" onkeyup="upper(this)" />
 
-		<form id="kt_captura_inicial_form" class="form" method="post" action="{{ route('expediente.store') }}">
-		<input type="hidden" name="_token" value="{{ csrf_token() }}" onkeyup="upper(this)" />
-			<div class="row mb-7">
+
+	<div class="card card-flush mb-5">
+		<div class="card-body">
+
+			<div class="row">
 				<div class="col-md-12 text-center">
 					<h1 class="label_carpeta">Registro Expediente</h1>
 					<div class="text-muted fw-bold fs-5">Los campos con (<label class="required"></label> ) son obligatorios</div>
 				</div>
 			</div>
+		</div>
+	</div>
 
+	<div class="card card-flush mb-5">
+		<div class="card-body">
 			<div class="m-0">
 				<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_carpeta_investigacion">
 					<div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
@@ -135,9 +141,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="separator separator-dashed"></div>
 			</div>
+		</div>
+	</div>
 
+	<div class="card card-flush mb-5">
+		<div class="card-body">
 			<div class="m-0">
 				<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_domicilio">
 					<div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
@@ -216,9 +225,12 @@
 					</div>
 
 				</div>
-				<div class="separator separator-dashed"></div>
 			</div>
+		</div>
+	</div>
 
+	<div class="card card-flush mb-5">
+		<div class="card-body">
 			<div class="m-0">
 				<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_senias_particulares">
 					<div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
@@ -268,9 +280,12 @@
 					</div>
 
 				</div>
-				<div class="separator separator-dashed"></div>
 			</div>
+		</div>
+	</div>
 
+	<div class="card card-flush mb-5">
+		<div class="card-body">
 			<div class="m-0">
 				<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_expediente">
 					<div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
@@ -388,9 +403,12 @@
 					</div>
 
 				</div>
-				<div class="separator separator-dashed"></div>
 			</div>
+		</div>
+	</div>
 
+	<div class="card card-flush mb-5">
+		<div class="card-body">
 			<div class="m-0">
 				<div class="d-flex align-items-center collapsible pt-3 toggle mb-0" data-bs-toggle="collapse" data-bs-target="#kt_claves">
 					<div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
@@ -447,7 +465,6 @@
 					</div>
 
 				</div>
-				<div class="separator separator-dashed"></div>
 			</div>
 
 			<div class="row py-5">
@@ -462,9 +479,10 @@
 					</div>
 				</div>
 			</div>
-		</form>
 
+		</div>
 	</div>
-</div>
+
+	</form>
 
 </x-base-layout>

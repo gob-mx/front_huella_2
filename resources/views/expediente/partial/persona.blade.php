@@ -37,7 +37,7 @@
 									</div>
 								</td>
 								<td class="text-end pe-0">
-									<span class="text-gray-600 fw-bold fs-6">{{ $expediente->CIB ?? '123456789QWERTY' }}</span>
+									<span class="text-gray-600 fw-bold fs-6">{{ str_pad($expediente->id, 10, '0', STR_PAD_LEFT) ?? '123456789QWERTY' }}</span>
 								</td>
 								{{-- <td class="text-end pe-0">
 									<span class="text-gray-600 fw-bold fs-6">{{ $persona->rfc ?? 'RFC' }}</span>
