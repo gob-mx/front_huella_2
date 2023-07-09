@@ -159,6 +159,8 @@ Route::middleware('auth')->group(function () {
     // Administracion pages
     // Route::prefix('expediente')->name('expediente')->group(function () {
     Route::resource('expediente', ExpedienteBiometricoController::class);
+    Route::get('expediente/template/{template}', [ExpedienteBiometricoController::class, 'template'])->name("expediente.template");
+    Route::get('expediente/enrolldata/{enrolldata}', [ExpedienteBiometricoController::class, 'enrolldata'])->name("expediente.enrolldata");
     // });
 
 });

@@ -256,7 +256,7 @@
 								<div class="py-2"></div>
 							</div>
 							<div class="col-md-12 fs-6">
-								<div class="fw-bold">TEMPLATE</div>
+								<div class="fw-bold">TEMPLATE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Descarga ==> <a href="{{ route('expediente.template',[$expediente->Persona->Subject->SubjectId]) }}" target="_blank">{{ 'Template_Id_'.$expediente->Persona->Subject->SubjectId.'.bin' }}</a> </div>
 								<div class="text-gray-600">{{ base64_encode($expediente->Persona->Subject->Template) ?? 'TEMPLATE' }}</div>
 							</div>
 						</div>
@@ -271,7 +271,7 @@
 								<div class="py-2"></div>
 							</div>
 							<div class="col-md-12 fs-6">
-								<div class="fw-bold">ENROLL DATA</div>
+								<div class="fw-bold">ENROLL DATA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Descarga ==> <a href="{{ route('expediente.enrolldata',[$expediente->Persona->Subject->SubjectId]) }}" target="_blank">{{ 'EnrollData_Id_'.$expediente->Persona->Subject->SubjectId.'.wsq' }}</a> </div>
 								<div class="text-gray-600">{{ base64_encode($expediente->Persona->Subject->EnrollData) ?? 'ENROLL DATA' }}</div>
 							</div>
 						</div>

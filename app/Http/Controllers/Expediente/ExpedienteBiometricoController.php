@@ -183,4 +183,36 @@ class ExpedienteBiometricoController extends Controller
 
 	}
 
+	public function template($template)
+	{
+		$expediente = ExpedienteBiometrico::find($template);
+		$file = $expediente->Persona->Subject->Template;
+
+		header('Content-Description: File Transfer');
+		header('Content-Type: application/octet-stream');
+		header('Content-Disposition: attachment; filename=Template_Id_'.$expediente->Persona->Subject->SubjectId.'.bin');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate');
+		header('Pragma: public');
+		header('Content-Length: ' . strlen($file));
+		echo $file;
+		exit();
+	}
+
+	public function enrolldata($enrolldata)
+	{
+		$expediente = ExpedienteBiometrico::find($enrolldata);
+		$file = $expediente->Persona->Subject->EnrollData;
+
+		header('Content-Description: File Transfer');
+		header('Content-Type: application/octet-stream');
+		header('Content-Disposition: attachment; filename=EnrollData_Id_'.$expediente->Persona->Subject->SubjectId.'.wsq');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate');
+		header('Pragma: public');
+		header('Content-Length: ' . strlen($file));
+		echo $file;
+		exit();
+	}
+
 }
