@@ -18,6 +18,7 @@ use App\Http\Controllers\DpfpApi\UserRestApiController;
 use App\Http\Controllers\DpfpApi\TempFingerprintController;
 use App\Http\Controllers\Registro\PersonaRestApiController;
 use App\Http\Controllers\Expediente\ExpedienteBiometricoController;
+use App\Http\Controllers\Expediente\ConsultaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -164,6 +165,10 @@ Route::middleware('auth')->group(function () {
         Route::get('enrolldata/{enrolldata}', [ExpedienteBiometricoController::class, 'enrolldata'])->name("enrolldata");
         // Route::resource('permisos', PermisosController::class);
         // Route::resource('modulos', ModulosController::class);
+        Route::get('consulta', [ConsultaController::class, 'webcam']);
+        Route::post('guardar_foto', [ConsultaController::class, 'guardaFoto']);
+        Route::get('ver_foto/{id}', [ConsultaController::class, 'ver_foto']);
+        
     });
 
 });
