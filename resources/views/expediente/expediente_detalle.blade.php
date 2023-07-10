@@ -1,12 +1,12 @@
 <x-base-layout>
 
 <x-slot name="actiontoolbar">
-	<a href="" class="btn btn-sm fw-bold btn-primary boton_edit" data-bs-toggle="modal" data-bs-target="#kt_modal_detalle_carpeta">Detalle Expediente</a>
+	<a href="" class="btn btn-sm fw-bold btn-primary boton_edit" data-bs-toggle="modal" data-bs-target="#kt_modal_detalle">Detalle Expediente</a>
 	<a href="" class="btn btn-sm fw-bold btn-primary boton_edit" data-bs-toggle="modal" data-bs-target="#kt_modal_agrega_implicado">Agregar Implicado</a>
 	{{-- <a href="{{ route('users_list') }}" class="btn btn-sm fw-bold btn-primary boton_edit">Enrolar Implicados</a> --}}
 </x-slot>
 
-{{-- @include('registro.implicados.partial.modal_detalle_carpeta') --}}
+@include('expediente.partial.expediente_edita')
 {{-- @include('registro.implicados.partial.modal_agrega_implicado') --}}
 
 
@@ -37,7 +37,7 @@
 						<div class="row">
 							<div class="col-md-4 fs-6">
 								<div class="fw-bold">CIB</div>
-								<div class="text-gray-600">{{ $expediente->CIB ?? '123456789QWERTY' }}</div>
+								<div class="text-gray-600">{{ str_pad($expediente->id, 10, '0', STR_PAD_LEFT) ?? '123456789QWERTY' }}</div>
 								{{-- <div class="py-2"></div> --}}
 							</div>
 							<div class="col-md-8 fs-6">

@@ -227,7 +227,7 @@ return array(
         ),
         '*' => array(
             'edit'  => array(
-                'title'  => 'Actualiza Espediente e Implicado',
+                'title'  => 'Actualiza Expediente e Implicado',
                 'path'   => 'expediente/edit',
                 'assets' => array(
                     'custom' => array(
@@ -239,6 +239,7 @@ return array(
                         'js'  => array(
                             'plugins/custom/datatables/datatables.bundle.js',
                             'js/widgets.bundle.js',
+                            'js/expediente/expediente_edita.js',
                             // 'js/custom/widgets.js',
                             // 'js/custom/apps/chat/chat.js',
                             // 'js/registro/implicados_editar.js',

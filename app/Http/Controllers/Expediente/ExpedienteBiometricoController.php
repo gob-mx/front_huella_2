@@ -51,12 +51,12 @@ class ExpedienteBiometricoController extends Controller
 		$rules = [
             'nombre' => 'required',
             'fecha_nacimiento' => 'required',
-            'sexo' => 'nullable',
+            'sexo_id' => 'required',
         ];
         $customMessages = [
             'nomnbre.required' => 'Campo <b>NOMBRE</b> es requerido',
             'fecha_nacimiento.required' => 'Campo <b>FECHA NACIMIENTO</b> es requerido',
-            'sexo.required' => 'Campo <b>SEXO</b> es requerido',
+            'sexo_id.required' => 'Campo <b>SEXO</b> es requerido',
         ];
 
         $errors = validateErrors($request, $rules, $customMessages);
@@ -160,7 +160,109 @@ class ExpedienteBiometricoController extends Controller
 
 	public function update(Request $request, $id)
 	{
-		dd('update');
+		$rules = [
+            'nombre' => 'required',
+            'fecha_nacimiento' => 'required',
+            'sexo_id' => 'required',
+        ];
+        $customMessages = [
+            'nomnbre.required' => 'Campo <b>NOMBRE</b> es requerido',
+            'fecha_nacimiento.required' => 'Campo <b>FECHA NACIMIENTO</b> es requerido',
+            'sexo_id.required' => 'Campo <b>SEXO</b> es requerido',
+        ];
+
+        $errors = validateErrors($request, $rules, $customMessages);
+
+        if($errors){
+            $response = [
+                'st'    => false,
+                'title' => "Campos Requeridos",
+                'msg'   => $errors,
+                'type'  => 'warning',
+            ];
+            // \Log::debug(__METHOD__.' ==> '.auth()->user()->id.' ==> '.auth()->user()->email." ==> validateErrors \n".json_encode($response));
+            return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
+        }
+
+        $input = $request->all();
+
+		DB::beginTransaction();
+
+        try {
+
+        		$expediente = ExpedienteBiometrico::find($id);
+        		$expediente->codigo_delito = $input['codigo_delito'];
+				$expediente->tipo_registro_id = $input['tipo_registro_id'];
+				$expediente->tipo_policia = $input['tipo_policia'];
+				$expediente->situacion_persona_id = $input['situacion_persona_id'];
+				$expediente->informacion = $input['informacion'];
+				$expediente->peligrosidad_id = $input['peligrosidad_id'];
+				$expediente->fecha_ingreso = $input['fecha_ingreso'];
+				$expediente->registros_nacionales_id = $input['registros_nacionales_id'];
+				$expediente->clave_identificacion_1 = $input['clave_identificacion_1'];
+				$expediente->clave_identificacion_2 = $input['clave_identificacion_2'];
+				$expediente->clave_identificacion_3 = $input['clave_identificacion_3'];
+				$expediente->contacto_agencia = $input['contacto_agencia'];
+				$expediente->comentarios = $input['comentarios'];
+        		$expediente->save();
+
+        		$persona = $expediente->Persona;
+				$persona->nombre = $input['nombre'];
+				$persona->apellido_paterno = $input['apellido_paterno'];
+				$persona->apellido_materno = $input['apellido_materno'];
+				$persona->fecha_nacimiento = $input['fecha_nacimiento'];
+				$persona->sexo_id = $input['sexo_id'];
+				$persona->estado_civil_id = $input['estado_civil_id'];
+				$persona->curp = $input['curp'];
+				$persona->nacionalidad_id = $input['nacionalidad_id'];
+				$persona->pais_nacimiento = $input['pais_nacimiento'];
+				$persona->entidad_nacimiento = $input['entidad_nacimiento'];
+				$persona->peso = $input['peso'];
+				$persona->estatura = $input['estatura'];
+				$persona->save();
+
+				$domicilio = $expediente->Persona->Domicilio;
+				$domicilio->calle = $input['calle'];
+				$domicilio->numero_exterior = $input['numero_exterior'];
+				$domicilio->numero_interior = $input['numero_interior'];
+				$domicilio->colonia = $input['colonia'];
+				$domicilio->delegacion_municipio = $input['delegacion_municipio'];
+				$domicilio->codigo_postal = $input['codigo_postal'];
+				$domicilio->ciudad = $input['ciudad'];
+				$domicilio->pais = $input['pais'];
+				$domicilio->save();
+
+            DB::commit();
+            
+        } catch (Exception $e) {
+        	DB::rollBack();
+            $response = [
+                'st'    => false,
+                'title' => "Error",
+                'msg'   => (string)$e->getMessage(),
+                'type'  => 'error',
+            ];
+            return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
+        }
+
+        if ($expediente AND $domicilio AND $persona) {
+            $response = [
+                'st'    => true,
+                'title' => "Expediente $expediente->id",
+                'msg'   => "Actualizado Correctamente",
+                'type'  => 'success',
+                'expediente_id' => $expediente->id,
+            ];
+        }else{
+            $response = [
+                'st'    => false,
+                'title' => "Error",
+                'msg'   => "Favor de Intentar Nuevamente o Comunicarse con un Administrador<br>MDL-ERR-UPDT",
+                'type'  => 'error',
+            ];
+        }
+
+        return response()->json($response,200,[],JSON_UNESCAPED_UNICODE);
 	}
 
 	public function destroy($id)
@@ -203,6 +305,31 @@ class ExpedienteBiometricoController extends Controller
 	{
 		$expediente = ExpedienteBiometrico::find($enrolldata);
 		$file = $expediente->Persona->Subject->EnrollData;
+
+		// $file = utf8_encode($file);
+
+		// chunk_split($string, 2, ':')
+
+		// $file = explode("ÿ ", $file);
+
+		// $file = preg_split("ÿ¨\x00", $file);
+
+		// $file = preg_split('/NIST_COM/', $file, -1, PREG_SPLIT_NO_EMPTY);
+
+		// $str = '(ÿ ÿ¨\x00) ' ;
+
+		// dd($str);
+
+		// $list = "á"; 
+		// $list = htmlspecialchars($list);
+
+		// $file = preg_split('/('.$list.')/',$file, -1, PREG_SPLIT_DELIM_CAPTURE);
+		// $file = preg_split('/(ÿ¨)/',$file, -1, PREG_SPLIT_DELIM_CAPTURE);
+		// $file = $file[1].$file[2];
+
+		// $file = utf8_decode($file);
+
+		// dd($file);
 
 		header('Content-Description: File Transfer');
 		header('Content-Type: application/octet-stream');
