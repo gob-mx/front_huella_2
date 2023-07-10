@@ -306,31 +306,6 @@ class ExpedienteBiometricoController extends Controller
 		$expediente = ExpedienteBiometrico::find($enrolldata);
 		$file = $expediente->Persona->Subject->EnrollData;
 
-		// $file = utf8_encode($file);
-
-		// chunk_split($string, 2, ':')
-
-		// $file = explode("ÿ ", $file);
-
-		// $file = preg_split("ÿ¨\x00", $file);
-
-		// $file = preg_split('/NIST_COM/', $file, -1, PREG_SPLIT_NO_EMPTY);
-
-		// $str = '(ÿ ÿ¨\x00) ' ;
-
-		// dd($str);
-
-		// $list = "á"; 
-		// $list = htmlspecialchars($list);
-
-		// $file = preg_split('/('.$list.')/',$file, -1, PREG_SPLIT_DELIM_CAPTURE);
-		// $file = preg_split('/(ÿ¨)/',$file, -1, PREG_SPLIT_DELIM_CAPTURE);
-		// $file = $file[1].$file[2];
-
-		// $file = utf8_decode($file);
-
-		// dd($file);
-
 		header('Content-Description: File Transfer');
 		header('Content-Type: application/octet-stream');
 		header('Content-Disposition: attachment; filename=EnrollData_Id_'.$expediente->Persona->Subject->SubjectId.'.wsq');

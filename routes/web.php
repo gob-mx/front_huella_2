@@ -156,12 +156,15 @@ Route::middleware('auth')->group(function () {
         return view('dpfp_views.finger_map');
     });
 
-    // Administracion pages
-    // Route::prefix('expediente')->name('expediente')->group(function () {
     Route::resource('expediente', ExpedienteBiometricoController::class);
-    Route::get('expediente/template/{template}', [ExpedienteBiometricoController::class, 'template'])->name("expediente.template");
-    Route::get('expediente/enrolldata/{enrolldata}', [ExpedienteBiometricoController::class, 'enrolldata'])->name("expediente.enrolldata");
-    // });
+
+    // Consulta pages
+    Route::prefix('expediente')->name('expediente.')->group(function () {
+        Route::get('template/{template}', [ExpedienteBiometricoController::class, 'template'])->name("template");
+        Route::get('enrolldata/{enrolldata}', [ExpedienteBiometricoController::class, 'enrolldata'])->name("enrolldata");
+        // Route::resource('permisos', PermisosController::class);
+        // Route::resource('modulos', ModulosController::class);
+    });
 
 });
 
