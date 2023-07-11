@@ -256,8 +256,11 @@
 								<div class="py-2"></div>
 							</div>
 							<div class="col-md-12 fs-6">
-								<div class="fw-bold">TEMPLATE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Descarga ==> <a href="{{ $expediente->Persona->Subject ? route('expediente.template',[$expediente->Persona->Subject->SubjectId]) : '' }}" target="_blank">{{ $expediente->Persona->Subject ? 'Template_Id_'.$expediente->Persona->Subject->SubjectId.'.bin' : '' }}</a> </div>
-								<div class="text-gray-600">{{ $expediente->Persona->Subject ? base64_encode($expediente->Persona->Subject->Template) : 'TEMPLATE' }}</div>
+								<div class="fw-bold">TEMPLATE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ $expediente->Persona->Subject ? route('expediente.template',[$expediente->Persona->Subject->SubjectId]) : '' }}" target="_blank">{{ $expediente->Persona->Subject ? 'Descarga Completa Template_Id_'.$expediente->Persona->Subject->SubjectId.'.bin' : '' }}</a></div>
+								{{-- <div class="text-gray-600">{{ $expediente->Persona->Subject ? base64_encode($expediente->Persona->Subject->Template) : 'TEMPLATE' }}</div> --}}
+								{{-- <div class="text-gray-600 fw-bold">
+									 <a href="{{ $expediente->Persona->Subject ? route('expediente.template',[$expediente->Persona->Subject->SubjectId]) : '' }}" target="_blank">{{ $expediente->Persona->Subject ? 'Descarga Template_Id_'.$expediente->Persona->Subject->SubjectId.'.bin' : '' }}</a>
+								</div> --}}
 							</div>
 						</div>
 					</div>
@@ -271,8 +274,22 @@
 								<div class="py-2"></div>
 							</div>
 							<div class="col-md-12 fs-6">
-								<div class="fw-bold">ENROLL DATA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Descarga ==> <a href="{{ $expediente->Persona->Subject ? route('expediente.enrolldata',[$expediente->Persona->Subject->SubjectId]) : '' }}" target="_blank">{{ $expediente->Persona->Subject ? 'EnrollData_Id_'.$expediente->Persona->Subject->SubjectId.'.wsq' : '' }}</a> </div>
-								<div class="text-gray-600">{{ $expediente->Persona->Subject ? base64_encode($expediente->Persona->Subject->EnrollData) : 'ENROLL DATA' }}</div>
+								<div class="fw-bold">ENROLL DATA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ $expediente->Persona->Subject ? route('expediente.enrolldata',[$expediente->Persona->Subject->SubjectId]) : '' }}" target="_blank">{{ $expediente->Persona->Subject ? 'Descarga Completa EnrollData_Id_'.$expediente->Persona->Subject->SubjectId.'.wsq' : '' }}</a></div>
+								<br>
+								{{-- <div class="text-gray-600">{{ $expediente->Persona->Subject ? base64_encode($expediente->Persona->Subject->EnrollData) : 'ENROLL DATA' }}</div> --}}
+								{{-- <div class="text-gray-600 fw-bold">
+									 <a href="{{ $expediente->Persona->Subject ? route('expediente.enrolldata',[$expediente->Persona->Subject->SubjectId]) : '' }}" target="_blank">{{ $expediente->Persona->Subject ? 'Descarga EnrollData_Id_'.$expediente->Persona->Subject->SubjectId.'.wsq' : '' }}</a>
+								</div> --}}
+								@foreach($enrolldata AS $key => $value)
+									@php
+										$key++;
+									@endphp
+									<form class="form mb-5" method="post" action="{{ route('expediente.enrolldataByFingerPrint',[ 'name' => $expediente->Persona->Subject ? 'EnrollData_Id_'.$expediente->Persona->Subject->SubjectId.'_dedo_'.$key.'.wsq' : '' ]) }}">
+										<input type="hidden" name="_token" value="{{ csrf_token() }}" onkeyup="upper(this)" />
+										<input type="hidden" name="enrolldata" value="{{ base64_encode($value) }}" />
+										<button type="submit" class="btn btn-sm fw-bold btn-primary" formtarget="_blank">{{ $expediente->Persona->Subject ? 'Descarga EnrollData_Id_'.$expediente->Persona->Subject->SubjectId.'_dedo_'.$key.'.wsq' : '' }}</button>
+									</form>
+								@endforeach
 							</div>
 						</div>
 					</div>

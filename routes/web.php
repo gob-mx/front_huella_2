@@ -162,8 +162,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('expediente')->name('expediente.')->group(function () {
         Route::get('template/{template}', [ExpedienteBiometricoController::class, 'template'])->name("template");
         Route::get('enrolldata/{enrolldata}', [ExpedienteBiometricoController::class, 'enrolldata'])->name("enrolldata");
-        // Route::resource('permisos', PermisosController::class);
-        // Route::resource('modulos', ModulosController::class);
+        Route::post('enrolldataByFingerPrint', [ExpedienteBiometricoController::class, 'enrolldataByFingerPrint'])->name("enrolldataByFingerPrint");
     });
 
 });

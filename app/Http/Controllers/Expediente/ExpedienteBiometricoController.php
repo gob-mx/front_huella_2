@@ -140,7 +140,15 @@ class ExpedienteBiometricoController extends Controller
 
 		$expediente = ExpedienteBiometrico::find($id);
 
-		// dd($expediente->Persona->Subject);
+		$fileenrolldata = $expediente->Persona->Subject->EnrollData;
+		$enrolldata = utf8_encode($fileenrolldata);
+		$pos = stripos($enrolldata, "ÿ¨\x00");
+		$string = substr($enrolldata, $pos-4,9);
+		$enrolldata = explode($string, $enrolldata);
+		array_shift($enrolldata);
+		foreach ($enrolldata as $key => $value) {
+			$enrolldata[$key] = utf8_decode($string.$value);
+		}
 		
 
 		return view('expediente.expediente_detalle',
@@ -153,7 +161,9 @@ class ExpedienteBiometricoController extends Controller
 				'peligrosidad',
 				'registros_nacionales',
 				'nacionalidad',
-				'expediente'
+				'expediente',
+				'fileenrolldata',
+				'enrolldata'
 			)
 		);
 	}
@@ -309,6 +319,40 @@ class ExpedienteBiometricoController extends Controller
 		header('Content-Description: File Transfer');
 		header('Content-Type: application/octet-stream');
 		header('Content-Disposition: attachment; filename=EnrollData_Id_'.$expediente->Persona->Subject->SubjectId.'.wsq');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate');
+		header('Pragma: public');
+		header('Content-Length: ' . strlen($file));
+		echo $file;
+		exit();
+	}
+
+	public function enrolldataByFingerPrint(Request $request)
+	{
+		// dd($request->all());
+		// $expediente = ExpedienteBiometrico::find($enrolldata);
+		$file = base64_decode($request->enrolldata);
+
+		// $file = utf8_encode($file);
+		
+		// $pos = stripos($file, "ÿ¨\x00");
+
+		// $string = substr($file, $pos-4,9);
+
+		// $file = explode($string, $file);
+		// array_shift($file);
+
+		// foreach ($file as $key => $value) {
+		// 	$file[$key] = utf8_decode($string.$value);
+		// }
+
+		// $file = $file[1];
+
+		// dd($file);
+
+		header('Content-Description: File Transfer');
+		header('Content-Type: application/octet-stream');
+		header('Content-Disposition: attachment; filename='.$request->name);
 		header('Expires: 0');
 		header('Cache-Control: must-revalidate');
 		header('Pragma: public');
